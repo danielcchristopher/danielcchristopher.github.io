@@ -288,7 +288,7 @@ export default function ProfilePage() {
             </div>
             <ol className="journey-list">
               <li data-reveal>
-                <span>2022 to 2025</span>
+                <span>2022 to 2024</span>
                 <strong>BA (Hons) Digital Marketing</strong>
                 <p>Completed an accelerated two year programme at Birmingham City University with Upper Second Class Honours.</p>
               </li>
