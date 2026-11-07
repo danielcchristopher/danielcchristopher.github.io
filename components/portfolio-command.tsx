@@ -1,61 +1,158 @@
-'use client';
+"use client";
 
-import { useEffect, useMemo, useRef, useState } from 'react';
-import { NativeLink } from '@/components/native-link';
-import { operationalProjects } from '@/lib/operational-projects';
+import { useEffect, useMemo, useRef, useState } from "react";
+import { NativeLink } from "@/components/native-link";
+import { operationalProjects } from "@/lib/operational-projects";
 
 const destinations = [
-  ...operationalProjects.map(project => ({ label: project.name, detail: project.context, href: `/projects/${project.slug}`, type: 'Independent prototype' })),
-  { label: 'BCU Digital Marketing Projects', detail: 'Flock Together, Nando’s, Mailchimp, Peaky Blinders and degree modules', href: '/bcu', type: 'Academic projects' },
-  { label: 'Selected work', detail: 'Digital builds, marketing, research and analysis', href: '/work', type: 'Page' },
-  { label: 'Credit Risk Analytics', detail: 'Loan affordability regression on 44,986 records', href: '/work/loan-affordability', type: 'Team case' },
-  { label: 'Ecommerce Business Intelligence', detail: 'Power BI, Power Query and DAX on Olist data', href: '/work/ecommerce-bi', type: 'Team case' },
-  { label: 'Decision Intelligence', detail: 'Dashboard, scenarios and optimisation', href: '/work/decision-intelligence', type: 'Team case' },
-  { label: 'Customer Intelligence', detail: 'AI personalisation, trust and loyalty', href: '/work/customer-intelligence', type: 'Individual case' },
-  { label: 'Data Management', detail: 'DFD, ERD and SQL prototype', href: '/work/process-redesign', type: 'Team case' },
-  { label: 'Predictive Analytics', detail: 'Churn model comparison and validation', href: '/work/predictive-analytics', type: 'Individual case' },
-  { label: 'This portfolio website', detail: 'Independent Next.js and TypeScript digital build', href: '/site-build', type: 'Digital project' },
-  { label: 'How I work with AI', detail: 'Claude Opus 5.5 leads, Codex is set up as the coder, Claude helpers research, review and write', href: '/ai-workflow', type: 'Page' },
-  { label: 'Restaurant service mix', detail: 'Independent public data Python analysis and reproducible code', href: '/service-mix', type: 'Independent project' },
-  { label: 'Olist dashboard', detail: 'Interactive order, delivery and category reporting from the cleaned workbook', href: '/olist-reconstruction', type: 'Interactive analysis' },
-  { label: 'MSc dissertation', detail: 'AI personalisation, trust and loyalty: method and results', href: '/dissertation', type: 'Page' },
-  { label: 'Profile', detail: 'Bilingual background, skills and credentials', href: '/profile', type: 'Page' },
-  { label: 'Digital Marketing', detail: 'Customer context, measurement and strategy', href: '/profile#marketing-foundation', type: 'Profile section' },
-  { label: 'Role fit', detail: 'Six evidence linked career directions', href: '/profile#role-fit', type: 'Profile section' },
-  { label: 'Contact', detail: 'Email, LinkedIn and location', href: '/contact', type: 'Page' },
+  ...operationalProjects.map((project) => ({
+    label: project.name,
+    detail: project.context,
+    href: `/projects/${project.slug}`,
+    type: "Independent prototype",
+  })),
+  {
+    label: "BCU Digital Marketing Projects",
+    detail:
+      "Flock Together, Nando’s, Mailchimp, Peaky Blinders and degree modules",
+    href: "/bcu",
+    type: "Academic projects",
+  },
+  {
+    label: "Projects",
+    detail: "Digital builds, marketing, research and analysis",
+    href: "/work",
+    type: "Page",
+  },
+  {
+    label: "Credit Risk Analytics",
+    detail: "Loan affordability regression on 44,986 records",
+    href: "/work/loan-affordability",
+    type: "Team case",
+  },
+  {
+    label: "Ecommerce Business Intelligence",
+    detail: "Power BI, Power Query and DAX on Olist data",
+    href: "/work/ecommerce-bi",
+    type: "Team case",
+  },
+  {
+    label: "Decision Intelligence",
+    detail: "Dashboard, scenarios and optimisation",
+    href: "/work/decision-intelligence",
+    type: "Team case",
+  },
+  {
+    label: "Customer Intelligence",
+    detail: "AI personalisation, trust and loyalty",
+    href: "/work/customer-intelligence",
+    type: "Individual case",
+  },
+  {
+    label: "Data Management",
+    detail: "DFD, ERD and SQL prototype",
+    href: "/work/process-redesign",
+    type: "Team case",
+  },
+  {
+    label: "Predictive Analytics",
+    detail: "Churn model comparison and validation",
+    href: "/work/predictive-analytics",
+    type: "Individual case",
+  },
+  {
+    label: "This portfolio website",
+    detail: "Independent Next.js and TypeScript digital build",
+    href: "/site-build",
+    type: "Digital project",
+  },
+  {
+    label: "How I work with AI",
+    detail: "Planning, implementation, review and my responsibility for the result",
+    href: "/ai-workflow",
+    type: "Page",
+  },
+  {
+    label: "Restaurant service mix",
+    detail: "Independent public data Python analysis and reproducible code",
+    href: "/service-mix",
+    type: "Independent project",
+  },
+  {
+    label: "Olist dashboard",
+    detail:
+      "Interactive order, delivery and category reporting from the cleaned workbook",
+    href: "/olist-reconstruction",
+    type: "Interactive analysis",
+  },
+  {
+    label: "MSc dissertation",
+    detail: "AI personalisation, trust and loyalty: method and results",
+    href: "/dissertation",
+    type: "Page",
+  },
+  {
+    label: "About Daniel",
+    detail: "Bilingual background, skills and credentials",
+    href: "/profile",
+    type: "Page",
+  },
+  {
+    label: "Digital Marketing",
+    detail: "Customer context, measurement and strategy",
+    href: "/profile#marketing-foundation",
+    type: "About section",
+  },
+  {
+    label: "Role fit",
+    detail: "Six evidence linked career directions",
+    href: "/profile#role-fit",
+    type: "About section",
+  },
+  {
+    label: "Contact",
+    detail: "Email, LinkedIn and location",
+    href: "/contact",
+    type: "Page",
+  },
 ];
 
 export function PortfolioCommand({ onOpen }: { onOpen?: () => void }) {
   const [open, setOpen] = useState(false);
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
   const dialogRef = useRef<HTMLDialogElement>(null);
 
   const results = useMemo(() => {
     const term = query.trim().toLowerCase();
     if (!term) return destinations;
-    return destinations.filter((item) => `${item.label} ${item.detail} ${item.type}`.toLowerCase().includes(term));
+    return destinations.filter((item) =>
+      `${item.label} ${item.detail} ${item.type}`.toLowerCase().includes(term),
+    );
   }, [query]);
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
-      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k') {
+      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
         event.preventDefault();
         onOpen?.();
         setOpen((current) => !current);
       }
-      if (event.key === 'Escape') setOpen(false);
+      if (event.key === "Escape") setOpen(false);
     };
 
-    window.addEventListener('keydown', onKeyDown);
-    return () => window.removeEventListener('keydown', onKeyDown);
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
   }, [onOpen]);
 
   useEffect(() => {
-    if (!open) { dialogRef.current?.close(); return; }
+    if (!open) {
+      dialogRef.current?.close();
+      return;
+    }
     dialogRef.current?.showModal();
     const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
+    document.body.style.overflow = "hidden";
     window.requestAnimationFrame(() => inputRef.current?.focus());
     return () => {
       document.body.style.overflow = previousOverflow;
@@ -64,18 +161,34 @@ export function PortfolioCommand({ onOpen }: { onOpen?: () => void }) {
 
   function openCommand() {
     onOpen?.();
-    setQuery('');
+    setQuery("");
     setOpen(true);
   }
 
   return (
     <>
-      <button className="command-trigger" type="button" onClick={openCommand} aria-haspopup="dialog">
+      <button
+        className="command-trigger"
+        type="button"
+        onClick={openCommand}
+        aria-haspopup="dialog"
+      >
         Search <span aria-hidden="true">⌘K</span>
       </button>
 
-      <dialog ref={dialogRef} className={`command-overlay${open ? ' open' : ''}`} aria-label="Search the portfolio" onCancel={() => setOpen(false)} onClose={() => setOpen(false)}>
-        <button className="command-backdrop" type="button" aria-label="Close portfolio search" onClick={() => setOpen(false)} />
+      <dialog
+        ref={dialogRef}
+        className={`command-overlay${open ? " open" : ""}`}
+        aria-label="Search the portfolio"
+        onCancel={() => setOpen(false)}
+        onClose={() => setOpen(false)}
+      >
+        <button
+          className="command-backdrop"
+          type="button"
+          aria-label="Close portfolio search"
+          onClick={() => setOpen(false)}
+        />
         <section className="command-dialog">
           <div className="command-search">
             <span aria-hidden="true">Search</span>
@@ -87,18 +200,34 @@ export function PortfolioCommand({ onOpen }: { onOpen?: () => void }) {
               placeholder="Search projects, methods or pages"
               aria-label="Search projects, methods or pages"
             />
-            <button type="button" onClick={() => setOpen(false)}>Esc</button>
+            <button type="button" onClick={() => setOpen(false)}>
+              Esc
+            </button>
           </div>
           <div className="command-results" aria-live="polite">
-            {results.length ? results.map((item, index) => (
-              <NativeLink href={item.href} key={item.href} onClick={() => setOpen(false)}>
-                <span>{String(index + 1).padStart(2, '0')}</span>
-                <div><strong>{item.label}</strong><small>{item.detail}</small></div>
-                <em>{item.type}</em>
-              </NativeLink>
-            )) : <p>No matching evidence. Try “SQL”, “customer” or “model”.</p>}
+            {results.length ? (
+              results.map((item, index) => (
+                <NativeLink
+                  href={item.href}
+                  key={item.href}
+                  onClick={() => setOpen(false)}
+                >
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <div>
+                    <strong>{item.label}</strong>
+                    <small>{item.detail}</small>
+                  </div>
+                  <em>{item.type}</em>
+                </NativeLink>
+              ))
+            ) : (
+              <p>No matching evidence. Try “SQL”, “customer” or “model”.</p>
+            )}
           </div>
-          <footer><span>Search the portfolio</span><span>Esc to close</span></footer>
+          <footer>
+            <span>Search the portfolio</span>
+            <span>Esc to close</span>
+          </footer>
         </section>
       </dialog>
     </>

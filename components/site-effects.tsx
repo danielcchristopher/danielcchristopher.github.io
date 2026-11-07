@@ -1,184 +1,74 @@
-'use client';
-
-import { useEffect } from 'react';
+"use client";
+import { useEffect } from "react";
 
 export function SiteEffects() {
   useEffect(() => {
-    const revealHashTarget = (hash: string) => {
-      if (!hash) return;
+    let frame = 0;
+    const revealTarget = (hash: string) => {
       let target: HTMLElement | null;
-      try { target = document.getElementById(decodeURIComponent(hash.slice(1))); } catch { return; }
+      try {
+        target = document.getElementById(decodeURIComponent(hash.slice(1)));
+      } catch {
+        return;
+      }
       if (!target) return;
       let ancestor: HTMLElement | null = target;
       while (ancestor) {
         if (ancestor instanceof HTMLDetailsElement) ancestor.open = true;
         ancestor = ancestor.parentElement;
       }
-      requestAnimationFrame(() => target?.scrollIntoView({ block: 'start' }));
+      requestAnimationFrame(() => target?.scrollIntoView({ block: "start" }));
     };
-    const revealHash = () => revealHashTarget(location.hash);
+    const revealHash = () => {
+      if (location.hash) revealTarget(location.hash);
+    };
     const revealAnchor = (event: MouseEvent) => {
-      if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.defaultPrevented) return;
-      const anchor = event.target instanceof Element ? event.target.closest<HTMLAnchorElement>('a[href^="#"]') : null;
-      if (anchor) revealHashTarget(anchor.getAttribute('href') ?? '');
+      if (
+        event.button !== 0 ||
+        event.metaKey ||
+        event.ctrlKey ||
+        event.shiftKey ||
+        event.altKey ||
+        event.defaultPrevented
+      )
+        return;
+      const link =
+        event.target instanceof Element
+          ? event.target.closest<HTMLAnchorElement>('a[href^="#"]')
+          : null;
+      if (link) revealTarget(link.getAttribute("href") ?? "");
     };
-    revealHash();
-    window.addEventListener('hashchange', revealHash);
-    document.addEventListener('click', revealAnchor);
-    const root = document.documentElement;
-    const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
-    let frame = 0;
-    let pointerFrame = 0;
-    let pointerX = 0;
-    let pointerY = 0;
-
-    const updateProgress = () => {
+    const navigation = performance.getEntriesByType("navigation")[0] as
+      | PerformanceNavigationTiming
+      | undefined;
+    if (navigation?.type !== "back_forward") revealHash();
+    const progress = () => {
       if (frame) return;
-
-      frame = window.requestAnimationFrame(() => {
-        const available = document.documentElement.scrollHeight - window.innerHeight;
-        const progress = available > 0 ? Math.min(1, window.scrollY / available) : 0;
-        root.style.setProperty('--scroll-progress', String(progress));
-        root.toggleAttribute('data-scrolled', window.scrollY > 24);
+      frame = requestAnimationFrame(() => {
+        const available = document.documentElement.scrollHeight - innerHeight;
+        document.documentElement.style.setProperty(
+          "--scroll-progress",
+          String(available > 0 ? Math.min(1, scrollY / available) : 0),
+        );
         frame = 0;
       });
     };
-
-    updateProgress();
-    window.addEventListener('scroll', updateProgress, { passive: true });
-    window.addEventListener('resize', updateProgress);
-
-    const updatePointer = (event: PointerEvent) => {
-      if (motionPreference.matches || event.pointerType !== 'mouse') return;
-      pointerX = event.clientX;
-      pointerY = event.clientY;
-      if (pointerFrame) return;
-      pointerFrame = window.requestAnimationFrame(() => {
-        root.style.setProperty('--pointer-x', `${pointerX}px`);
-        root.style.setProperty('--pointer-y', `${pointerY}px`);
-        pointerFrame = 0;
-      });
-    };
-
-    window.addEventListener('pointermove', updatePointer, { passive: true });
-
-    // Gentle hover tilt on [data-tilt] panels, for a fine mouse pointer only.
-    const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
-    let tiltTarget: HTMLElement | null = null;
-    let tiltFrame = 0;
-    let tiltEvent: PointerEvent | null = null;
-    const resetTilt = () => {
-      if (tiltFrame) window.cancelAnimationFrame(tiltFrame);
-      tiltFrame = 0;
-      tiltEvent = null;
-      tiltTarget?.style.removeProperty('--tilt-x');
-      tiltTarget?.style.removeProperty('--tilt-y');
-      tiltTarget = null;
-    };
-    const applyTilt = () => {
-      tiltFrame = 0;
-      const event = tiltEvent;
-      if (!event) return;
-      const target = event.target instanceof Element ? event.target.closest<HTMLElement>('[data-tilt]') : null;
-      if (target !== tiltTarget) resetTilt();
-      if (!target) return;
-      const rect = target.getBoundingClientRect();
-      const x = (event.clientX - rect.left) / rect.width - 0.5;
-      const y = (event.clientY - rect.top) / rect.height - 0.5;
-      target.style.setProperty('--tilt-x', `${(x * 6).toFixed(2)}deg`);
-      target.style.setProperty('--tilt-y', `${(-y * 6).toFixed(2)}deg`);
-      tiltTarget = target;
-    };
-    const updateTilt = (event: PointerEvent) => {
-      if (motionPreference.matches || !finePointer.matches || event.pointerType !== 'mouse') return;
-      tiltEvent = event;
-      if (!tiltFrame) tiltFrame = window.requestAnimationFrame(applyTilt);
-    };
-    window.addEventListener('pointermove', updateTilt, { passive: true });
-    document.documentElement.addEventListener('pointerleave', resetTilt);
-
-    const registered = new WeakSet<HTMLElement>();
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          entry.target.classList.add('is-revealed');
-          observer.unobserve(entry.target);
-        });
-      },
-      // Start revealing before an element enters the viewport so fast scrolling never shows blank space.
-      { threshold: 0, rootMargin: '0px 0px 25% 0px' },
-    );
-
-    const register = (scope: ParentNode) => {
-      if (motionPreference.matches) return;
-      const candidates = Array.from(scope.querySelectorAll<HTMLElement>('[data-reveal]'));
-      candidates.forEach((element) => {
-        if (registered.has(element)) return;
-        registered.add(element);
-        if (element.getBoundingClientRect().top > window.innerHeight * 0.88) {
-          element.classList.add('reveal-pending');
-          observer.observe(element);
-        }
-      });
-    };
-
-    register(document);
-    const mutationObserver = new MutationObserver((records) => {
-      records.forEach((record) => {
-        record.addedNodes.forEach((node) => {
-          if (node instanceof HTMLElement) {
-            if (node.matches('[data-reveal]')) register(node.parentElement ?? document);
-            else register(node);
-          }
-        });
-      });
-    });
-    mutationObserver.observe(document.body, { childList: true, subtree: true });
-
-    const updateMotion = () => {
-      if (!motionPreference.matches) return;
-      if (pointerFrame) window.cancelAnimationFrame(pointerFrame);
-      pointerFrame = 0;
-      resetTilt();
-      observer.disconnect();
-      document.querySelectorAll<HTMLElement>('.reveal-pending').forEach((element) => {
-        element.classList.add('is-revealed');
-      });
-    };
-    motionPreference.addEventListener('change', updateMotion);
-
-    const revealAll = () => {
-      document.querySelectorAll<HTMLElement>('.reveal-pending').forEach((element) => {
-        element.classList.add('is-revealed');
-      });
-    };
-    window.addEventListener('beforeprint', revealAll);
-
+    progress();
+    window.addEventListener("scroll", progress, { passive: true });
+    window.addEventListener("resize", progress);
+    window.addEventListener("hashchange", revealHash);
+    document.addEventListener("click", revealAnchor);
     return () => {
-      observer.disconnect();
-      window.removeEventListener('hashchange', revealHash);
-      document.removeEventListener('click', revealAnchor);
-      motionPreference.removeEventListener('change', updateMotion);
-      window.removeEventListener('beforeprint', revealAll);
-      if (pointerFrame) window.cancelAnimationFrame(pointerFrame);
-      mutationObserver.disconnect();
-      window.removeEventListener('scroll', updateProgress);
-      window.removeEventListener('resize', updateProgress);
-      window.removeEventListener('pointermove', updatePointer);
-      window.removeEventListener('pointermove', updateTilt);
-      document.documentElement.removeEventListener('pointerleave', resetTilt);
-      resetTilt();
-      if (frame) window.cancelAnimationFrame(frame);
+      if (frame) cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", progress);
+      window.removeEventListener("resize", progress);
+      window.removeEventListener("hashchange", revealHash);
+      document.removeEventListener("click", revealAnchor);
     };
   }, []);
-
   return (
-    <>
-      <div className="cursor-spotlight" aria-hidden="true" />
-      <div className="scroll-progress" aria-hidden="true">
-        <span />
-      </div>
-    </>
+    <div className="scroll-progress" aria-hidden="true">
+      <span />
+    </div>
   );
 }

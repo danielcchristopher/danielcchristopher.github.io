@@ -1,156 +1,88 @@
-import { pageMetadata } from '@/lib/page-metadata';
-import { SiteHeader } from '@/components/site-header';
-import { PageFooter } from '@/components/page-footer';
-import { NativeLink } from '@/components/native-link';
-import { HeroField } from '@/components/hero-field';
-
+import { pageMetadata } from "@/lib/page-metadata";
+import { SiteHeader } from "@/components/site-header";
+import { PageFooter } from "@/components/page-footer";
+import { NativeLink } from "@/components/native-link";
 export const metadata = pageMetadata(
-  'How I work with AI | Independent workflow',
-  'How this portfolio is built and maintained with a small AI team: Claude Opus 5.5 leads, OpenAI Codex is set up to write code, and Claude Sonnet 5.5 helpers research, review and write.',
-  '/ai-workflow/',
+  "How I work with AI",
+  "How Daniel Christopher uses AI assistance in digital projects while checking sources, implementation and claims.",
+  "/ai-workflow/",
 );
-
-const rulesUrl = 'https://github.com/danielcchristopher/danielcchristopher.github.io/blob/main/CLAUDE.md';
-
-type Helper = {
-  role: string;
-  provider: 'anthropic' | 'openai';
-  model: string;
-  job: string;
-  examples: string[];
-  access: string;
-};
-
-const helpers: Helper[] = [
-  {
-    role: 'Coder',
-    provider: 'openai',
-    model: 'OpenAI Codex',
-    job: 'Writes the code once connected.',
-    examples: ['New pages and features', 'Changes across many files', 'Hard bugs'],
-    access: 'Edits files',
-  },
-  {
-    role: 'Researcher',
-    provider: 'anthropic',
-    model: 'Claude Sonnet 5.5',
-    job: 'Looks things up.',
-    examples: ['Companies and job market', 'Dissertation reading', 'Finding code in the repo'],
-    access: 'Read only',
-  },
-  {
-    role: 'Reviewer',
-    provider: 'anthropic',
-    model: 'Claude Sonnet 5.5',
-    job: 'Checks for mistakes.',
-    examples: ['Reads every change', 'Runs lint, type and build checks', 'Flags broken content'],
-    access: 'Checks only, never edits',
-  },
-  {
-    role: 'Writer',
-    provider: 'anthropic',
-    model: 'Claude Sonnet 5.5',
-    job: 'Writes the words.',
-    examples: ['Site and project copy', 'CV bullets and cover letters', 'House style, no hyphens'],
-    access: 'Edits text',
-  },
-];
-
-const steps = [
-  { who: 'Opus', title: 'Plans the job', detail: 'Works out what a new case study page needs and which files it touches.' },
-  { who: 'Researcher', title: 'Gathers context', detail: 'Pulls the project notes and shows how existing case pages are built.' },
-  { who: 'Codex', title: 'Builds it', detail: 'Is given a full written brief and writes the page code once connected.' },
-  { who: 'Reviewer', title: 'Checks it', detail: 'Runs the site checks and lists anything that is broken or unclear.' },
-  { who: 'Opus and me', title: 'Signs it off', detail: 'Opus fixes what was flagged and reports back. I read it before it goes live.' },
-];
-
-const reasons = [
-  { label: 'Specialists', title: 'Each model does the job it is best at.', body: 'A coding agent handles code, a fast model handles research and review, and the strongest model is kept for planning and judgement.' },
-  { label: 'Independent checks', title: 'The builder never marks its own work.', body: 'Every change is checked by a separate reviewer before it is committed, the way a second analyst would check a model.' },
-  { label: 'Parallel work', title: 'Research and review run at the same time.', body: 'Helpers that do not depend on each other work side by side, so a task takes the time of its slowest step rather than the sum of them all.' },
-  { label: 'Accountability', title: 'I stay responsible for what is published.', body: 'The rules the team follows are written down in the repository, and nothing reaches the live site without passing the build checks and my review.' },
-];
-
 export default function AiWorkflowPage() {
   return (
     <>
-      <a className="skip-link" href="#main-content">Skip to content</a>
+      <a className="skip-link" href="#main-content">
+        Skip to content
+      </a>
       <SiteHeader />
       <main id="main-content">
-        <section className="page-hero">
-          <HeroField motif="corner" />
-          <div className="shell">
-            <small>Independent workflow · set up October 2026</small>
-            <h1>One lead model.<br /><span>Four specialists.</span></h1>
-            <p>How I use AI to build and maintain this portfolio. One model plans and checks, specialist helpers each do one job, and I decide what gets published.</p>
-          </div>
+        <section className="shell portfolio-page-intro">
+          <p className="portfolio-eyebrow">Development approach</p>
+          <h1>How I work with AI.</h1>
+          <p>
+            I use AI assistance for research, drafting and development. I remain
+            responsible for the sources, decisions and claims in the finished
+            project.
+          </p>
         </section>
-
-        <section className="shell ai-team" aria-labelledby="ai-team-title">
-          <p className="overline">The team</p>
-          <h2 id="ai-team-title">Who does what.</h2>
-
-          <div className="ai-chart">
-            <div className="ai-you">Me</div>
-            <div className="ai-stem" aria-hidden="true" />
-            <div className="ai-node ai-lead">
-              <span className="ai-provider ai-provider--anthropic">Anthropic</span>
-              <h3>The lead</h3>
-              <span className="ai-model ai-model--anthropic">Claude Opus 5.5</span>
-              <p>Plans the work, hands out jobs, checks every result and reports back to me.</p>
-            </div>
-            <div className="ai-stem" aria-hidden="true" />
-            <p className="ai-hands">hands jobs to</p>
-            <ul className="ai-branch" role="list">
-              {helpers.map((helper) => (
-                <li className="ai-node ai-helper" key={helper.role}>
-                  <span className={`ai-provider ai-provider--${helper.provider}`}>{helper.provider === 'openai' ? 'OpenAI' : 'Anthropic'}</span>
-                  <h3>{helper.role}</h3>
-                  <span className={`ai-model ai-model--${helper.provider}`}>{helper.model}</span>
-                  <p className="ai-job">{helper.job}</p>
-                  <ul className="ai-examples">
-                    {helper.examples.map((example) => <li key={example}>{example}</li>)}
-                  </ul>
-                  <span className="ai-access">{helper.access}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
-
-        <section className="shell ai-flow" aria-labelledby="ai-flow-title">
-          <p className="overline">Example</p>
-          <h2 id="ai-flow-title">How one job moves through the team.</h2>
-          <p className="ai-flow-intro">Adding a new case study page, from request to live site.</p>
-          <ol className="ai-steps" role="list">
-            {steps.map((step) => (
-              <li key={step.title}>
-                <span>{step.who}</span>
-                <h3>{step.title}</h3>
-                <p>{step.detail}</p>
-              </li>
-            ))}
-          </ol>
-        </section>
-
-        <section className="shell site-build-grid ai-reasons" aria-label="Why the workflow is set up this way">
-          {reasons.map((reason) => (
-            <article key={reason.label}>
-              <span>{reason.label}</span>
-              <h2>{reason.title}</h2>
-              <p>{reason.body}</p>
+        <section className="shell portfolio-build-decisions">
+          <div className="build-workflow" aria-label="Development workflow">
+            <article>
+              <span>01</span>
+              <h2>Define</h2>
+              <p>Set the question, audience and constraints.</p>
             </article>
-          ))}
-        </section>
-
-        <section className="shell site-build-close">
-          <p className="overline">What this does not claim</p>
-          <h2>The AI does not choose my work or my conclusions.</h2>
-          <p>The models write code and drafts when asked. I choose what to build, read changes before they are published, and the ownership of each case study is stated on its own page. Codex is set up as the coder but has not yet run on this site. So far, Opus has built every change directly with my approval.</p>
-          <div className="site-build-links ai-close-links">
-            <a className="arrow-link" href={rulesUrl} target="_blank" rel="noopener noreferrer">Read the team&rsquo;s rules ↗</a>
-            <NativeLink className="arrow-link" href="/site-build">See how the site was built ↗</NativeLink>
+            <article>
+              <span>02</span>
+              <h2>Build</h2>
+              <p>Develop the implementation and supporting content.</p>
+            </article>
+            <article>
+              <span>03</span>
+              <h2>Check</h2>
+              <p>Compare claims with sources and test the application.</p>
+            </article>
+            <article>
+              <span>04</span>
+              <h2>Refine</h2>
+              <p>Use review findings to correct and improve the result.</p>
+            </article>
           </div>
+          <p className="study-scope">
+            This diagram describes the intended process. It is not a record of
+            independent reviews or a claim that AI output is automatically
+            reliable.
+          </p>
+          <details className="portfolio-disclosure">
+            <summary>
+              <span>
+                <strong>What I check</strong>
+                <small>Evidence, ownership and the finished experience</small>
+              </span>
+              <span aria-hidden="true">+</span>
+            </summary>
+            <div>
+              <p>
+                I check whether a source supports a statement, whether numbers
+                reconcile, and whether the interface communicates the result
+                clearly. Original coursework, later reconstructions and
+                simulated demonstrations are identified separately.
+              </p>
+              <p>
+                A successful build does not prove that an analysis is
+                operationally valid or that real users understand it. Those
+                require their own evidence.
+              </p>
+              <a
+                className="portfolio-text-link"
+                href="https://github.com/danielcchristopher/danielcchristopher.github.io/blob/main/CLAUDE.md"
+              >
+                Repository workflow notes ↗
+              </a>
+            </div>
+          </details>
+          <NativeLink href="/site-build" className="portfolio-text-link">
+            Explore the portfolio build ↗
+          </NativeLink>
         </section>
       </main>
       <PageFooter />

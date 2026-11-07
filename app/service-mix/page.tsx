@@ -1,73 +1,130 @@
-import { pageMetadata } from '@/lib/page-metadata';
-import { PageFooter } from '@/components/page-footer';
-import { SiteHeader } from '@/components/site-header';
-import { NativeLink } from '@/components/native-link';
-import { HeroField } from '@/components/hero-field';
-
+import { pageMetadata } from "@/lib/page-metadata";
+import { SiteHeader } from "@/components/site-header";
+import { PageFooter } from "@/components/page-footer";
+import { NativeLink } from "@/components/native-link";
+import { ProjectVisual } from "@/components/project-visual";
 export const metadata = pageMetadata(
-  'Restaurant service mix | Independent analysis',
-  'An independent, reproducible public data project comparing restaurant lunch and dinner bills and outlining decision limits.',
-  '/service-mix/',
+  "Restaurant service mix",
+  "A reproducible comparison of lunch and dinner bills in a public restaurant sample, with the interpretation limits visible.",
+  "/service-mix/",
 );
-
 export default function ServiceMixPage() {
   return (
     <>
-      <a className="skip-link" href="#main-content">Skip to content</a>
+      <a className="skip-link" href="#main-content">
+        Skip to content
+      </a>
       <SiteHeader />
       <main id="main-content">
-        <section className="case-hero">
-          <HeroField motif="clusters" />
-          <div className="shell">
-            <p className="overline">Independent public data project · Python / Pandas</p>
-            <h1>When does a restaurant check look different?</h1>
-            <p className="case-lead">A reproducible analysis of the public Plotly restaurant bills sample. The question is how lunch and dinner differ by bill size and bill per cover, and what more an operator needs before changing staffing or offers.</p>
-            <div className="case-takeaway"><span>Key point</span><p>Descriptive differences can suggest what to investigate; they cannot establish profitability or justify a rota change.</p><a href="#evidence">Explore the evidence ↓</a></div>
-          </div>
-        </section>
-        <section className="case-facts">
-          <div className="shell fact-grid">
-            <div className="fact"><strong>244</strong><span>Public example bills</span></div>
-            <div className="fact"><strong>68 / 176</strong><span>Lunch / dinner observations</span></div>
-            <div className="fact"><strong>3</strong><span>Automated checks</span></div>
-          </div>
-        </section>
-        <section className="case-content">
-          <div className="shell case-layout">
-            <div className="case-body">
-              <section className="case-section" id="question">
-                <p className="section-number">01 · Business question</p>
-                <h2>Which service period differences warrant a closer look?</h2>
-                <p>With limited resources, a restaurant would want to understand how the value of a typical check and party size vary across service periods. This dataset supports an exploratory comparison, not an actual staffing recommendation.</p>
-              </section>
-              <section className="case-section" id="approach">
-                <p className="section-number">02 · Runnable method</p>
-                <h2>Validate, derive, compare and export.</h2>
-                <p>I used Plotly’s public educational tips dataset; the Python script checks its 244 records for completeness, expected columns and plausible values, calculates bill per cover and tip rate, and exports period level results and a chart.</p>
-                <a className="arrow-link" href="https://github.com/danielcchristopher/danielcchristopher.github.io/tree/main/projects/restaurant-service-analysis">Open the runnable code and reproduction steps ↗</a>
-              </section>
-              <section className="case-section evidence-block" id="evidence">
-                <p className="section-number">03 · Evidence</p>
-                <h2>A descriptive comparison with the sample sizes visible.</h2>
-                <figure className="case-visual">
-                  <figcaption><span>Service period results · dataset units</span><strong>Lunch compared with dinner.</strong></figcaption>
-                  <div className="visual-result-strip">
-                    <div><span>Average lunch bill / cover</span><strong>7.32</strong></div>
-                    <div><span>Average dinner bill / cover</span><strong>8.11</strong></div>
-                    <div><span>Median tip rate</span><strong>15.4% / 15.5%</strong></div>
-                  </div>
-                  <p>Lunch includes 68 bills, with a mean bill of 17.17; dinner includes 176 bills, with a mean bill of 20.80. These results are descriptive and rounded from the script outputs.</p>
-                  <p className="visual-caveat">Source: Plotly’s public 244 bill restaurant example, not transactions collected by Daniel. Currency, margin and business outcomes are not established.</p>
-                </figure>
-              </section>
-              <section className="case-section" id="implications">
-                <p className="section-number">04 · Decision implications</p>
-                <h2>What an operator would need next.</h2>
-                <p>Before adjusting staffing or promotional spend, measure representative hourly orders, cover counts, contribution margin and labour costs over multiple weeks. The sample is small and unbalanced across service periods; the data have no known timestamps, staff allocation or profit information.</p>
-                <NativeLink className="arrow-link" href="/work">Back to selected work</NativeLink>
-              </section>
+        <section className="shell study-header">
+          <NativeLink href="/work" className="portfolio-text-link">
+            ← All projects
+          </NativeLink>
+          <div className="study-opening">
+            <div>
+              <p className="portfolio-eyebrow">
+                Independent public data analysis · Python
+              </p>
+              <h1>Restaurant service mix.</h1>
+              <p className="study-question">
+                How do lunch and dinner bills differ?
+              </p>
+              <p className="study-result">
+                I compared 244 public example bills. The mean bill per cover was
+                7.32 for lunch and 8.11 for dinner. These sample differences do
+                not establish profitability or justify a staffing change.
+              </p>
+              <a className="portfolio-button" href="#evidence">
+                Inspect the comparison ↓
+              </a>
             </div>
+            <ProjectVisual kind="service" priority />
           </div>
+          <p className="study-scope">
+            Public Plotly educational sample, not transactions collected by me.
+            Currency, margins and achieved business outcomes are not
+            established.
+          </p>
+        </section>
+        <section className="shell portfolio-analysis-body" id="evidence">
+          <h2>The comparison, with sample sizes.</h2>
+          <div
+            className="operational-table"
+            tabIndex={0}
+            role="region"
+            aria-label="Restaurant service period results"
+          >
+            <table>
+              <caption>
+                Descriptive results rounded from the Python outputs · dataset
+                units
+              </caption>
+              <thead>
+                <tr>
+                  <th scope="col">Measure</th>
+                  <th scope="col">Lunch</th>
+                  <th scope="col">Dinner</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Bills</th>
+                  <td>68</td>
+                  <td>176</td>
+                </tr>
+                <tr>
+                  <th scope="row">Mean bill</th>
+                  <td>17.17</td>
+                  <td>20.80</td>
+                </tr>
+                <tr>
+                  <th scope="row">Mean bill per cover</th>
+                  <td>7.32</td>
+                  <td>8.11</td>
+                </tr>
+                <tr>
+                  <th scope="row">Median tip rate</th>
+                  <td>15.4%</td>
+                  <td>15.5%</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <details className="portfolio-disclosure" id="approach">
+            <summary>
+              <span>
+                <strong>Method and reproducible code</strong>
+                <small>Validate, derive, compare and export</small>
+              </span>
+              <span aria-hidden="true">+</span>
+            </summary>
+            <div>
+              <p>
+                The Python script checks completeness, expected columns and
+                plausible values, calculates bill per cover and tip rate, and
+                exports period level results and a chart.
+              </p>
+              <a
+                className="portfolio-text-link"
+                href="https://github.com/danielcchristopher/danielcchristopher.github.io/tree/main/projects/restaurant-service-analysis"
+              >
+                Inspect the code and reproduction steps ↗
+              </a>
+            </div>
+          </details>
+          <section className="study-section" id="implications">
+            <h2>What an operator would need next.</h2>
+            <p>
+              Representative hourly orders, cover counts, contribution margin
+              and labour costs over multiple weeks would be needed before
+              adjusting staffing or offers. This sample is small and unbalanced,
+              with no known timestamps, staffing allocation or profit
+              information.
+            </p>
+          </section>
+          <NativeLink href="/work" className="portfolio-text-link">
+            Explore another project ↗
+          </NativeLink>
         </section>
       </main>
       <PageFooter />

@@ -1,68 +1,117 @@
-import { pageMetadata } from '@/lib/page-metadata';
-import { SiteHeader } from '@/components/site-header';
-import { PageFooter } from '@/components/page-footer';
-import { NativeLink } from '@/components/native-link';
-import { HeroField } from '@/components/hero-field';
-
+import { pageMetadata } from "@/lib/page-metadata";
+import { SiteHeader } from "@/components/site-header";
+import { PageFooter } from "@/components/page-footer";
+import { NativeLink } from "@/components/native-link";
+import { ProjectVisual } from "@/components/project-visual";
 export const metadata = pageMetadata(
-  'Building this portfolio | Independent digital project',
-  'A live, self directed Next.js portfolio build showing information architecture, responsive interfaces, technical implementation and transparent case study presentation.',
-  '/site-build/',
+  "This portfolio",
+  "The website itself: a Next.js and TypeScript build bringing digital projects, marketing and research into one collection.",
+  "/site-build/",
 );
-
 export default function SiteBuildPage() {
   return (
     <>
-      <a className="skip-link" href="#main-content">Skip to content</a>
+      <a className="skip-link" href="#main-content">
+        Skip to content
+      </a>
       <SiteHeader />
       <main id="main-content">
-        <section className="page-hero site-build-hero">
-          <HeroField motif="corner" />
-          <div className="shell">
-            <small>Independent digital build · ongoing</small>
-            <h1>Designing the experience.<br /><span>Not just presenting the work.</span></h1>
-            <p>This portfolio is a live website that I build and maintain. The aim is to make different kinds of work easy to navigate, easy to inspect, and clear about what was done individually, as a team or as later follow on work.</p>
-            <div className="site-build-links">
-              <a className="arrow-link" href="https://github.com/danielcchristopher/danielcchristopher.github.io" target="_blank" rel="noopener noreferrer">Explore the source code ↗</a>
-              <NativeLink className="arrow-link" href="/work">Explore the work ↗</NativeLink>
-              <NativeLink className="arrow-link" href="/ai-workflow">See the AI team behind it ↗</NativeLink>
+        <section className="shell study-header">
+          <NativeLink href="/work" className="portfolio-text-link">
+            ← All projects
+          </NativeLink>
+          <div className="study-opening">
+            <div>
+              <p className="portfolio-eyebrow">
+                Independent digital build · ongoing
+              </p>
+              <h1>This portfolio.</h1>
+              <p className="study-question">
+                A place to explore what I’ve made.
+              </p>
+              <p className="study-result">
+                I direct the content, design and development with AI assistance.
+                The site brings digital tools, marketing concepts and research
+                together in a working Next.js application.
+              </p>
+              <div className="portfolio-inline-actions">
+                <a
+                  href="https://github.com/danielcchristopher/danielcchristopher.github.io"
+                  className="portfolio-button"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Inspect the source ↗
+                </a>
+                <NativeLink href="/work" className="portfolio-text-link">
+                  Try the project collection ↗
+                </NativeLink>
+              </div>
             </div>
+            <ProjectVisual kind="web" priority />
           </div>
+          <p className="study-scope">
+            Independent project. This demonstrates the website and its
+            implementation, with no client commission, traffic growth or
+            commercial outcome claimed.
+          </p>
         </section>
-        <section className="shell site-build-intro" aria-label="Project details">
-          <p className="overline">Type / ownership</p>
-          <div>
-            <h2>An independently maintained digital product.</h2>
-            <p>This is my personal project, not a paid client commission. It gives me a place to bring together analytics, research, digital marketing and practical web development as I complete more work.</p>
+        <section className="shell portfolio-build-decisions">
+          <h2>A few decisions behind the interface.</h2>
+          <div className="build-decisions-grid">
+            <article>
+              <span>01</span>
+              <h3>Show the work early</h3>
+              <p>
+                Real application previews and original figures take priority.
+                Where original assets are unavailable, the boundary is stated.
+              </p>
+            </article>
+            <article>
+              <span>02</span>
+              <h3>Keep browsing context</h3>
+              <p>
+                Project categories and search terms stay in the URL so a
+                filtered collection can be shared and revisited.
+              </p>
+            </article>
+            <article>
+              <span>03</span>
+              <h3>Make detail optional</h3>
+              <p>
+                Methods and evidence remain available without becoming the
+                default reading experience.
+              </p>
+            </article>
           </div>
-        </section>
-        <section className="shell site-build-grid" aria-label="Website build details">
-          <article>
-            <span>01 / Build</span>
-            <h2>Working website, not a mockup.</h2>
-            <p>A React and Next.js site written in TypeScript, statically built and published through GitHub Pages. Case study pages and reusable components keep the interface coherent as work is added.</p>
-          </article>
-          <article>
-            <span>02 / Navigation</span>
-            <h2>Different paths through the work.</h2>
-            <p>Selected work browsing, a mobile menu and keyboard searchable commands help a visitor reach a relevant example without reading the entire site.</p>
-          </article>
-          <article>
-            <span>03 / Evidence</span>
-            <h2>Make provenance visible.</h2>
-            <p>Source linked project figures, runnable public data analysis and a clearly labelled Olist dashboard make it possible to distinguish original coursework from independent follow on work.</p>
-          </article>
-          <article>
-            <span>04 / Iteration</span>
-            <h2>Improve the reading experience.</h2>
-            <p>Responsive typography, consistent page alignment, theme controls and print friendly case studies are part of the ongoing build. The site is refined as new projects and real deliverables are ready to show.</p>
-          </article>
-        </section>
-        <section className="shell site-build-close">
-          <p className="overline">What this does not claim</p>
-          <h2>No imaginary clients or invented outcomes.</h2>
-          <p>This page demonstrates the website itself. It does not claim that I built it for a local business, achieved a traffic increase or delivered a commercial result. Future client work will be added separately when the work exists and I have permission to share it.</p>
-          <NativeLink href="/contact" className="arrow-link">Discuss a digital or analytical project ↗</NativeLink>
+          <details className="portfolio-disclosure">
+            <summary>
+              <span>
+                <strong>Implementation and checks</strong>
+                <small>Framework, interaction and publication</small>
+              </span>
+              <span aria-hidden="true">+</span>
+            </summary>
+            <div>
+              <p>
+                Built with Next.js, React and TypeScript, with static export to
+                GitHub Pages. Shared components handle project previews,
+                navigation and evidence disclosure. Existing analytical models
+                use Three.js on demand with static fallbacks.
+              </p>
+              <p>
+                Source checks cover lint, TypeScript, the production build and
+                local links. Browser checks inspect the actual layout and
+                interactions at desktop and mobile widths.
+              </p>
+              <NativeLink href="/ai-workflow" className="portfolio-text-link">
+                How I work with AI ↗
+              </NativeLink>
+            </div>
+          </details>
+          <NativeLink href="/contact" className="portfolio-text-link">
+            Discuss a project ↗
+          </NativeLink>
         </section>
       </main>
       <PageFooter />

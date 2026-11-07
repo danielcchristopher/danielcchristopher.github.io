@@ -1,55 +1,288 @@
-import Image from 'next/image';
-import { useId } from 'react';
-import type { ProjectVisualKind } from '@/lib/portfolio-projects';
-import { publicPath } from '@/lib/paths';
+import Image from "next/image";
+import type { ProjectVisualKind } from "@/lib/portfolio-projects";
+import { publicPath } from "@/lib/paths";
 
-export function ProjectVisual({ kind, priority = false }: { kind: ProjectVisualKind; priority?: boolean }) {
-  const patternId = useId().replace(/:/g, '');
-  if (kind === 'route') return <div className="project-preview project-preview--screen"><Image src={publicPath('/previews/route-and-margin.png')} alt="Route and Margin application showing the vehicle fault, working plan and reserve recommendation" width={1280} height={720} sizes="(max-width: 700px) 100vw, 50vw" priority={priority} /><span className="preview-caption">Application preview · simulated data</span></div>;
-  const label = kind === 'planner' ? 'Illustrative visit sequences, with alternative routes between generic stops. No assessment locations are shown.' : kind === 'campaign' ? 'Concept diagram connecting an audience, a content idea and a proposed response.' : kind === 'trust' ? 'Conceptual research diagram connecting personalisation, trust and loyalty. The survey does not establish causation.' : kind === 'loans' ? 'Reported standardised coefficients: loan amount .767 and income minus .488. Different factors, not a before and after result.' : kind === 'churn' ? 'Reported validation error: decision tree 10.52 percent, regression 6.18 percent and neural network 4.42 percent.' : 'Concept illustration of the project structure, not a screenshot or measured result.';
-  return <div className={`project-preview project-preview--${kind}`}>
-    <svg viewBox="0 0 600 340" role="img" aria-label={label}>
-      <defs><pattern id={patternId} width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" strokeOpacity=".07" /></pattern></defs>
-      <rect width="600" height="340" fill={`url(#${patternId})`} />
-      {kind === 'planner' ? <>
-        <path d="M-10 235 Q130 140 255 192 T620 105" className="preview-river" />
-        <path d="M55 230 L160 100 L300 220 L430 95 L550 205" className="preview-route preview-route--muted" />
-        <path d="M55 230 Q75 100 160 100 T430 95 Q555 85 550 205 L300 220 Z" className="preview-route" />
-        {[[55,230],[160,100],[300,220],[430,95],[550,205]].map(([x,y],i)=><g key={i}><circle cx={x} cy={y} r="13" className="preview-stop" /><text x={x} y={y+5} textAnchor="middle" className="preview-stop-number">{i+1}</text></g>)}
-        <g transform="translate(310 155)"><rect width="44" height="24" rx="5" className="preview-vehicle"/><circle cx="10" cy="26" r="5"/><circle cx="34" cy="26" r="5"/></g>
-        <text x="30" y="35" className="preview-label">VISIT SEQUENCE / CONCEPT</text><text x="30" y="280" className="preview-text">Same stops. Different planning choices.</text>
-      </> : kind === 'campaign' ? <>
-        <text x="30" y="35" className="preview-label">CAMPAIGN / CONCEPT</text>
-        {[[110,90],[110,135],[110,180]].map(([x,y],i)=><g key={i}><rect x={x+(i%2?16:0)} y={y} width="145" height="31" rx="4" className={`preview-block preview-block--${i}`} /><path d={`M${x+47} ${y+3}v25 M${x+96} ${y+3}v25`} stroke="currentColor" strokeOpacity=".25" /></g>)}
-        <path d="M290 155h70m-12-10 12 10-12 10" className="preview-line"/><rect x="385" y="80" width="110" height="150" rx="16" className="preview-panel"/><rect x="398" y="100" width="84" height="70" rx="5" className="preview-block"/><path d="M405 190h64m-64 15h43" className="preview-line"/>
-        <text x="35" y="280" className="preview-text">Audience → idea → content → response</text>
-      </> : kind === 'trust' ? <>
-        <text x="30" y="35" className="preview-label">RESEARCH / CONCEPTUAL PATHS</text>
-        <path d="M120 190 300 95 480 190M140 200h320" className="preview-line"/>
-        {[[120,190,'Personalisation'],[300,95,'Trust'],[480,190,'Loyalty']].map(([x,y,t])=><g key={t}><circle cx={x} cy={y} r="37" className="preview-stop"/><text x={x} y={Number(y)+64} textAnchor="middle" className="preview-text">{t}</text></g>)}
-        <text x="300" y="280" textAnchor="middle" className="preview-label">139 SURVEY RESPONSES · ASSOCIATION, NOT CAUSATION</text>
-      </> : kind === 'loans' ? <>
-        <text x="30" y="35" className="preview-label">REPORTED STANDARDISED COEFFICIENTS</text>
-        <path d="M300 80v175" stroke="currentColor" strokeOpacity=".25"/>
-        <text x="300" y="278" textAnchor="middle" className="preview-label">0</text>
-        <text x="165" y="278" textAnchor="middle" className="preview-label">−1</text><text x="435" y="278" textAnchor="middle" className="preview-label">+1</text>
-        <text x="30" y="120" className="preview-text">Loan amount</text><rect x="300" y="104" width={.767*135} height="23" rx="3" className="preview-bar"/><text x="540" y="121" textAnchor="end" className="preview-text">+.767</text>
-        <text x="30" y="205" className="preview-text">Income</text><rect x={300-.488*135} y="189" width={.488*135} height="23" rx="3" className="preview-bar-alt"/><text x="540" y="206" textAnchor="end" className="preview-text">−.488</text>
-      </> : kind === 'churn' ? <>
-        <text x="30" y="35" className="preview-label">REPORTED VALIDATION ERROR · LOWER IS BETTER</text>
-        {[['Decision tree',.7013,'10.52%'],['Regression',.412,'6.18%'],['Neural network',.2947,'4.42%']].map(([name,value,display],i)=><g key={name} transform={`translate(30 ${90+i*66})`}><text y="0" className="preview-text">{name}</text><rect y="13" width="440" height="15" rx="4" fill="currentColor" opacity=".07"/><rect y="13" width={Number(value)*440} height="15" rx="4" className={i===2?'preview-bar-alt':'preview-bar'}/><text x="535" y="27" textAnchor="end" className="preview-text">{display}</text></g>)}
-        <text x="30" y="280" className="preview-label">INDIVIDUAL COURSEWORK · NOT DEPLOYED · SCALE 0 TO 15%</text>
-      </> : kind === 'web' ? <>
-        <rect x="48" y="50" width="450" height="245" rx="12" className="preview-panel"/><path d="M48 83h450" className="preview-line"/><circle cx="66" cy="67" r="3" fill="currentColor"/><text x="82" y="72" className="preview-label">DANIEL CHRISTOPHER</text><text x="76" y="137" className="preview-display">Ideas into</text><text x="76" y="174" className="preview-display">something useful.</text>
-        <rect x="77" y="202" width="95" height="57" rx="5" className="preview-block"/><rect x="184" y="202" width="95" height="57" rx="5" className="preview-block preview-block--1"/><rect x="291" y="202" width="95" height="57" rx="5" className="preview-block preview-block--2"/><rect x="454" y="141" width="85" height="162" rx="13" className="preview-panel"/><path d="M469 177h54m-54 18h42m-42 43h54m-54 18h35" className="preview-line"/>
-      </> : kind === 'nature' ? <>
-        <text x="30" y="35" className="preview-label">AUDIENCE / RESEARCH CONCEPT</text><path d="M135 270V125m0 75q-75-10-65-80 70-5 65 80m0-35q70-5 65-75-60 0-65 75" className="preview-line"/><circle cx="360" cy="130" r="24" className="preview-stop"/><circle cx="425" cy="185" r="20" className="preview-stop"/><circle cx="300" cy="195" r="20" className="preview-stop"/><path d="m310 179 32-30m37-2 30 24m-86 32h80" className="preview-line"/><text x="240" y="280" className="preview-text">Nature · connection · community</text>
-      </> : <>
-        <text x="30" y="35" className="preview-label">{kind === 'data' ? 'LINKED INFORMATION / CONCEPT' : kind === 'research' ? 'CUSTOMER RESEARCH / METHOD' : 'REPORTING / CONCEPT'}</text>
-        {[80,245,410].map((x,i)=><g key={x}><rect x={x} y={80+i%2*55} width="115" height="130" rx="8" className="preview-panel"/><rect x={x+13} y={100+i%2*55} width="88" height="12" rx="3" className="preview-block"/><path d={`M${x+15} ${135+i%2*55}h80m-80 21h62m-62 21h72`} className="preview-line"/></g>)}
-        <path d="M197 153h46m119 0h45" className="preview-line"/><text x="30" y="280" className="preview-text">{kind==='research' ? 'Observe → ask → compare → interpret' : 'Connect the information to the question.'}</text>
-      </>}
-    </svg>
-    <span className="preview-caption">{kind === 'loans' || kind === 'churn' ? 'Reported coursework results' : 'Concept illustration'}</span>
-  </div>;
+const originals: Partial<
+  Record<
+    ProjectVisualKind,
+    { src: string; alt: string; label: string; note: string; screen?: boolean }
+  >
+> = {
+  web: {
+    src: "/previews/portfolio-home.png",
+    alt: "The working portfolio home page with the Route and Margin map preview and direct project navigation",
+    label: "Working website",
+    note: "Home page · independent digital build",
+    screen: true,
+  },
+  route: {
+    src: "/previews/route-board.png",
+    alt: "Route and Margin Routes view showing the reserve vehicle, four delivery stops and the simulated shift contribution",
+    label: "Working application",
+    note: "Route replay · simulated dispatch",
+    screen: true,
+  },
+  olist: {
+    src: "/previews/olist-dashboard.png",
+    alt: "The Olist dashboard with recorded monthly order counts and delivery statistics",
+    label: "Working dashboard",
+    note: "Independent rebuild from cleaned team data",
+    screen: true,
+  },
+  trust: {
+    src: "/evidence/dissertation-mediation.jpg",
+    alt: "Original dissertation diagram reporting the personalisation, trust and loyalty paths and the bootstrap interval",
+    label: "Original dissertation figure",
+    note: "Survey associations · not causal effects",
+  },
+  data: {
+    src: "/evidence/sql-relational-schema.jpg",
+    alt: "The team’s original proposed database schema linking Location, Delivery, Status, Promotion, Reviews and Scan",
+    label: "Original team figure",
+    note: "Proposed relational schema · coursework",
+  },
+  churn: {
+    src: "/evidence/sas-roc-train-validation-test.jpg",
+    alt: "Original SAS ROC charts comparing three classifiers across train, validation and test partitions",
+    label: "Original SAS output",
+    note: "Model comparison · individual coursework",
+  },
+};
+const outlines: Partial<
+  Record<
+    ProjectVisualKind,
+    { title: string; steps: [string, string][]; note: string }
+  >
+> = {
+  campaign: {
+    title: "Mailchimp content proposal",
+    steps: [
+      ["Audience", "Small business owners & freelancers"],
+      ["Creative idea", "Jenga as the campaign metaphor"],
+      ["Planned assets", "Video concept & mock social post"],
+    ],
+    note: "Project outline · original campaign assets not published",
+  },
+  peaky: {
+    title: "Peaky Blinders campaign proposal",
+    steps: [
+      ["Research", "Fan interviews & social audit"],
+      ["Planning", "Personas, journey & RACE funnel"],
+      ["Proposed activity", "Social, BBC channels & events"],
+    ],
+    note: "Proposal outline · original deck not published",
+  },
+  nature: {
+    title: "Flock Together audience research",
+    steps: [
+      ["Context", "Nature, connection & mental health"],
+      ["My research", "Comparable organisations & questions"],
+      ["Team output", "Audience insight & campaign proposal"],
+    ],
+    note: "Research outline · my credited role was research",
+  },
+  research: {
+    title: "Nando’s customer research",
+    steps: [
+      ["Observe", "Dining behaviour at three locations"],
+      ["Ask", "Survey research"],
+      ["Compare", "Observations & secondary sources"],
+    ],
+    note: "Method outline · original fieldwork assets not published",
+  },
+  web: {
+    title: "From source code to a working site",
+    steps: [
+      ["Build", "Next.js, React & TypeScript"],
+      ["Check", "Types, links & production export"],
+      ["Publish", "GitHub Pages"],
+    ],
+    note: "Build outline · this website is the artifact",
+  },
+  decision: {
+    title: "Test the assumptions before choosing",
+    steps: [
+      ["Prepare", "Audit & clean the business data"],
+      ["Compare", "Margin scenarios from 60% to 70%"],
+      ["Decide", "Optimise location & configuration"],
+    ],
+    note: "Model outline · original spreadsheet not published",
+  },
+  powerbi: {
+    title: "The ecommerce reporting model",
+    steps: [
+      ["Source", "Eight cleaned Olist tables"],
+      ["Model", "Relationships & a DAX date table"],
+      ["Report", "Delivery, sellers & satisfaction"],
+    ],
+    note: "Model outline · original PBIX not published",
+  },
+};
+
+export function ProjectVisual({
+  kind,
+  priority = false,
+}: {
+  kind: ProjectVisualKind;
+  priority?: boolean;
+}) {
+  const original = originals[kind];
+  if (original)
+    return (
+      <figure
+        className={`evidence-preview ${original.screen ? "evidence-preview--screen" : "evidence-preview--original"}`}
+      >
+        <div className="evidence-media">
+          <Image
+            src={publicPath(original.src)}
+            alt={original.alt}
+            width={1280}
+            height={720}
+            sizes="(max-width: 700px) 100vw, 50vw"
+            priority={priority}
+          />
+        </div>
+        <figcaption>
+          <strong>{original.label}</strong>
+          <span>{original.note}</span>
+        </figcaption>
+      </figure>
+    );
+  if (kind === "loans")
+    return (
+      <figure className="evidence-preview">
+        <div
+          className="evidence-media evidence-plot"
+          role="img"
+          aria-label="Reported standardised coefficients: loan amount positive .767 and income negative .488. The outcome is a loan to income ratio."
+        >
+          <p>Two reported model coefficients</p>
+          <svg viewBox="0 0 560 245" aria-hidden="true">
+            <path d="M280 35v155" stroke="currentColor" opacity=".3" />
+            <text x="24" y="70">
+              Loan amount
+            </text>
+            <rect
+              x="280"
+              y="48"
+              width={0.767 * 170}
+              height="28"
+              rx="4"
+              className="evidence-positive"
+            />
+            <text x="532" y="70" textAnchor="end">
+              +.767
+            </text>
+            <text x="24" y="145">
+              Income
+            </text>
+            <rect
+              x={280 - 0.488 * 170}
+              y="123"
+              width={0.488 * 170}
+              height="28"
+              rx="4"
+              className="evidence-negative"
+            />
+            <text x="532" y="145" textAnchor="end">
+              −.488
+            </text>
+            <text x="110" y="220" textAnchor="middle">
+              −1
+            </text>
+            <text x="280" y="220" textAnchor="middle">
+              0
+            </text>
+            <text x="450" y="220" textAnchor="middle">
+              +1
+            </text>
+          </svg>
+        </div>
+        <figcaption>
+          <strong>Reported SPSS results</strong>
+          <span>
+            The ratio contains loan size and income; interpretation needs care.
+          </span>
+        </figcaption>
+      </figure>
+    );
+  if (kind === "service")
+    return (
+      <figure className="evidence-preview">
+        <div className="evidence-media service-evidence">
+          <p>Mean bill per cover</p>
+          <div>
+            <span>
+              Lunch <small>68 bills</small>
+            </span>
+            <i style={{ width: `${(7.32 / 10) * 100}%` }} />
+            <strong>7.32</strong>
+          </div>
+          <div>
+            <span>
+              Dinner <small>176 bills</small>
+            </span>
+            <i style={{ width: `${(8.11 / 10) * 100}%` }} />
+            <strong>8.11</strong>
+          </div>
+          <small>Dataset units · common scale from 0 to 10</small>
+        </div>
+        <figcaption>
+          <strong>Reproduced Python results</strong>
+          <span>244 public sample bills · descriptive comparison</span>
+        </figcaption>
+      </figure>
+    );
+  if (kind === "planner")
+    return (
+      <figure className="evidence-preview">
+        <div className="evidence-media planner-outline">
+          <p>What changes between the comparisons?</p>
+          <div>
+            <span>Recorded order</span>
+            <b>A → C</b>
+            <b>B → D</b>
+          </div>
+          <div>
+            <span>Resequenced</span>
+            <b>C → A</b>
+            <b>D → B</b>
+          </div>
+          <div>
+            <span>Reshared</span>
+            <b>A → B</b>
+            <b>C → D</b>
+          </div>
+          <small>Two example technicians · four illustrative visits</small>
+        </div>
+        <figcaption>
+          <strong>Comparison design</strong>
+          <span>Illustration only · assessment records remain private</span>
+        </figcaption>
+      </figure>
+    );
+  const outline = outlines[kind];
+  if (!outline) return null;
+  return (
+    <figure className={`evidence-preview evidence-preview--${kind}`}>
+      <div className="evidence-media evidence-outline">
+        <p>{outline.title}</p>
+        <ol>
+          {outline.steps.map(([title, detail], i) => (
+            <li key={title}>
+              <span aria-hidden="true">0{i + 1}</span>
+              <div>
+                <strong>{title}</strong>
+                <small>{detail}</small>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+      <figcaption>
+        <strong>What the project contains</strong>
+        <span>{outline.note}</span>
+      </figcaption>
+    </figure>
+  );
 }

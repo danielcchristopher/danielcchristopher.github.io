@@ -1,25 +1,155 @@
-'use client';
-import { useState, useSyncExternalStore } from 'react';
-import { NativeLink } from '@/components/native-link';
-import { ProjectVisual } from '@/components/project-visual';
-import { portfolioProjects, type ProjectCategory } from '@/lib/portfolio-projects';
+"use client";
+import { useSyncExternalStore } from "react";
+import { NativeLink } from "@/components/native-link";
+import { ProjectVisual } from "@/components/project-visual";
+import { PortfolioIcon } from "@/components/portfolio-icon";
+import {
+  portfolioProjects,
+  type PortfolioProject,
+} from "@/lib/portfolio-projects";
 
-const subscribeToLocation = (callback: () => void) => { window.addEventListener('popstate', callback); return () => window.removeEventListener('popstate', callback); };
-const readInterest = () => new URLSearchParams(window.location.search).get('interest') ?? '';
-const categories = ['All projects', 'Digital builds', 'Marketing', 'Research and analysis'] as const;
+const categories = [
+  { key: "", label: "All projects" },
+  { key: "digital", label: "Digital builds" },
+  { key: "marketing", label: "Marketing" },
+  { key: "research", label: "Research & analysis" },
+] as const;
+const categoryNames: Record<string, string> = {
+  digital: "Digital builds",
+  marketing: "Marketing",
+  research: "Research and analysis",
+};
+const subscribe = (callback: () => void) => {
+  window.addEventListener("popstate", callback);
+  window.addEventListener("portfolio:browse", callback);
+  return () => {
+    window.removeEventListener("popstate", callback);
+    window.removeEventListener("portfolio:browse", callback);
+  };
+};
+const snapshot = () => window.location.search;
+function updateBrowse(key: "interest" | "q", value: string) {
+  const url = new URL(window.location.href);
+  if (value) url.searchParams.set(key, value);
+  else url.searchParams.delete(key);
+  url.hash = "projects";
+  window.history.replaceState(window.history.state, "", url);
+  window.dispatchEvent(new Event("portfolio:browse"));
+}
+export function ProjectTile({
+  project,
+  priority = false,
+}: {
+  project: PortfolioProject;
+  priority?: boolean;
+}) {
+  return (
+    <article className="project-tile">
+      <NativeLink
+        href={project.href}
+        className="project-tile-link"
+        aria-label={`Explore ${project.title}`}
+      >
+        <ProjectVisual kind={project.visual} priority={priority} />
+        <div className="project-tile-copy">
+          <span className="project-kind">{project.category}</span>
+          <h3>
+            {project.title}
+            <span aria-hidden="true">↗</span>
+          </h3>
+          <p>{project.summary}</p>
+          <small>{project.basis}</small>
+        </div>
+      </NativeLink>
+    </article>
+  );
+}
 export function ProjectGallery({ featured = false }: { featured?: boolean }) {
-  const [category, setCategory] = useState<ProjectCategory | 'All projects' | null>(null);
-  const interest = useSyncExternalStore(subscribeToLocation, readInterest, () => '');
-  const selectedCategory = category ?? (interest === 'digital' ? 'Digital builds' : interest === 'research' ? 'Research and analysis' : 'All projects');
-  const [query, setQuery] = useState('');
-  const projects = portfolioProjects.filter(p => (!featured || p.featured) && (selectedCategory === 'All projects' || p.category === selectedCategory) && `${p.title} ${p.summary} ${p.basis}`.toLowerCase().includes(query.toLowerCase().trim()));
-  return <>
-    {!featured && <div className="project-controls"><div className="project-filters" role="group" aria-label="Choose a project category">{categories.map(c=><button type="button" key={c} aria-pressed={c===selectedCategory} onClick={()=>setCategory(c)}>{c}</button>)}</div><label className="project-search"><span>Find a project</span><input type="search" value={query} onChange={e=>setQuery(e.target.value)} placeholder="Try campaign, routes or SQL" /></label></div>}
-    {!featured && <p className="project-result-count" role="status">{projects.length} project{projects.length!==1?'s':''}{selectedCategory!=='All projects'?` · ${selectedCategory}`:''}</p>}
-    <div className="project-gallery">{projects.map((project,i)=><article className="project-card" key={project.id}>
-      <NativeLink href={project.href} className="project-image-link" aria-label={`Explore ${project.title}`}><ProjectVisual kind={project.visual} priority={featured && i===0}/><span className="project-open" aria-hidden="true">↗</span></NativeLink>
-      <div className="project-card-copy"><span className="project-category">{project.category}</span><h3><NativeLink href={project.href}>{project.title}</NativeLink></h3><p>{project.summary}</p><small>{project.basis}</small></div>
-    </article>)}</div>
-    {projects.length===0 && <div className="project-empty"><p>No projects match that search.</p><button type="button" onClick={()=>{setQuery('');setCategory('All projects');}}>Show all projects</button></div>}
-  </>;
+  const search = useSyncExternalStore(subscribe, snapshot, () => "");
+  const params = new URLSearchParams(search);
+  const selected = featured ? "" : (params.get("interest") ?? "");
+  const query = featured ? "" : (params.get("q") ?? "");
+  const projects = portfolioProjects.filter(
+    (p) =>
+      (!featured ||
+        ["mailchimp", "trust", "planner", "olist"].includes(p.id)) &&
+      (!categoryNames[selected] || p.category === categoryNames[selected]) &&
+      `${p.title} ${p.summary} ${p.basis}`
+        .toLowerCase()
+        .includes(query.trim().toLowerCase()),
+  );
+  function reset() {
+    const url = new URL(location.href);
+    url.searchParams.delete("q");
+    url.searchParams.delete("interest");
+    history.replaceState(history.state, "", url);
+    window.dispatchEvent(new Event("portfolio:browse"));
+  }
+  return (
+    <>
+      {!featured && (
+        <>
+          <div className="project-controls">
+            <div
+              className="project-filters"
+              role="group"
+              aria-label="Filter projects by interest"
+            >
+              {categories.map((c) => (
+                <button
+                  type="button"
+                  key={c.key}
+                  aria-pressed={
+                    selected === c.key ||
+                    (!categoryNames[selected] && c.key === "")
+                  }
+                  onClick={() => updateBrowse("interest", c.key)}
+                >
+                  {c.key && (
+                    <PortfolioIcon
+                      kind={
+                        c.key === "digital"
+                          ? "build"
+                          : c.key === "marketing"
+                            ? "marketing"
+                            : "research"
+                      }
+                    />
+                  )}{" "}
+                  {c.label}
+                </button>
+              ))}
+            </div>
+            <label className="project-search">
+              <span>Find a project</span>
+              <input
+                type="search"
+                aria-label="Find a project"
+                value={query}
+                onChange={(e) => updateBrowse("q", e.target.value)}
+                placeholder="Search a project or topic"
+              />
+            </label>
+          </div>
+          <p className="project-result-count" role="status">
+            {projects.length} {projects.length === 1 ? "project" : "projects"}
+            {categoryNames[selected] ? ` · ${categoryNames[selected]}` : ""}
+          </p>
+        </>
+      )}
+      <div className="project-grid">
+        {projects.map((p, i) => (
+          <ProjectTile key={p.id} project={p} priority={i === 0} />
+        ))}
+      </div>
+      {!projects.length && (
+        <div className="project-empty">
+          <p>No projects match that search.</p>
+          <button type="button" onClick={reset}>
+            Show all projects
+          </button>
+        </div>
+      )}
+    </>
+  );
 }

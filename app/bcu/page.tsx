@@ -1,52 +1,164 @@
-import { pageMetadata } from '@/lib/page-metadata';
-import { PageFooter } from '@/components/page-footer';
-import { SiteHeader } from '@/components/site-header';
-import { NativeLink } from '@/components/native-link';
-import { bcuModules, bcuProjects } from '@/lib/bcu-projects';
-import { HeroField } from '@/components/hero-field';
-import { ProjectVisual } from '@/components/project-visual';
-
-export const metadata = pageMetadata('BCU Digital Marketing Projects', 'Audience research, consumer insight, content strategy and campaign planning from Daniel Christopher’s BA (Hons) Digital Marketing at Birmingham City University.', '/bcu/');
-
+import { pageMetadata } from "@/lib/page-metadata";
+import { PageFooter } from "@/components/page-footer";
+import { SiteHeader } from "@/components/site-header";
+import { NativeLink } from "@/components/native-link";
+import { bcuModules, bcuProjects } from "@/lib/bcu-projects";
+import { ProjectVisual } from "@/components/project-visual";
+import type { ProjectVisualKind } from "@/lib/portfolio-projects";
+export const metadata = pageMetadata(
+  "Marketing projects",
+  "Audience research and campaign proposals from Daniel Christopher’s Digital Marketing degree. Contributions and available evidence are identified.",
+  "/bcu/",
+);
+const visual: Record<string, ProjectVisualKind> = {
+  "flock-together": "nature",
+  nandos: "research",
+  mailchimp: "campaign",
+  "peaky-blinders": "peaky",
+};
+const roles: Record<string, string> = {
+  "flock-together":
+    "Research into nature, social connection and comparable organisations.",
+  nandos:
+    "Coursework combining observation, survey research and secondary sources.",
+  mailchimp:
+    "Team research and planning connecting audiences, creative ideas and content.",
+  "peaky-blinders":
+    "Four person team proposal drawing on audience research and a digital audit.",
+};
+const scope: Record<string, string> = {
+  "flock-together":
+    "Small exploratory research supporting a team proposal. My credited role was research; no measured campaign impact is claimed.",
+  nandos:
+    "Academic exercise. The retained record does not establish sole ownership of every activity or representative customer results.",
+  mailchimp:
+    "Team campaign concept. Proposed targets are not achieved results; no live automation or A/B test is claimed.",
+  "peaky-blinders":
+    "Four person coursework proposal. No BBC commission, campaign launch or audience growth is claimed.",
+};
 export default function BcuPage() {
-  return <>
-    <a className="skip-link" href="#main-content">Skip to content</a>
-    <SiteHeader />
-    <main id="main-content" className="bcu-page">
-      <section className="page-hero"><HeroField motif="corner" /><div className="shell">
-        <small>Birmingham City University · BA (Hons) Digital Marketing · 2:1</small>
-        <h1>Customer research.<br /><span>Campaigns with a clear purpose.</span></h1>
-        <p>Audience research, content ideas and campaign planning from my Digital Marketing degree.</p>
-        <nav className="bcu-jump-links" aria-label="BCU projects and modules">
-          {bcuProjects.map(project => <a key={project.id} href={`#${project.id}`}>{project.title}</a>)}
-          <a href="#modules">Degree modules</a>
-        </nav>
-      </div></section>
-      <section className="bcu-projects"><div className="shell">
-        {bcuProjects.map((project, index) => <article className="bcu-project" id={project.id} key={project.id}>
-          <header><p className="overline">0{index + 1} · {project.ownership}</p><h2>{project.title}</h2><p className="bcu-question">{project.question}</p></header>
-          <div className="bcu-project-copy">
-            <ProjectVisual kind={project.id === 'flock-together' ? 'nature' : project.id === 'nandos' ? 'research' : 'campaign'} />
-            <p>{project.summary}</p>
-            <p className="bcu-limit"><strong>Scope:</strong> {project.limits}</p>
-            <details className="portfolio-disclosure"><summary><span><strong>Contribution and evidence</strong><small>Open the approach, output and ownership</small></span><span aria-hidden="true">+</span></summary><div>
-            <h3>Contribution and approach</h3><p>{project.contribution}</p>
-            <h3>Evidence and output</h3><p>{project.evidence}</p><p>{project.outcome}</p>
-            <p className="bcu-skills">{project.skills}</p>
-            </div></details>
-          </div>
-        </article>)}
-        <article className="bcu-project" id="ai-gen-z">
-          <header><p className="overline">Further research writing</p><h2>AI and Generation Z marketing</h2><p className="bcu-question">How might AI shape marketing strategies aimed at Generation Z?</p></header>
-          <div className="bcu-project-copy"><p>My earlier research document discusses personalisation, chatbots, predictive analytics, trust and privacy. It connects my undergraduate interest in customer behaviour with the question I later tested in my MSc dissertation.</p><p className="bcu-limit">Exploratory research writing covering concepts and proposed methods. Empirical findings and completed statistical analysis are not verified for this retained draft.</p><NativeLink className="arrow-link" href="/research-case">Explore the MSc research ↗</NativeLink></div>
-        </article>
-      </div></section>
-      <section className="work-digital-feature" id="modules"><div className="shell">
-        <p className="overline">Accelerated two year degree · 360 credits</p><h2>BA (Hons) Digital Marketing modules</h2>
-        <ul className="bcu-modules">{bcuModules.map(module => <li key={module}>{module}</li>)}</ul>
-        <p className="bcu-limit">Module titles checked against the BCU transcript. Project descriptions draw on retained coursework and its earlier evidence review. Individual contributions and team outputs are identified where the record supports them.</p>
-        <NativeLink className="arrow-link" href="/work">Back to selected work ↗</NativeLink>
-      </div></section>
-    </main><PageFooter />
-  </>;
+  return (
+    <>
+      <a className="skip-link" href="#main-content">
+        Skip to content
+      </a>
+      <SiteHeader />
+      <main id="main-content" className="marketing-page">
+        <section className="shell portfolio-page-intro">
+          <NativeLink
+            href="/work?interest=marketing#projects"
+            className="portfolio-text-link"
+          >
+            ← All marketing projects
+          </NativeLink>
+          <p className="portfolio-eyebrow">
+            BA (Hons) Digital Marketing · Birmingham City University
+          </p>
+          <h1>Marketing projects.</h1>
+          <p>
+            Audience research and campaign planning from my degree. These are
+            coursework proposals, with contributions and limits identified.
+          </p>
+          <nav
+            className="marketing-jump-links"
+            aria-label="Jump to a marketing project"
+          >
+            <a href="#flock-together">Flock Together</a>
+            <a href="#nandos">Nando’s</a>
+            <a href="#mailchimp">Mailchimp</a>
+            <a href="#peaky-blinders">Peaky Blinders</a>
+          </nav>
+        </section>
+        <section className="shell marketing-projects">
+          {bcuProjects.map((project) => (
+            <article
+              className="marketing-project"
+              id={project.id}
+              key={project.id}
+            >
+              <div className="marketing-project-opening">
+                <header>
+                  <p className="portfolio-eyebrow">{project.ownership}</p>
+                  <h2>{project.title}</h2>
+                  <p className="marketing-project-summary">{project.summary}</p>
+                  <div className="marketing-role">
+                    <span>My involvement</span>
+                    <p>{roles[project.id]}</p>
+                  </div>
+                </header>
+                <ProjectVisual kind={visual[project.id]} />
+              </div>
+              <p className="marketing-scope">{scope[project.id]}</p>
+              <details className="portfolio-disclosure">
+                <summary>
+                  <span>
+                    <strong>Brief, contribution and evidence</strong>
+                    <small>
+                      Open the question, approach and retained evidence
+                    </small>
+                  </span>
+                  <span aria-hidden="true">+</span>
+                </summary>
+                <div className="marketing-evidence-columns">
+                  <div>
+                    <h3>The brief</h3>
+                    <p>{project.question}</p>
+                    <h3>My contribution</h3>
+                    <p>{project.contribution}</p>
+                  </div>
+                  <div>
+                    <h3>Evidence and output</h3>
+                    <p>{project.evidence}</p>
+                    <p>{project.outcome}</p>
+                    <h3>Scope</h3>
+                    <p>{project.limits}</p>
+                  </div>
+                  <p className="marketing-skills">{project.skills}</p>
+                </div>
+              </details>
+            </article>
+          ))}
+          <article className="marketing-project" id="ai-gen-z">
+            <p className="portfolio-eyebrow">Further research writing</p>
+            <h2>AI and Generation Z marketing</h2>
+            <p>
+              Exploratory writing on personalisation, chatbots, predictive
+              analytics, trust and privacy. Completed empirical findings are not
+              verified for this retained draft.
+            </p>
+            <NativeLink href="/research-case" className="portfolio-text-link">
+              Explore the later MSc study ↗
+            </NativeLink>
+          </article>
+        </section>
+        <section className="shell portfolio-supporting" id="modules">
+          <details className="portfolio-disclosure">
+            <summary>
+              <span>
+                <strong>Degree modules</strong>
+                <small>Accelerated two year programme · 360 credits</small>
+              </span>
+              <span aria-hidden="true">+</span>
+            </summary>
+            <div>
+              <ul className="bcu-modules">
+                {bcuModules.map((m) => (
+                  <li key={m}>{m}</li>
+                ))}
+              </ul>
+              <p>
+                Module titles were checked against the transcript. Project
+                descriptions draw on retained coursework and its earlier
+                evidence review.
+              </p>
+            </div>
+          </details>
+          <NativeLink href="/work" className="portfolio-text-link">
+            Explore all projects ↗
+          </NativeLink>
+        </section>
+      </main>
+      <PageFooter />
+    </>
+  );
 }

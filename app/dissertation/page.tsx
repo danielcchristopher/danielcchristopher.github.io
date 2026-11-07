@@ -1,22 +1,45 @@
-import { pageMetadata } from '@/lib/page-metadata';
-import { NativeLink } from '@/components/native-link';
-import { PageFooter } from '@/components/page-footer';
-import { SiteHeader } from '@/components/site-header';
-import { HeroField } from '@/components/hero-field';
+import { pageMetadata } from "@/lib/page-metadata";
+import { NativeLink } from "@/components/native-link";
+import { PageFooter } from "@/components/page-footer";
+import { SiteHeader } from "@/components/site-header";
 
 export const metadata = pageMetadata(
-  'MSc dissertation',
-  'Method, results and limits from Daniel Christopher’s MSc dissertation on AI personalisation, customer trust and loyalty.',
-  '/dissertation/',
+  "MSc dissertation",
+  "Method, results and limits from Daniel Christopher’s MSc dissertation on AI personalisation, customer trust and loyalty.",
+  "/dissertation/",
 );
 
 const workflow = [
-  ['01', 'Question', 'Define the relationship and the proposed mediating role of trust.'],
-  ['02', 'Collect', 'Qualtrics survey of eligible UK online shoppers with consent and ethics controls.'],
-  ['03', 'Prepare', 'Eligibility, completeness, duplicate, range and labelling checks across 45 variables.'],
-  ['04', 'Validate', 'Reliability, KMO, Bartlett’s test and exploratory factor analysis.'],
-  ['05', 'Model', 'Correlation, HC3 robust regression and 10,000 sample bootstrap mediation.'],
-  ['06', 'Interpret', 'Translate associations into trust centred recommendations and visible limits.'],
+  [
+    "01",
+    "Question",
+    "Define the relationship and the proposed mediating role of trust.",
+  ],
+  [
+    "02",
+    "Collect",
+    "Qualtrics survey of eligible UK online shoppers with consent and ethics controls.",
+  ],
+  [
+    "03",
+    "Prepare",
+    "Eligibility, completeness, duplicate, range and labelling checks across 45 variables.",
+  ],
+  [
+    "04",
+    "Validate",
+    "Reliability, KMO, Bartlett’s test and exploratory factor analysis.",
+  ],
+  [
+    "05",
+    "Model",
+    "Correlation, HC3 robust regression and 10,000 sample bootstrap mediation.",
+  ],
+  [
+    "06",
+    "Interpret",
+    "Translate associations into trust centred recommendations and visible limits.",
+  ],
 ];
 
 export default function DissertationPage() {
@@ -29,18 +52,20 @@ export default function DissertationPage() {
 
       <main id="main-content">
         <section className="page-hero research-hero">
-          <HeroField motif="corner" />
           <div className="shell">
-            <small>MSc dissertation · individual research · submitted August 2026</small>
+            <small>
+              MSc dissertation · individual research · submitted August 2026
+            </small>
             <h1>
               Personalisation and loyalty.
               <br />
               <span>Where does trust fit?</span>
             </h1>
             <p>
-              My individual MSc dissertation examined the relationship using 139 eligible
-              survey responses. Trust remained material in the joint loyalty model.
-              The findings show associations, not proof of causation.
+              My individual MSc dissertation examined the relationship using 139
+              eligible survey responses. Trust remained material in the joint
+              loyalty model. The findings show associations, not proof of
+              causation.
             </p>
           </div>
         </section>
@@ -50,12 +75,13 @@ export default function DissertationPage() {
             <p className="overline">The dissertation question</p>
             <div>
               <h2>
-                Does trust statistically mediate the association between perceived
-                AI driven personalisation and customer loyalty?
+                Does trust statistically mediate the association between
+                perceived AI driven personalisation and customer loyalty?
               </h2>
               <p>
                 Confirmed individual research using 139 complete, eligible UK
-                online shopper responses collected through Qualtrics on 7 and 8 August 2026.
+                online shopper responses collected through Qualtrics on 7 and 8
+                August 2026.
               </p>
             </div>
           </div>
@@ -65,7 +91,9 @@ export default function DissertationPage() {
           <div className="shell">
             <div className="section-heading" data-reveal>
               <p className="overline">Analytical workflow</p>
-              <h2>The six stages used to complete the dissertation analysis.</h2>
+              <h2>
+                The six stages used to complete the dissertation analysis.
+              </h2>
             </div>
             <ol>
               {workflow.map(([number, title, body]) => (
@@ -85,11 +113,16 @@ export default function DissertationPage() {
               <p className="overline">Selected results</p>
               <h2>Trust remained material in the joint loyalty model.</h2>
               <p>
-                The pattern was consistent with an indirect, trust mediated association,
-                although the cross sectional design does not establish causation.
+                The pattern was consistent with an indirect, trust mediated
+                association, although the cross sectional design does not
+                establish causation.
               </p>
             </div>
-            <div className="results-table" role="table" aria-label="Selected dissertation results">
+            <div
+              className="results-table"
+              role="table"
+              aria-label="Selected dissertation results"
+            >
               <div className="result-row result-head" role="row">
                 <span role="columnheader">Test</span>
                 <span role="columnheader">Result</span>
@@ -99,7 +132,9 @@ export default function DissertationPage() {
                 <strong role="cell">r = .591 · p &lt; .001</strong>
               </div>
               <div className="result-row" role="row">
-                <span role="cell">Trust model · personalisation coefficient</span>
+                <span role="cell">
+                  Trust model · personalisation coefficient
+                </span>
                 <strong role="cell">R² = .349 · B = .575</strong>
               </div>
               <div className="result-row" role="row">
@@ -107,7 +142,9 @@ export default function DissertationPage() {
                 <strong role="cell">B = .526 · p &lt; .001</strong>
               </div>
               <div className="result-row" role="row">
-                <span role="cell">Joint loyalty model · personalisation direct coefficient</span>
+                <span role="cell">
+                  Joint loyalty model · personalisation direct coefficient
+                </span>
                 <strong role="cell">B = .048 · p = .552</strong>
               </div>
               <div className="result-row" role="row">
@@ -124,32 +161,34 @@ export default function DissertationPage() {
               <span>01</span>
               <h3>Data quality</h3>
               <p>
-                Consent, eligibility, completeness, range and duplicate checks; raw export
-                preserved; locked SPSS dataset and cleaned CSV cross checked.
+                Consent, eligibility, completeness, range and duplicate checks;
+                raw export preserved; locked SPSS dataset and cleaned CSV cross
+                checked.
               </p>
             </article>
             <article data-reveal>
               <span>02</span>
               <h3>Reproducibility</h3>
               <p>
-                Structured variable labels, reproducible SPSS syntax and Python used only
-                for two documented figures.
+                Structured variable labels, reproducible SPSS syntax and Python
+                used only for two documented figures.
               </p>
             </article>
             <article data-reveal>
               <span>03</span>
               <h3>Privacy</h3>
               <p>
-                Raw participant data is not public. The portfolio reports aggregate
-                methods and findings without exposing individual responses.
+                Raw participant data is not public. The portfolio reports
+                aggregate methods and findings without exposing individual
+                responses.
               </p>
             </article>
             <article data-reveal>
               <span>04</span>
               <h3>Claim discipline</h3>
               <p>
-                Cross sectional convenience and snowball sampling supports association,
-                not causation or population wide representation.
+                Cross sectional convenience and snowball sampling supports
+                association, not causation or population wide representation.
               </p>
             </article>
           </div>
@@ -159,17 +198,28 @@ export default function DissertationPage() {
           <div className="shell research-decision-grid" data-reveal>
             <p className="overline">Decision implication</p>
             <div>
-              <h2>Trust should be included when personalisation performance is assessed.</h2>
+              <h2>
+                Trust should be included when personalisation performance is
+                assessed.
+              </h2>
               <p>
-                Explain personalisation, provide meaningful controls, minimise data use,
-                strengthen security and monitor trust alongside verified behaviour. Test
-                changes through staged experiments before treating the relationship as
-                causal.
+                Explain personalisation, provide meaningful controls, minimise
+                data use, strengthen security and monitor trust alongside
+                verified behaviour. Test changes through staged experiments
+                before treating the relationship as causal.
               </p>
-              <NativeLink className="arrow-link" href="/work/customer-intelligence">
+              <NativeLink
+                className="arrow-link"
+                href="/work/customer-intelligence"
+              >
                 View the business case
               </NativeLink>
-              <a className="arrow-link" href="https://github.com/danielcchristopher/danielcchristopher.github.io/blob/main/docs/Dissertation%20Research%20Brief.md" target="_blank" rel="noopener noreferrer">
+              <a
+                className="arrow-link"
+                href="https://github.com/danielcchristopher/danielcchristopher.github.io/blob/main/docs/Dissertation%20Research%20Brief.md"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 Read the one page research brief ↗
               </a>
             </div>

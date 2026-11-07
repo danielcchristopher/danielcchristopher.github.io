@@ -1,20 +1,17 @@
-import { SkillMatch } from '@/components/skill-match';
-import { bcuModules } from '@/lib/bcu-projects';
-import { pageMetadata } from '@/lib/page-metadata';
-import Image from 'next/image';
-import { publicPath } from '@/lib/paths';
-import { NativeLink } from '@/components/native-link';
-import { PageFooter } from '@/components/page-footer';
-import { ProfileNavigator } from '@/components/profile-navigator';
-import { RoleFit } from '@/components/role-fit';
-import { SiteHeader } from '@/components/site-header';
-
+import Image from "next/image";
+import { SkillMatch } from "@/components/skill-match";
+import { RoleFit } from "@/components/role-fit";
+import { bcuModules } from "@/lib/bcu-projects";
+import { pageMetadata } from "@/lib/page-metadata";
+import { publicPath } from "@/lib/paths";
+import { NativeLink } from "@/components/native-link";
+import { PageFooter } from "@/components/page-footer";
+import { SiteHeader } from "@/components/site-header";
 export const metadata = pageMetadata(
-  'Profile',
-  'Daniel Christopher’s bilingual background, digital marketing foundation and verified business analytics capabilities.',
-  '/profile/',
+  "About",
+  "Meet Daniel Christopher: a Manchester based graduate with a background in Digital Marketing, Business Analytics and independent digital projects.",
+  "/profile/",
 );
-
 export default function ProfilePage() {
   return (
     <>
@@ -22,383 +19,235 @@ export default function ProfilePage() {
         Skip to content
       </a>
       <SiteHeader />
-
-      <main id="main-content">
-        <section className="page-hero profile-hero">
-          <div className="shell">
-            <small>Profile</small>
-            <div className="profile-opening">
-            <h1>
-              A little about me.
-              <br />
-              <span>People, ideas and making things.</span>
-            </h1>
-            <figure className="profile-portrait">
-              <Image src={publicPath('/daniel-portrait.webp')} alt="Daniel Christopher wearing a black suit on a staircase" width={1000} height={1500} sizes="(max-width: 760px) 100vw, 400px" priority />
-              <figcaption><span>Daniel Christopher</span><span>Manchester, UK</span></figcaption>
-            </figure>
-            </div>
-            <div className="profile-hero-foot">
-              <p>
-                Manchester based Business Analytics postgraduate with a 2:1 in Digital
-                Marketing, bringing customer understanding, structured analysis and an
-                adaptable international perspective to early career roles.
-              </p>
-              <div className="profile-opening-links"><a href={publicPath('/Daniel%20Christopher%20CV.pdf')} download="Daniel Christopher CV.pdf">Download CV ↗</a><NativeLink href="/contact">Get in touch ↗</NativeLink></div>
-            </div>
-          </div>
-        </section>
-
-        <ProfileNavigator />
-
-        <section className="profile-snapshot" id="about">
-          <div className="shell snapshot-grid">
-            <article className="snapshot-about" data-reveal>
-              <span className="snapshot-label">About me</span>
-              <h2>I combine curiosity about customers with care in how evidence is interpreted.</h2>
-              <p>
-                I started with digital marketing, learning how organisations understand
-                audiences, shape propositions and communicate value. Business analytics
-                gave me a more rigorous way to test those assumptions through research,
-                modelling and data.
-              </p>
-              <p>
-                I now bring both perspectives to practical work: understanding the commercial
-                problem, building a useful digital response and checking what the evidence supports.
-              </p>
-            </article>
-            <article className="snapshot-card snapshot-role" data-reveal>
-              <span className="snapshot-label">Looking for</span>
-              <strong>Analysis · Digital marketing · Customer research · Digital projects</strong>
-            </article>
-            <article className="snapshot-card snapshot-language" data-reveal>
-              <span className="snapshot-label">Languages</span>
-              <strong>English + German</strong>
-            </article>
-            <article className="snapshot-card snapshot-status" data-reveal>
-              <span className="snapshot-label">Current stage</span>
-              <strong>MSc Business Analytics completed</strong>
-              <small>Predicted Distinction</small>
-            </article>
-          </div>
-        </section>
-
-        <section className="background-story" id="background">
-          <div className="shell background-story-grid">
-            <div className="background-intro" data-reveal>
-              <p className="overline">From customer questions to analytical evidence</p>
-              <h2>One thread through 2 degrees: understanding people, then testing the explanation.</h2>
-              <p>My Digital Marketing final project at Birmingham City University explored AI in marketing strategies targeting Generation Z. My MSc dissertation took a more focused question into UK ecommerce: how personalisation, trust and loyalty are statistically related.</p>
-              <p>Together, these projects connect the customer perspective with the discipline of checking what the evidence can support. That connection shapes my interests across analysis, digital marketing and technology.</p>
-              <p className="overline">Background · adaptability</p>
-              <h2>Raised in Germany. Developed personally and academically in the UK.</h2>
-              <p>
-                I was born and raised in Germany and moved to the UK in 2017 during Year
-                8. I completed secondary school at St Peter’s Roman Catholic High School,
-                spent two years at Xaverian College, and later studied at Birmingham City
-                University before moving into Business Analytics in Manchester.
-              </p>
-              <p>
-                Adjusting meant learning a new school environment, building relationships
-                and becoming confident in English while retaining German. I still maintain
-                my German through daily Duolingo practice, with a streak of more than
-                600 consecutive days as of September 2026.
-              </p>
-            </div>
-
-            <div className="background-route" aria-label="Personal and education route" data-reveal>
-              <article>
-                <span>2004 to 2017</span>
-                <strong>Germany</strong>
-                <p>Born and raised; the foundation of my German fluency.</p>
-              </article>
-              <article>
-                <span>2017 to 2020</span>
-                <strong>St Peter’s RC High School</strong>
-                <p>Joined during Year 8 and adapted to a new country and school system.</p>
-              </article>
-              <article>
-                <span>2020 to 2022</span>
-                <strong>Xaverian College</strong>
-                <p>Completed two years of sixth form education in Manchester.</p>
-              </article>
-              <article>
-                <span>2022 to 2026</span>
-                <strong>Higher education</strong>
-                <p>Digital Marketing at BCU, followed by Business Analytics in Manchester.</p>
-              </article>
-            </div>
-          </div>
-        </section>
-
-        <section className="personal-milestones" id="milestones" aria-labelledby="milestones-title">
-          <div className="shell">
-            <div className="milestones-heading" data-reveal>
-              <p className="overline">Selected milestones</p>
-              <h2 id="milestones-title">My progress includes a 2:1, certified marketing training and 600+ days of language practice.</h2>
-            </div>
-            <div className="milestones-grid">
-              <article data-reveal>
-                <strong>600+</strong>
-                <span>days of continuous Duolingo practice</span>
-                <small>Confirmed September 2026</small>
-              </article>
-              <article data-reveal>
-                <strong>2:1</strong>
-                <span>BA (Hons) Digital Marketing</span>
-                <small>Accelerated two year programme</small>
-              </article>
-              <article data-reveal>
-                <strong>85</strong>
-                <span>individual Shopify transformation analysis</span>
-                <small>Provisional assignment mark</small>
-              </article>
-              <article data-reveal>
-                <strong>DMI</strong>
-                <span>Certified Digital Marketing Associate</span>
-                <small>Professional certification</small>
-              </article>
-            </div>
-          </div>
-        </section>
-
-        <section className="marketing-foundation" id="marketing-foundation">
-          <div className="shell">
-            <div className="marketing-heading" data-reveal>
-              <p className="overline">Digital marketing foundation</p>
-              <h2>I use my marketing training to place customer and commercial context around the analysis.</h2>
-              <p>
-                My 2:1 BA (Hons) covered market research, campaign methodology, content
-                strategy and digital measurement. It gives me a useful second lens: not
-                only what the data shows, but who the audience is, how value is communicated
-                and which decision the evidence needs to improve.
-              </p>
-            </div>
-
-            <p><NativeLink className="arrow-link" href="/bcu">Explore Flock Together, Nando’s, Mailchimp and Peaky Blinders coursework ↗</NativeLink></p>
-            <div className="marketing-capability-grid">
-              <article data-reveal>
-                <span>01</span>
-                <h3>Audience and customer understanding</h3>
-                <p>Market research, audience segmentation and customer centred problem framing.</p>
-              </article>
-              <article data-reveal>
-                <span>02</span>
-                <h3>Campaign and content strategy</h3>
-                <p>Planning, content marketing, SEO/SEM foundations and proposition thinking.</p>
-              </article>
-              <article data-reveal>
-                <span>03</span>
-                <h3>Measurement and optimisation</h3>
-                <p>GA4 training, KPI interpretation, A/B testing principles and campaign analysis.</p>
-              </article>
-              <article data-reveal>
-                <span>04</span>
-                <h3>Digital transformation</h3>
-                <p>Individual analytical writing on Shopify, platform change and responsible adoption.</p>
-                <NativeLink href="/work#shopify-transformation">View related work</NativeLink>
-              </article>
-            </div>
-
-            <div className="research-foundations" data-reveal>
-              <div className="research-foundations-intro">
-                <p className="overline">Earlier research foundations</p>
-                <h3>Two earlier projects show where the customer intelligence thread began.</h3>
-                <p>
-                  These are presented as foundations rather than complete analytics case
-                  studies. The distinction keeps the portfolio clear about the depth and
-                  maturity of the evidence available.
-                </p>
-              </div>
-
-              <div className="research-foundations-list">
-                <article>
-                  <div className="research-foundation-meta">
-                    <span>Individual final project</span>
-                    <span>Birmingham City University</span>
-                  </div>
-                  <h4>The Impact of AI on Marketing Strategies Targeting Generation Z</h4>
-                  <p>
-                    Examined personalisation, chatbots, predictive analytics, trust,
-                    privacy and responsible AI in marketing. This early study established
-                    the customer question later developed through postgraduate analytics.
-                  </p>
-                </article>
-
-                <article>
-                  <div className="research-foundation-meta">
-                    <span>Flock Together team presentation</span>
-                    <span>Credited research contribution</span>
-                  </div>
-                  <h4>Researching nature, community and mental health</h4>
-                  <p>
-                    Researched how nature, social connection and mental health shaped the
-                    proposition, reviewed comparable organisations and developed questions
-                    for primary research. Recommendations and other presentation sections
-                    remained the work of the named team members.
-                  </p>
-                </article>
-              </div>
-            </div>
-
-            <p className="marketing-evidence-note" data-reveal>
-              Evidence reviewed from the original project document, research notes and
-              presentation. Commercial campaign deployment falls outside the evidence shown here.
+      <main id="main-content" className="about-page">
+        <section className="shell about-opening" id="about">
+          <div>
+            <p className="portfolio-eyebrow">About</p>
+            <h1>I’m Daniel.</h1>
+            <p className="about-lead">
+              I grew up in Germany and now live in Manchester. My interests
+              connect customer research, marketing and making useful digital
+              tools.
             </p>
+            <p>
+              I studied Digital Marketing at Birmingham City University before
+              completing my Business Analytics MSc in Manchester. This portfolio
+              brings my independent projects and coursework together.
+            </p>
+            <div className="portfolio-inline-actions">
+              <NativeLink href="/work" className="portfolio-button">
+                Explore my projects ↗
+              </NativeLink>
+              <a
+                href={publicPath("/Daniel%20Christopher%20CV.pdf")}
+                download="Daniel Christopher CV.pdf"
+                className="portfolio-text-link"
+              >
+                Download CV ↓
+              </a>
+            </div>
+            <ul className="about-facts">
+              <li>Manchester, UK</li>
+              <li>English & German</li>
+              <li>Full UK right to work</li>
+            </ul>
           </div>
+          <figure>
+            <Image
+              src={publicPath("/daniel-portrait.webp")}
+              alt="Daniel Christopher wearing a black suit on a staircase"
+              width={1000}
+              height={1500}
+              sizes="(max-width: 760px) 220px, 330px"
+              priority
+            />
+            <figcaption>Daniel Christopher · Manchester</figcaption>
+          </figure>
         </section>
-
-        <RoleFit />
-
-        <section className="profile-story">
-          <div className="shell story-grid" data-reveal>
-            <p className="overline">How I work</p>
-            <div>
-              <p className="statement">
-                I use analysis to clarify a decision, and I state the limits before anyone
-                acts on the result.
+        <section className="shell about-education" id="education">
+          <h2>My background.</h2>
+          <div className="about-education-grid">
+            <article id="marketing-foundation">
+              <p className="portfolio-eyebrow">
+                Birmingham City University · 2022 to 2024
               </p>
-              <div className="story-copy">
-                <p>
-                  My work spans survey analytics, statistical modelling, classification,
-                  relational data design and decision models. I start by defining the
-                  question, checking whether the data can answer it and choosing a method
-                  that fits the decision.
-                </p>
-                <p>
-                  I value evidence that is useful, transparent and honest about its
-                  limits. That means separating validation from deployment, association
-                  from causation and team output from individual ownership.
-                </p>
-                <p>
-                  This is a living portfolio. It begins with the strongest work I can
-                  verify today and will expand with professional projects, responsibilities
-                  and outcomes as my career develops.
-                </p>
+              <h3>BA (Hons) Digital Marketing</h3>
+              <strong>2:1</strong>
+              <p>
+                Audience research, campaign planning, content strategy and
+                digital measurement.
+              </p>
+              <NativeLink
+                href="/work?interest=marketing#projects"
+                className="portfolio-text-link"
+              >
+                See the marketing projects ↗
+              </NativeLink>
+            </article>
+            <article>
+              <p className="portfolio-eyebrow">
+                Manchester Metropolitan University · 2025 to 2026
+              </p>
+              <h3>MSc Business Analytics</h3>
+              <strong>Completed</strong>
+              <p>
+                Predicted Distinction, final award pending. Research,
+                statistics, data management and decision modelling.
+              </p>
+              <NativeLink
+                href="/work?interest=research#projects"
+                className="portfolio-text-link"
+              >
+                See the research and analysis ↗
+              </NativeLink>
+            </article>
+          </div>
+        </section>
+        <section className="shell about-detail">
+          <details className="portfolio-disclosure" id="background">
+            <summary>
+              <span>
+                <strong>My story and experience</strong>
+                <small>
+                  Germany, Manchester and the route into my projects
+                </small>
+              </span>
+              <span aria-hidden="true">+</span>
+            </summary>
+            <div>
+              <div className="about-timeline" id="journey">
+                <article>
+                  <span>2004 to 2017</span>
+                  <h3>Growing up in Germany</h3>
+                  <p>
+                    My German language and international perspective began here.
+                    I moved to the UK in 2017 during Year 8.
+                  </p>
+                </article>
+                <article>
+                  <span>2017 to 2022</span>
+                  <h3>School and college in Manchester</h3>
+                  <p>
+                    St Peter’s RC High School, followed by two years at Xaverian
+                    College.
+                  </p>
+                </article>
+                <article>
+                  <span>2022 to 2026</span>
+                  <h3>Marketing, then analytics</h3>
+                  <p>
+                    Two degrees connecting audience understanding, evidence and
+                    practical projects.
+                  </p>
+                </article>
+                <article id="experience">
+                  <span>October 2025 to present</span>
+                  <h3>Security Officer</h3>
+                  <p>
+                    SIA licensed work with Constant Security Services in
+                    Manchester, requiring reliable shift work and accurate
+                    incident and handover records.
+                  </p>
+                </article>
               </div>
+              <p id="milestones">
+                I also maintain my German through regular language practice,
+                with more than 600 consecutive Duolingo days recorded in
+                September 2026.
+              </p>
             </div>
-          </div>
-        </section>
-
-        <section className="profile-journey" id="journey">
-          <div className="shell">
-            <div className="section-heading" data-reveal>
-              <p className="overline">Journey</p>
-              <h2>A cross disciplinary route from customer context to analytical decisions.</h2>
-            </div>
-            <ol className="journey-list">
-              <li data-reveal>
-                <span>2022 to 2024</span>
-                <strong>BA (Hons) Digital Marketing</strong>
-                <p>Completed an accelerated two year programme at Birmingham City University with Upper Second Class Honours.</p>
-              </li>
-              <li data-reveal>
-                <span>2025 to 2026</span>
-                <strong>MSc Business Analytics</strong>
-                <p>Built evidence across statistics, data management, decision modelling, machine learning and transformation.</p>
-              </li>
-              <li data-reveal>
-                <span>2026</span>
-                <strong>Independent research</strong>
-                <p>Designed and delivered a dissertation study on AI personalisation, trust and loyalty.</p>
-              </li>
-              <li data-reveal>
-                <span>Now</span>
-                <strong>Seeking a business or data analyst role</strong>
-                <p>Open to graduate analyst roles in performance, risk, BI reporting and customer insight, particularly in financial services. Available immediately.</p>
-              </li>
-            </ol>
-          </div>
-        </section>
-
-        <section className="tools-section" id="toolkit">
-          <div className="shell tools-grid" data-reveal>
+          </details>
+          <details className="portfolio-disclosure" id="toolkit">
+            <summary>
+              <span>
+                <strong>Tools, modules and training</strong>
+                <small>Marketing, research, data and digital development</small>
+              </span>
+              <span aria-hidden="true">+</span>
+            </summary>
             <div>
-              <p className="overline">Verified toolkit</p>
-              <h2>I used these tools across verified projects, from survey design to predictive modelling.</h2>
+              <div className="about-tool-grid">
+                <div>
+                  <h3>Digital and marketing</h3>
+                  <p>
+                    Next.js, React, TypeScript, GA4 training, audience research
+                    and content planning.
+                  </p>
+                </div>
+                <div>
+                  <h3>Research and analysis</h3>
+                  <p>
+                    SPSS, Qualtrics, SAS Enterprise Miner, SQL, Excel, Power BI
+                    and Python.
+                  </p>
+                </div>
+              </div>
+              <h3>Training and certifications</h3>
+              <ul>
+                <li>Google Data Analytics Professional Certificate</li>
+                <li>Google Analytics (GA4)</li>
+                <li>HackerRank SQL (Basic)</li>
+                <li>DMI Certified Digital Marketing Associate</li>
+                <li>HubSpot Content Marketing</li>
+              </ul>
+              <h3>Digital Marketing modules</h3>
+              <ul className="bcu-modules">
+                {bcuModules.map((m) => (
+                  <li key={m}>{m}</li>
+                ))}
+              </ul>
             </div>
-            <div className="tool-lines">
-              <p><span>Statistical research</span> SPSS · Qualtrics · PROCESS Model 4</p>
-              <p><span>Machine learning</span> SAS Enterprise Miner</p>
-              <p><span>Data and models</span> SQL · Excel · relational modelling</p>
-              <p><span>Visualisation</span> Power BI / DAX foundations · Python figures</p>
-              <p><span>Digital measurement</span> GA4 · segmentation · A/B testing principles</p>
-            </div>
-          </div>
-        </section>
-
-        <section className="skill-match-section" id="skills-match">
-          <div className="shell">
-            <p className="overline">Match a role to the evidence</p>
-            <h2>Hiring for a specific role? Paste the job description and see where each skill is proven.</h2>
-            <SkillMatch />
-          </div>
-        </section>
-
-        <section className="credentials" id="education">
-          <div className="shell credential-grid" data-reveal>
-            <p className="overline">Education</p>
+          </details>
+          <details className="portfolio-disclosure">
+            <summary>
+              <span>
+                <strong>Skills and project evidence</strong>
+                <small>Explore relevant roles or match a job description</small>
+              </span>
+              <span aria-hidden="true">+</span>
+            </summary>
             <div>
-              <article>
-                <span>Manchester Metropolitan University</span>
-                <h2>MSc Business Analytics</h2>
-                <p>Completed · Predicted Distinction, final award pending</p>
-              </article>
-              <article>
-                <span>Birmingham City University</span>
-                <h2>BA (Hons) Digital Marketing</h2>
-                <p>Upper Second Class Honours (2:1)</p>
-                <p>Relevant modules: {bcuModules.join(', ')}.</p>
-                <NativeLink className="arrow-link" href="/bcu">Explore BCU projects and modules ↗</NativeLink>
-              </article>
+              <RoleFit />
+              <section id="skills-match">
+                <h3>Match a role to the evidence.</h3>
+                <p>
+                  This tool matches words in a job description to portfolio
+                  examples. It is a guide to relevant work, not a hiring
+                  assessment.
+                </p>
+                <SkillMatch />
+              </section>
             </div>
-          </div>
-        </section>
-
-        <section className="profile-extras">
-          <div className="shell extras-grid">
-            <div data-reveal>
-              <p className="overline">Training and certifications</p>
-              <h2>Training completed across analytics and digital practice.</h2>
-            </div>
-            <ul data-reveal>
-              <li><span>01</span>Google Data Analytics Professional Certificate</li>
-              <li><span>02</span>HackerRank SQL (Basic)</li>
-              <li><span>03</span>Google Analytics (GA4)</li>
-              <li><span>04</span>DMI Certified Digital Marketing Associate</li>
-              <li><span>05</span>HubSpot Content Marketing</li>
-            </ul>
-          </div>
-        </section>
-
-        <section className="profile-extras" id="experience">
-          <div className="shell extras-grid">
-            <div data-reveal>
-              <p className="overline">Professional experience</p>
-              <h2>Current role.</h2>
-            </div>
-            <ul data-reveal>
-              <li><span>Oct 2025 to present</span>Security Officer, Constant Security Services, Manchester. SIA licensed officer working shifts at client sites around Manchester, with accurate incident and handover records.</li>
-            </ul>
-          </div>
-        </section>
-
-        <section className="profile-cta" id="profile-contact">
-          <div className="shell">
-            <p className="overline">Next</p>
-            <h2 data-reveal>
-              Review the evidence or contact me
-              <br />
-              <span>about a business or data analyst opportunity.</span>
-            </h2>
+          </details>
+          <details className="portfolio-disclosure">
+            <summary>
+              <span>
+                <strong>How I work with AI</strong>
+                <small>
+                  Development assistance, evidence and responsibility
+                </small>
+              </span>
+              <span aria-hidden="true">+</span>
+            </summary>
             <div>
-              <NativeLink className="arrow-link" href="/work">View work</NativeLink>
-              <NativeLink className="arrow-link" href="/contact">Contact</NativeLink>
+              <p>
+                I use AI assistance to develop and refine digital projects. I
+                remain responsible for the questions, source evidence, decisions
+                and claims presented here.
+              </p>
+              <NativeLink href="/ai-workflow" className="portfolio-text-link">
+                Read about the development workflow ↗
+              </NativeLink>
             </div>
+          </details>
+          <div className="about-closing" id="profile-contact">
+            <h2>Have a project or opportunity in mind?</h2>
+            <NativeLink href="/contact" className="portfolio-button">
+              Get in touch ↗
+            </NativeLink>
           </div>
         </section>
       </main>
-
       <PageFooter />
     </>
   );

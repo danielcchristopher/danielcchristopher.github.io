@@ -1,16 +1,14 @@
-import { publicPath } from '@/lib/paths';
-import { pageMetadata } from '@/lib/page-metadata';
-import { CopyEmail } from '@/components/copy-email';
-import { NativeLink } from '@/components/native-link';
-import { SiteHeader } from '@/components/site-header';
-import { HeroField } from '@/components/hero-field';
-
+import { publicPath } from "@/lib/paths";
+import { pageMetadata } from "@/lib/page-metadata";
+import { CopyEmail } from "@/components/copy-email";
+import { NativeLink } from "@/components/native-link";
+import { SiteHeader } from "@/components/site-header";
+import { PageFooter } from "@/components/page-footer";
 export const metadata = pageMetadata(
-  'Contact',
-  'Contact Daniel Christopher about analyst roles, digital marketing and other opportunities. Based in Manchester with full UK right to work.',
-  '/contact/',
+  "Contact",
+  "Get in touch with Daniel Christopher about a project, analyst role, digital marketing opportunity or related work.",
+  "/contact/",
 );
-
 export default function ContactPage() {
   return (
     <>
@@ -18,61 +16,81 @@ export default function ContactPage() {
         Skip to content
       </a>
       <SiteHeader />
-
-      <main id="main-content" className="contact-page">
-        <section className="contact-hero">
-          <HeroField motif="corner" />
-          <div className="shell">
-            <p className="overline">Contact · Manchester, UK</p>
-            <h1>
-              Let’s talk
-              <br />
-              <span>about working together.</span>
-            </h1>
-            <p className="contact-intro">
-              I’m open to analyst, digital marketing and related opportunities. Based in Manchester, available immediately and open to remote or hybrid work. Have a role, project or idea in mind? Get in touch.
-            </p>
-            <CopyEmail />
-            <div className="recruiter-actions"><a href="mailto:dccchidera@gmail.com">Email Daniel ↗</a><NativeLink href="/profile#skills-match">Match a job description to my evidence ↗</NativeLink><a href={publicPath('/Daniel%20Christopher%20CV.pdf')} download="Daniel Christopher CV.pdf">Download CV ↗</a></div>
-          </div>
+      <main id="main-content" className="portfolio-contact">
+        <section className="shell portfolio-page-intro">
+          <p className="portfolio-eyebrow">Contact</p>
+          <h1>Get in touch.</h1>
+          <p>
+            I’m open to analyst, digital marketing and related opportunities.
+            Have a role, project or idea in mind?
+          </p>
         </section>
-
-        <section className="contact-links">
-          <div className="shell">
-            <a href="mailto:dccchidera@gmail.com" className="contact-row" data-reveal>
-              <span>Email</span>
-              <strong>dccchidera@gmail.com</strong>
+        <section className="shell contact-options">
+          <div className="contact-email-card">
+            <span className="portfolio-eyebrow">Email</span>
+            <a
+              href="mailto:dccchidera@gmail.com"
+              className="contact-email-address"
+            >
+              dccchidera@gmail.com
             </a>
+            <div className="portfolio-inline-actions">
+              <a
+                href="mailto:dccchidera@gmail.com"
+                className="portfolio-button"
+              >
+                Write an email ↗
+              </a>
+              <CopyEmail />
+            </div>
+            <p>
+              Manchester, UK · Available immediately
+              <br />
+              Open to remote or hybrid work · Full UK right to work
+            </p>
+          </div>
+          <div className="contact-secondary">
             <a
               href="https://www.linkedin.com/in/daniel-christopher-3a42a0254"
               target="_blank"
               rel="noreferrer"
-              className="contact-row"
-              data-reveal
             >
               <span>LinkedIn</span>
-              <strong>Daniel Christopher</strong>
+              <strong>
+                Daniel Christopher <span aria-hidden="true">↗</span>
+              </strong>
             </a>
-            <a href={publicPath('/Daniel%20Christopher%20CV.pdf')} className="contact-row" download="Daniel Christopher CV.pdf">
+            <a
+              href="https://github.com/danielcchristopher"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <span>GitHub</span>
+              <strong>
+                danielcchristopher <span aria-hidden="true">↗</span>
+              </strong>
+            </a>
+            <a
+              href={publicPath("/Daniel%20Christopher%20CV.pdf")}
+              download="Daniel Christopher CV.pdf"
+            >
               <span>CV</span>
-              <strong>Download my CV</strong>
-              <span>PDF</span>
+              <strong>
+                Download my CV <span aria-hidden="true">↓</span>
+              </strong>
             </a>
-            <div className="contact-row contact-location" data-reveal>
-              <span>Based in</span>
-              <strong>Manchester, United Kingdom</strong>
-              <span>UK</span>
-            </div>
           </div>
         </section>
-
-        <footer className="contact-footer">
-          <div className="shell">
-            <span>Daniel Christopher · 2026</span>
-            <NativeLink href="/work">View the work</NativeLink>
-          </div>
-        </footer>
+        <div className="shell contact-next">
+          <NativeLink href="/work" className="portfolio-text-link">
+            Explore the projects ↗
+          </NativeLink>
+          <NativeLink href="/profile" className="portfolio-text-link">
+            More about me ↗
+          </NativeLink>
+        </div>
       </main>
+      <PageFooter />
     </>
   );
 }

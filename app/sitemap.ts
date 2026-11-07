@@ -1,4 +1,4 @@
-import { operationalProjects } from '@/lib/operational-projects';
+import { operationalProjects } from "@/lib/operational-projects";
 import type { MetadataRoute } from "next";
 
 export const dynamic = "force-static";
@@ -22,13 +22,13 @@ const routes = [
   "/ai-workflow",
   "/service-mix",
   "/olist-reconstruction",
-  ...operationalProjects.map(project => `/projects/${project.slug}`),
+  ...operationalProjects.map((project) => `/projects/${project.slug}`),
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return routes.map((route) => ({
     url: `${siteUrl}${route}/`,
-    lastModified: new Date(route === "" || route === "/work" || route.startsWith("/projects/") ? "2026-11-07" : "2026-09-30"),
+    lastModified: new Date("2026-11-07"),
     changeFrequency: route === "" ? "monthly" : "yearly",
     priority: route === "" ? 1 : route === "/work" ? 0.9 : 0.7,
   }));
