@@ -4,10 +4,10 @@ import { useEffect } from 'react';
 
 export function SiteEffects() {
   useEffect(() => {
-    const revealHash = () => {
-      if (!location.hash) return;
+    const revealHashTarget = (hash: string) => {
+      if (!hash) return;
       let target: HTMLElement | null;
-      try { target = document.getElementById(decodeURIComponent(location.hash.slice(1))); } catch { return; }
+      try { target = document.getElementById(decodeURIComponent(hash.slice(1))); } catch { return; }
       if (!target) return;
       let ancestor: HTMLElement | null = target;
       while (ancestor) {
@@ -16,8 +16,15 @@ export function SiteEffects() {
       }
       requestAnimationFrame(() => target?.scrollIntoView({ block: 'start' }));
     };
+    const revealHash = () => revealHashTarget(location.hash);
+    const revealAnchor = (event: MouseEvent) => {
+      if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.defaultPrevented) return;
+      const anchor = event.target instanceof Element ? event.target.closest<HTMLAnchorElement>('a[href^="#"]') : null;
+      if (anchor) revealHashTarget(anchor.getAttribute('href') ?? '');
+    };
     revealHash();
     window.addEventListener('hashchange', revealHash);
+    document.addEventListener('click', revealAnchor);
     const root = document.documentElement;
     const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
     let frame = 0;
@@ -151,6 +158,7 @@ export function SiteEffects() {
     return () => {
       observer.disconnect();
       window.removeEventListener('hashchange', revealHash);
+      document.removeEventListener('click', revealAnchor);
       motionPreference.removeEventListener('change', updateMotion);
       window.removeEventListener('beforeprint', revealAll);
       if (pointerFrame) window.cancelAnimationFrame(pointerFrame);
