@@ -1,3 +1,4 @@
+import { OperationalProjects } from '@/components/operational-projects';
 import { pageMetadata } from '@/lib/page-metadata';
 import { PageFooter } from '@/components/page-footer';
 import { SiteHeader } from '@/components/site-header';
@@ -10,7 +11,7 @@ import { HeroField } from '@/components/hero-field';
 
 export const metadata = pageMetadata(
   'Work',
-  'Credit risk, customer research, churn modelling, SQL and Power BI case studies, plus digital builds and marketing projects by Daniel Christopher.',
+  'Operational planning prototypes, credit risk, customer research, SQL and Power BI case studies, plus digital builds and marketing projects by Daniel Christopher.',
   '/work/',
 );
 
@@ -38,6 +39,8 @@ export default function WorkPage() {
             </p>
           </div>
         </section>
+
+        <OperationalProjects />
 
         <section className="work-digital-feature" aria-labelledby="work-digital-title">
           <div className="shell">

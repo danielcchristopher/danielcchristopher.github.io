@@ -1,3 +1,4 @@
+import { OperationalProjects } from '@/components/operational-projects';
 import { publicPath } from '@/lib/paths';
 import { ModelPreview } from '@/components/model-preview';
 import { CaseQuickIndex } from '@/components/case-quick-index';
@@ -100,7 +101,7 @@ export default function Home() {
             <div className="hero-footer">
               <div className="hero-intro hero-reveal">
                 <p>
-                  I check that business data can be trusted, find what it shows, and explain what it means for the decision. My projects cover loan risk, customer loyalty, gym members leaving, data quality and business reporting.
+                  I check that business data can be trusted, find what it shows, and explain what it means for the decision. My projects cover operational planning, loan risk, customer loyalty, gym members leaving, data quality and business reporting.
                 </p>
                 <a className="arrow-link" href="#case-index">
                   Compare the case studies
@@ -163,6 +164,8 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        <OperationalProjects />
 
         <div id="case-index">
           <CaseQuickIndex />

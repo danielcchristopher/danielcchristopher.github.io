@@ -2,8 +2,10 @@
 
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { NativeLink } from '@/components/native-link';
+import { operationalProjects } from '@/lib/operational-projects';
 
 const destinations = [
+  ...operationalProjects.map(project => ({ label: project.name, detail: project.context, href: `/projects/${project.slug}`, type: 'Independent prototype' })),
   { label: 'BCU Digital Marketing Projects', detail: 'Flock Together, Nando’s, Mailchimp, Peaky Blinders and degree modules', href: '/bcu', type: 'Academic projects' },
   { label: 'Selected work', detail: 'Digital builds, independent projects and MSc case studies', href: '/work', type: 'Page' },
   { label: 'Credit Risk Analytics', detail: 'Loan affordability regression on 44,986 records', href: '/work/loan-affordability', type: 'Team case' },
