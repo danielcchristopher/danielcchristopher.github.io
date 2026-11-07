@@ -115,7 +115,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
             <p className="overline">{project.name}</p>
             <h1>{projectSummaries[slug].headline}</h1>
             <div className="case-plain"><span>In plain English</span><p>{projectSummaries[slug].plain}</p></div>
-            <p className="case-lead">{project.lead}</p>
+
             <div className="case-takeaway"><span>Key finding</span><p>{projectSummaries[slug].result}</p><a href="#evidence">Explore the evidence ↓</a></div>
           </div>
         </section>
@@ -131,6 +131,8 @@ export default async function CaseStudyPage({ params }: PageProps) {
           </div>
         </section>
 
+        <div className="shell academic-visual-first"><CaseEvidenceVisual slug={project.slug} /></div>
+
         <section className="case-content">
           <div className="shell case-layout">
             <CaseNavigator />
@@ -138,8 +140,9 @@ export default async function CaseStudyPage({ params }: PageProps) {
             <div className="case-body">
               <section className="case-section" id="question" data-reveal>
                 <p className="section-number">01 · Decision</p>
-                <h2>{slug === 'customer-intelligence' ? 'The study in one minute.' : `${actor} defined the decision before selecting a method.`}</h2>
+                <h2>The question behind the work.</h2>
                 <p className="large-copy">{project.question}</p>
+                <details className="portfolio-disclosure"><summary><span><strong>The story and interpretation</strong><small>Context, judgement and what I would recommend</small></span><span aria-hidden="true">+</span></summary><div>
                 {slug === 'customer-intelligence' ? (
                   <>
                     <h3>My contribution</h3>
@@ -160,11 +163,10 @@ export default async function CaseStudyPage({ params }: PageProps) {
                 <p>{caseStories[slug][3]}</p>
                   </>
                 )}
+                </div></details>
               </section>
 
-              <section className="case-section" id="approach" data-reveal>
-                <p className="section-number">02 · Approach</p>
-                <h2>{actor} organised the analysis in the following sequence.</h2>
+              <details className="portfolio-disclosure" id="approach"><summary><span><strong>Approach and method</strong><small>Open the analytical sequence</small></span><span aria-hidden="true">+</span></summary><div>
                 <ol className="approach-list">
                   {project.approach.map((item, index) => (
                     <li key={item}>
@@ -173,13 +175,10 @@ export default async function CaseStudyPage({ params }: PageProps) {
                     </li>
                   ))}
                 </ol>
-              </section>
+              </div></details>
 
-              <section className="case-section evidence-block" id="evidence" data-reveal>
-                <p className="section-number">03 · Evidence</p>
-                <h2>The results support the following interpretation.</h2>
+              <details className="portfolio-disclosure" id="evidence"><summary><span><strong>Results and supporting evidence</strong><small>Full interpretation, original figures and interactive tools</small></span><span aria-hidden="true">+</span></summary><div>
                 <p className="large-copy">{project.evidence}</p>
-                <CaseEvidenceVisual slug={project.slug} />
                 {project.slug === 'ecommerce-bi' && (
                   <aside className="case-visual" aria-label="Interactive Olist dashboard">
                     <p className="overline">Interactive dashboard · cleaned team data</p>
@@ -192,10 +191,10 @@ export default async function CaseStudyPage({ params }: PageProps) {
                 <RecoveredProjectEvidence slug={project.slug} />
                 <OriginalProjectFigures slug={project.slug} />
                 {project.slug === 'customer-intelligence' && (
-                  <a className="arrow-link" href="https://github.com/dccchidera-lgtm/dccchidera-lgtm.github.io/blob/main/docs/Dissertation%20Research%20Brief.md">Read the one page dissertation research brief ↗</a>
+                  <a className="arrow-link" href="https://github.com/danielcchristopher/danielcchristopher.github.io/blob/main/docs/Dissertation%20Research%20Brief.md">Read the one page dissertation research brief ↗</a>
                 )}
                 {project.slug === 'process-redesign' && (
-                  <a className="arrow-link" href="https://github.com/dccchidera-lgtm/dccchidera-lgtm.github.io/blob/main/docs/SQL%20Proposed%20Data%20Dictionary.md">Read the proposed database data dictionary ↗</a>
+                  <a className="arrow-link" href="https://github.com/danielcchristopher/danielcchristopher.github.io/blob/main/docs/SQL%20Proposed%20Data%20Dictionary.md">Read the proposed database data dictionary ↗</a>
                 )}
                 {project.slug !== 'ecommerce-bi' && project.slug !== 'loan-affordability' && (
                   <details className="case-model-disclosure">
@@ -203,7 +202,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
                     <ModelExplorer initialMode={project.slug === 'customer-intelligence' ? 'trust' : project.slug === 'predictive-analytics' ? 'network' : project.slug === 'process-redesign' ? 'data' : 'decision'} />
                   </details>
                 )}
-              </section>
+              </div></details>
 
               <section className="case-section" id="implications" data-reveal>
                 <p className="section-number">04 · Decision implications</p>
@@ -228,11 +227,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
                 </div>
               </section>
 
-              <section className="case-section contribution-block" id="contribution" data-reveal>
-                <p className="section-number">07 · Attribution</p>
-                <h2>I distinguish my contribution from the complete project output.</h2>
-                <p>{project.contribution}</p>
-              </section>
+              <details className="portfolio-disclosure" id="contribution"><summary><span><strong>My contribution</strong><small>Individual responsibilities and team ownership</small></span><span aria-hidden="true">+</span></summary><div><p>{project.contribution}</p></div></details>
 
               <section className="case-section toolkit" data-reveal>
                 <p className="section-number">Toolkit</p>

@@ -10,6 +10,7 @@ import "./editorial-type.css";
 import "./type-and-layout-fixes.css";
 import "./ai-workflow.css";
 import "./operational-projects.css";
+import "./personal-portfolio.css";
 
 const grotesk = localFont({ src: [
   { path: "../public/fonts/space-grotesk-400.woff2", weight: "400", style: "normal" },
@@ -17,16 +18,16 @@ const grotesk = localFont({ src: [
 ], variable: "--font-grotesk", display: "swap" });
 const newsreader = localFont({ src: "../public/fonts/newsreader-italic.woff2", weight: "400", style: "italic", variable: "--font-editorial", display: "swap", preload: false });
 
-const siteUrl = "https://dccchidera-lgtm.github.io";
+const siteUrl = "https://danielcchristopher.github.io";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Daniel Christopher | Business and Data Analyst",
+    default: "Daniel Christopher | Personal Portfolio",
     template: "%s | Daniel Christopher",
   },
   description:
-    "Business and data analyst in Manchester, open to remote or hybrid roles: credit risk, customer research, churn modelling, SQL and Power BI case studies by Daniel Christopher, MSc Business Analytics (predicted Distinction).",
+    "Digital builds, marketing ideas, research and analysis by Daniel Christopher. A personal portfolio of projects, experiments and practical work.",
   alternates: {
     canonical: "/",
   },
@@ -38,9 +39,9 @@ export const metadata: Metadata = {
     icon: publicPath("/favicon.svg"),
   },
   openGraph: {
-    title: "Daniel Christopher | Business and Data Analyst",
+    title: "Daniel Christopher | Personal Portfolio",
     description:
-      "Business and data analyst in Manchester, open to remote or hybrid roles: credit risk, customer research, churn modelling, SQL and Power BI case studies by Daniel Christopher, MSc Business Analytics (predicted Distinction).",
+      "Digital builds, marketing ideas, research and analysis by Daniel Christopher. A personal portfolio of projects, experiments and practical work.",
     type: "website",
     url: siteUrl,
     siteName: "Daniel Christopher",
@@ -50,15 +51,15 @@ export const metadata: Metadata = {
         url: `${siteUrl}/og-daniel-christopher.png`,
         width: 1200,
         height: 630,
-        alt: "A minimal evidence to decision diagram for Daniel Christopher’s analytics portfolio",
+        alt: "Daniel Christopher’s personal portfolio",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Daniel Christopher | Business and Data Analyst",
+    title: "Daniel Christopher | Personal Portfolio",
     description:
-      "Business and data analyst in Manchester, open to remote or hybrid roles: credit risk, customer research, churn modelling, SQL and Power BI case studies by Daniel Christopher, MSc Business Analytics (predicted Distinction).",
+      "Digital builds, marketing ideas, research and analysis by Daniel Christopher. A personal portfolio of projects, experiments and practical work.",
     images: [`${siteUrl}/og-daniel-christopher.png`],
   },
 };
@@ -67,7 +68,6 @@ const personSchema = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: "Daniel Christopher",
-  jobTitle: "Business and Data Analyst",
   url: siteUrl,
   sameAs: ["https://www.linkedin.com/in/daniel-christopher-3a42a0254"],
   address: { "@type": "PostalAddress", addressLocality: "Manchester", addressCountry: "GB" },
@@ -76,7 +76,7 @@ const personSchema = {
     { "@type": "CollegeOrUniversity", name: "Birmingham City University" },
   ],
   knowsLanguage: ["en", "de"],
-  knowsAbout: ["SQL", "Power BI", "DAX", "Excel", "SPSS", "SAS Enterprise Miner", "Regression analysis", "Credit risk", "Customer analytics"],
+  knowsAbout: ["SQL", "Power BI", "DAX", "Excel", "SPSS", "SAS Enterprise Miner", "Regression analysis", "Credit risk", "Customer analytics", "Digital marketing", "Content strategy", "Web development"],
 };
 
 export default function RootLayout({

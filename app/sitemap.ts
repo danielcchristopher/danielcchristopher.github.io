@@ -3,7 +3,7 @@ import type { MetadataRoute } from "next";
 
 export const dynamic = "force-static";
 
-const siteUrl = "https://dccchidera-lgtm.github.io";
+const siteUrl = "https://danielcchristopher.github.io";
 
 const routes = [
   "",

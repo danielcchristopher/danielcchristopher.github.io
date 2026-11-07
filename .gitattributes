@@ -1,2 +1,4 @@
 # Preserve the reviewed standalone application and its embedded vendor shader strings.
 public/demos/RouteAndMargin.html -whitespace
+# PDF object offsets and cross reference tables must remain byte exact.
+*.pdf binary

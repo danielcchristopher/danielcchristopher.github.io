@@ -8,6 +8,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: 'https://dccchidera-lgtm.github.io/sitemap.xml',
+    sitemap: 'https://danielcchristopher.github.io/sitemap.xml',
   };
 }

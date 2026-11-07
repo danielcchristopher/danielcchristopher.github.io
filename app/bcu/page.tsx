@@ -4,6 +4,7 @@ import { SiteHeader } from '@/components/site-header';
 import { NativeLink } from '@/components/native-link';
 import { bcuModules, bcuProjects } from '@/lib/bcu-projects';
 import { HeroField } from '@/components/hero-field';
+import { ProjectVisual } from '@/components/project-visual';
 
 export const metadata = pageMetadata('BCU Digital Marketing Projects', 'Audience research, consumer insight, content strategy and campaign planning from Daniel Christopher’s BA (Hons) Digital Marketing at Birmingham City University.', '/bcu/');
 
@@ -15,7 +16,7 @@ export default function BcuPage() {
       <section className="page-hero"><HeroField motif="corner" /><div className="shell">
         <small>Birmingham City University · BA (Hons) Digital Marketing · 2:1</small>
         <h1>Customer research.<br /><span>Campaigns with a clear purpose.</span></h1>
-        <p>Undergraduate work in audience insight, content marketing and campaign planning. These projects show the commercial and customer perspective I later developed through MSc Business Analytics.</p>
+        <p>Audience research, content ideas and campaign planning from my Digital Marketing degree.</p>
         <nav className="bcu-jump-links" aria-label="BCU projects and modules">
           {bcuProjects.map(project => <a key={project.id} href={`#${project.id}`}>{project.title}</a>)}
           <a href="#modules">Degree modules</a>
@@ -25,10 +26,14 @@ export default function BcuPage() {
         {bcuProjects.map((project, index) => <article className="bcu-project" id={project.id} key={project.id}>
           <header><p className="overline">0{index + 1} · {project.ownership}</p><h2>{project.title}</h2><p className="bcu-question">{project.question}</p></header>
           <div className="bcu-project-copy">
+            <ProjectVisual kind={project.id === 'flock-together' ? 'nature' : project.id === 'nandos' ? 'research' : 'campaign'} />
+            <p>{project.summary}</p>
+            <p className="bcu-limit"><strong>Scope:</strong> {project.limits}</p>
+            <details className="portfolio-disclosure"><summary><span><strong>Contribution and evidence</strong><small>Open the approach, output and ownership</small></span><span aria-hidden="true">+</span></summary><div>
             <h3>Contribution and approach</h3><p>{project.contribution}</p>
             <h3>Evidence and output</h3><p>{project.evidence}</p><p>{project.outcome}</p>
             <p className="bcu-skills">{project.skills}</p>
-            <p className="bcu-limit"><strong>Scope:</strong> {project.limits}</p>
+            </div></details>
           </div>
         </article>)}
         <article className="bcu-project" id="ai-gen-z">

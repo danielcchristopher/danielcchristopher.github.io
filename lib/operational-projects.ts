@@ -57,7 +57,7 @@ export const operationalProjects: OperationalProject[] = [
     ],
     contribution: 'I framed the operational and commercial questions, developed the demonstration with AI assistance, and directed repeated refinement of the interface, assumptions and verification. The work is presented as a decision prototype rather than an achieved business result.',
     tools: ['JavaScript', 'Three.js', 'Leaflet', 'Scenario modelling', 'Cost allocation'],
-    documentation: 'https://github.com/dccchidera-lgtm/dccchidera-lgtm.github.io/tree/main/projects/route-and-margin',
+    documentation: 'https://github.com/danielcchristopher/danielcchristopher.github.io/tree/main/projects/route-and-margin',
     demo: '/demos/RouteAndMargin.html',
   },
   {
@@ -90,7 +90,7 @@ export const operationalProjects: OperationalProject[] = [
     ],
     contribution: 'I developed an independent follow on prototype connecting route comparison, geographic exploration and a technician view. This public write up focuses on the decision design and analytical judgement, while keeping the assessment records outside the public portfolio.',
     tools: ['Google OR Tools', 'MapLibre GL', 'deck.gl', 'JavaScript', 'Route comparison'],
-    documentation: 'https://github.com/dccchidera-lgtm/dccchidera-lgtm.github.io/tree/main/projects/mobile-route-planner',
+    documentation: 'https://github.com/danielcchristopher/danielcchristopher.github.io/tree/main/projects/mobile-route-planner',
   },
 ];
 

@@ -2,7 +2,7 @@
 import type { Metadata } from "next";
 import "./divine-pc.css";
 
-const siteUrl = "https://dccchidera-lgtm.github.io/divine-pc/";
+const siteUrl = "https://danielcchristopher.github.io/divine-pc/";
 export const metadata: Metadata = {
   title: "Divine Ojiaku's Gaming PC | The £1,300 Build",
   description: "A personalised UK gaming PC buying guide for Divine Ojiaku. Real parts, photos, prices and retailer links, built around an RX 9070 and Ryzen 5 7500F.",

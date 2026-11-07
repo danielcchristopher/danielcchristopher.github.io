@@ -4,6 +4,20 @@ import { useEffect } from 'react';
 
 export function SiteEffects() {
   useEffect(() => {
+    const revealHash = () => {
+      if (!location.hash) return;
+      let target: HTMLElement | null;
+      try { target = document.getElementById(decodeURIComponent(location.hash.slice(1))); } catch { return; }
+      if (!target) return;
+      let ancestor: HTMLElement | null = target;
+      while (ancestor) {
+        if (ancestor instanceof HTMLDetailsElement) ancestor.open = true;
+        ancestor = ancestor.parentElement;
+      }
+      requestAnimationFrame(() => target?.scrollIntoView({ block: 'start' }));
+    };
+    revealHash();
+    window.addEventListener('hashchange', revealHash);
     const root = document.documentElement;
     const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
     let frame = 0;
@@ -136,6 +150,7 @@ export function SiteEffects() {
 
     return () => {
       observer.disconnect();
+      window.removeEventListener('hashchange', revealHash);
       motionPreference.removeEventListener('change', updateMotion);
       window.removeEventListener('beforeprint', revealAll);
       if (pointerFrame) window.cancelAnimationFrame(pointerFrame);

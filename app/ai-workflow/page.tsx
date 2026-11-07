@@ -10,7 +10,7 @@ export const metadata = pageMetadata(
   '/ai-workflow/',
 );
 
-const rulesUrl = 'https://github.com/dccchidera-lgtm/dccchidera-lgtm.github.io/blob/main/CLAUDE.md';
+const rulesUrl = 'https://github.com/danielcchristopher/danielcchristopher.github.io/blob/main/CLAUDE.md';
 
 type Helper = {
   role: string;

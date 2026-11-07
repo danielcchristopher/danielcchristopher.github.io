@@ -37,7 +37,7 @@ export default function OlistReconstructionPage() {
           <p className="overline">What I would test next</p>
           <h2>A dashboard points to a question; it does not answer why.</h2>
           <p>Add the payments table to compare delivery performance with order value; break the March 2018 delivery pattern down by seller, carrier and location; then test whether late deliveries lower review scores. The rates shown here are descriptive, so the next step is to find the drivers behind them.</p>
-          <p><a className="arrow-link" href="https://github.com/dccchidera-lgtm/dccchidera-lgtm.github.io/tree/main/projects/olist-reconstruction" target="_blank" rel="noopener noreferrer">Inspect the reproducible Python analysis and tests ↗</a></p>
+          <p><a className="arrow-link" href="https://github.com/danielcchristopher/danielcchristopher.github.io/tree/main/projects/olist-reconstruction" target="_blank" rel="noopener noreferrer">Inspect the reproducible Python analysis and tests ↗</a></p>
           <NativeLink className="arrow-link" href="/work">Back to selected work ↗</NativeLink>
         </section>
       </main>

@@ -44,7 +44,7 @@ export default function ServiceMixPage() {
                 <p className="section-number">02 · Runnable method</p>
                 <h2>Validate, derive, compare and export.</h2>
                 <p>I used Plotly’s public educational tips dataset; the Python script checks its 244 records for completeness, expected columns and plausible values, calculates bill per cover and tip rate, and exports period level results and a chart.</p>
-                <a className="arrow-link" href="https://github.com/dccchidera-lgtm/dccchidera-lgtm.github.io/tree/main/projects/restaurant-service-analysis">Open the runnable code and reproduction steps ↗</a>
+                <a className="arrow-link" href="https://github.com/danielcchristopher/danielcchristopher.github.io/tree/main/projects/restaurant-service-analysis">Open the runnable code and reproduction steps ↗</a>
               </section>
               <section className="case-section evidence-block" id="evidence">
                 <p className="section-number">03 · Evidence</p>

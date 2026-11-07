@@ -16,7 +16,7 @@ export function pageMetadata(title: string, description: string, path: string): 
         url: '/og-daniel-christopher.png',
         width: 1200,
         height: 630,
-        alt: 'Daniel Christopher’s analytics portfolio',
+        alt: 'Daniel Christopher’s personal portfolio',
       }],
     },
     twitter: {

@@ -23,9 +23,9 @@ export function PageFooter() {
     <footer className="page-footer">
       <div className="shell page-footer-inner">
         <p>
-          Digital and analytical work
+          Projects, ideas and practical work
           <br />
-          grounded in verifiable evidence.
+          by Daniel Christopher.
         </p>
         <div className="page-footer-actions">
           <NativeLink href="/contact">Get in touch</NativeLink>

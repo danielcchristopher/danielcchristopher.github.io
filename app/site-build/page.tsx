@@ -23,7 +23,7 @@ export default function SiteBuildPage() {
             <h1>Designing the experience.<br /><span>Not just presenting the work.</span></h1>
             <p>This portfolio is a live website that I build and maintain. The aim is to make different kinds of work easy to navigate, easy to inspect, and clear about what was done individually, as a team or as later follow on work.</p>
             <div className="site-build-links">
-              <a className="arrow-link" href="https://github.com/dccchidera-lgtm/dccchidera-lgtm.github.io" target="_blank" rel="noopener noreferrer">Explore the source code ↗</a>
+              <a className="arrow-link" href="https://github.com/danielcchristopher/danielcchristopher.github.io" target="_blank" rel="noopener noreferrer">Explore the source code ↗</a>
               <NativeLink className="arrow-link" href="/work">Explore the work ↗</NativeLink>
               <NativeLink className="arrow-link" href="/ai-workflow">See the AI team behind it ↗</NativeLink>
             </div>

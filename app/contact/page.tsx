@@ -7,7 +7,7 @@ import { HeroField } from '@/components/hero-field';
 
 export const metadata = pageMetadata(
   'Contact',
-  'Contact Daniel Christopher about remote or hybrid data, BI, performance and risk analyst roles. Available immediately, based in Manchester, with full UK right to work.',
+  'Contact Daniel Christopher about analyst roles, digital marketing and other opportunities. Based in Manchester with full UK right to work.',
   '/contact/',
 );
 
@@ -30,12 +30,7 @@ export default function ContactPage() {
               <span>about working together.</span>
             </h1>
             <p className="contact-intro">
-              I’m open to graduate analyst roles in performance, risk, BI reporting and
-              customer insight, particularly in financial services. I’m available
-              immediately, based in Manchester and open to fully remote roles across the UK or hybrid work across the North
-              West, Yorkshire, the Midlands or London. I have full UK right to work and
-              need no sponsorship. To discuss a role or a case study, email me or connect
-              with me on LinkedIn.
+              I’m open to analyst, digital marketing and related opportunities. Based in Manchester, available immediately and open to remote or hybrid work. Have a role, project or idea in mind? Get in touch.
             </p>
             <CopyEmail />
             <div className="recruiter-actions"><a href="mailto:dccchidera@gmail.com">Email Daniel ↗</a><NativeLink href="/profile#skills-match">Match a job description to my evidence ↗</NativeLink><a href={publicPath('/Daniel%20Christopher%20CV.pdf')} download="Daniel Christopher CV.pdf">Download CV ↗</a></div>
@@ -60,7 +55,7 @@ export default function ContactPage() {
             </a>
             <a href={publicPath('/Daniel%20Christopher%20CV.pdf')} className="contact-row" download="Daniel Christopher CV.pdf">
               <span>CV</span>
-              <strong>Download the one page analyst CV</strong>
+              <strong>Download my CV</strong>
               <span>PDF</span>
             </a>
             <div className="contact-row contact-location" data-reveal>

@@ -29,9 +29,9 @@ export default function ProfilePage() {
             <small>Profile</small>
             <div className="profile-opening">
             <h1>
-              I work across business, digital and customer questions
+              A little about me.
               <br />
-              <span>with evidence and practical delivery.</span>
+              <span>People, ideas and making things.</span>
             </h1>
             <figure className="profile-portrait">
               <Image src={publicPath('/daniel-portrait.webp')} alt="Daniel Christopher wearing a black suit on a staircase" width={1000} height={1500} sizes="(max-width: 760px) 100vw, 400px" priority />
@@ -69,7 +69,7 @@ export default function ProfilePage() {
             </article>
             <article className="snapshot-card snapshot-role" data-reveal>
               <span className="snapshot-label">Looking for</span>
-              <strong>Performance · Risk · BI reporting · Customer insight</strong>
+              <strong>Analysis · Digital marketing · Customer research · Digital projects</strong>
             </article>
             <article className="snapshot-card snapshot-language" data-reveal>
               <span className="snapshot-label">Languages</span>
@@ -89,7 +89,7 @@ export default function ProfilePage() {
               <p className="overline">From customer questions to analytical evidence</p>
               <h2>One thread through 2 degrees: understanding people, then testing the explanation.</h2>
               <p>My Digital Marketing final project at Birmingham City University explored AI in marketing strategies targeting Generation Z. My MSc dissertation took a more focused question into UK ecommerce: how personalisation, trust and loyalty are statistically related.</p>
-              <p>Together, these projects connect the customer perspective with the discipline of checking what the evidence can support. That connection is central to the analytical and technology roles I am pursuing.</p>
+              <p>Together, these projects connect the customer perspective with the discipline of checking what the evidence can support. That connection shapes my interests across analysis, digital marketing and technology.</p>
               <p className="overline">Background · adaptability</p>
               <h2>Raised in Germany. Developed personally and academically in the UK.</h2>
               <p>

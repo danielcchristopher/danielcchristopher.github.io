@@ -169,7 +169,7 @@ export default function DissertationPage() {
               <NativeLink className="arrow-link" href="/work/customer-intelligence">
                 View the business case
               </NativeLink>
-              <a className="arrow-link" href="https://github.com/dccchidera-lgtm/dccchidera-lgtm.github.io/blob/main/docs/Dissertation%20Research%20Brief.md" target="_blank" rel="noopener noreferrer">
+              <a className="arrow-link" href="https://github.com/danielcchristopher/danielcchristopher.github.io/blob/main/docs/Dissertation%20Research%20Brief.md" target="_blank" rel="noopener noreferrer">
                 Read the one page research brief ↗
               </a>
             </div>

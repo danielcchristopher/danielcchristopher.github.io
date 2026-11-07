@@ -94,11 +94,11 @@ const roles = [
   },
   {
     id: 'marketing',
-    label: 'Marketing analytics',
-    headline: 'I connect audience understanding and digital measurement with evidence led optimisation.',
+    label: 'Digital marketing',
+    headline: 'I connect audience research with content ideas, campaign planning and measurement.',
     summary:
-      'Relevant to junior marketing analytics, digital performance and campaign insight roles that value commercial context alongside data skills.',
-    strengths: ['Audience segmentation', 'Digital measurement', 'Campaign evaluation'],
+      'Relevant to junior digital marketing, content and customer insight roles, supported by degree work and independent digital projects.',
+    strengths: ['Audience research', 'Content strategy', 'Campaign planning'],
     evidence: [
       {
         name: 'Digital Marketing BA',
@@ -107,10 +107,10 @@ const roles = [
         href: '/profile#marketing-foundation',
       },
       {
-        name: 'Customer Intelligence',
-        detail: 'Customer research connecting personalisation, trust and loyalty',
-        ownership: 'Individual dissertation',
-        href: '/research-case',
+        name: 'Mailchimp campaign concept',
+        detail: 'Audience research, customer journeys and creative planning',
+        ownership: 'Team coursework',
+        href: '/bcu#mailchimp',
       },
     ],
   },

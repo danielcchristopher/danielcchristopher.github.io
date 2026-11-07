@@ -8,8 +8,8 @@ import { ThemeSwitch } from '@/components/theme-switch';
 
 const navigation = [
   { label: 'Work', href: '/work' },
-  { label: 'Dissertation', href: '/dissertation' },
-  { label: 'Profile', href: '/profile' },
+  { label: 'Marketing', href: '/bcu' },
+  { label: 'About', href: '/profile' },
   { label: 'Contact', href: '/contact' },
 ];
 
@@ -68,7 +68,7 @@ export function SiteHeader() {
             ))}
           </nav>
           <div className="menu-meta">
-            <span>Analytics, customer research and digital builds, with methods and ownership stated clearly.</span>
+            <span>Digital builds, marketing, research and ideas worth exploring.</span>
             <span>Manchester, UK · 2026</span>
           </div>
         </div>

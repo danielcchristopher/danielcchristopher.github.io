@@ -22,5 +22,5 @@ npm run check
 3. Set **Source** to **GitHub Actions**.
 
 The included workflow deploys automatically. It uses `/` for a user-site
-repository such as `dccchidera-lgtm.github.io`, and automatically adds the
+repository such as `danielcchristopher.github.io`, and automatically adds the
 repository name as the base path for a project site.
