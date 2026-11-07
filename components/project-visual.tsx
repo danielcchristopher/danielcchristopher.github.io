@@ -54,15 +54,6 @@ const outlines: Partial<
     { title: string; steps: [string, string][]; note: string }
   >
 > = {
-  campaign: {
-    title: "Mailchimp content proposal",
-    steps: [
-      ["Audience", "Small business owners & freelancers"],
-      ["Creative idea", "Jenga as the campaign metaphor"],
-      ["Planned assets", "Video concept & mock social post"],
-    ],
-    note: "Project outline · original campaign assets not published",
-  },
   peaky: {
     title: "Peaky Blinders campaign proposal",
     steps: [
@@ -145,6 +136,69 @@ export function ProjectVisual({
         <figcaption>
           <strong>{original.label}</strong>
           <span>{original.note}</span>
+        </figcaption>
+      </figure>
+    );
+  if (kind === "campaign")
+    return (
+      <figure className="evidence-preview evidence-preview--campaign">
+        <div className="evidence-media campaign-composition">
+          <svg
+            viewBox="0 0 640 390"
+            role="img"
+            aria-label="A new illustration of the proposal structure. A Jenga style stack connects a small business audience, the creative idea, video and social formats. It is not original campaign artwork."
+          >
+            <text x="30" y="42" className="campaign-small">
+              MAILCHIMP / CONTENT PROPOSAL
+            </text>
+            <text x="30" y="126" className="campaign-display">
+              Audience.
+            </text>
+            <text x="30" y="192" className="campaign-display">
+              Idea.
+            </text>
+            <text x="30" y="258" className="campaign-display">
+              Content.
+            </text>
+            <text x="30" y="326" className="campaign-small">
+              SMALL BUSINESSES & FREELANCERS
+            </text>
+            <text x="30" y="350" className="campaign-small">
+              JENGA AS THE CREATIVE METAPHOR
+            </text>
+            <g stroke="#edf1ff" strokeWidth="2" strokeLinejoin="round">
+              <path d="M355 290l175-29 75 40-175 30z" fill="#b8c7f5" />
+              <path d="M355 290l75 41v43l-75-41z" fill="#183aa1" />
+              <path d="M430 331l175-30v43l-175 30z" fill="#2348d7" />
+              <path d="M360 238l175-29 75 40-175 30z" fill="#b8c7f5" />
+              <path d="M360 238l75 41v43l-75-41z" fill="#183aa1" />
+              <path d="M435 279l175-30v43l-175 30z" fill="#2348d7" />
+              <path d="M350 186l175-29 75 40-175 30z" fill="#b8c7f5" />
+              <path d="M350 186l75 41v43l-75-41z" fill="#183aa1" />
+              <path d="M425 227l175-30v43l-175 30z" fill="#2348d7" />
+              <path d="M397 124l144-24 75 40-144 25z" fill="#b8c7f5" />
+              <path d="M397 124l75 41v43l-75-41z" fill="#183aa1" />
+              <path d="M472 165l144-25v43l-144 25z" fill="#2348d7" />
+            </g>
+            <g fill="#fff" fontSize="16" transform="skewY(-9)">
+              <text x="455" y="421">
+                AUDIENCE
+              </text>
+              <text x="470" y="370">
+                IDEA
+              </text>
+              <text x="468" y="317">
+                VIDEO
+              </text>
+              <text x="500" y="258">
+                SOCIAL
+              </text>
+            </g>
+          </svg>
+        </div>
+        <figcaption>
+          <strong>Illustration of the proposal structure</strong>
+          <span>Team coursework · original campaign assets not published</span>
         </figcaption>
       </figure>
     );

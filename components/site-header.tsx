@@ -32,7 +32,12 @@ export function SiteHeader() {
             className="portfolio-wordmark"
             aria-label="Daniel Christopher home"
           >
-            Daniel Christopher<span>Portfolio</span>
+            <span className="portfolio-monogram" aria-hidden="true">
+              dc.
+            </span>
+            <span className="portfolio-wordmark-copy">
+              Daniel Christopher<small>Portfolio</small>
+            </span>
           </NativeLink>
           <nav className="portfolio-desktop-nav" aria-label="Main navigation">
             {navigation.map((n) => (

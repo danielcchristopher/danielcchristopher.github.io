@@ -28,6 +28,8 @@ repository name as the base path for a project site.
 ## Current presentation
 
 The main portfolio layouts and shared interaction states live in `app/portfolio.css`.
+The personal cover and selected project compositions use `app/folio-cover.css`,
+with the selectable project preview in `components/portfolio-cover.tsx`.
 Marketing narratives use `app/bcu.css`. Original analytical charts retain their
 existing component styles. The former entry page stylesheet has been replaced.
 
@@ -38,3 +40,5 @@ with an invented screenshot. The route planner assessment records remain private
 
 The review and verification record is in
 `docs/portfolio-audit-2026-11-07.md`.
+The subsequent visual direction and verification are recorded in
+`docs/portfolio-art-direction-2026-11-07.md`.

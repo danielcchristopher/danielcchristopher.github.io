@@ -44,19 +44,21 @@ export function ProjectTile({
   priority?: boolean;
 }) {
   return (
-    <article className="project-tile">
+    <article className="project-tile" data-visual={project.visual}>
       <NativeLink
         href={project.href}
         className="project-tile-link"
         aria-label={`Explore ${project.title}`}
       >
-        <ProjectVisual kind={project.visual} priority={priority} />
-        <div className="project-tile-copy">
+        <div className="project-tile-heading">
           <span className="project-kind">{project.category}</span>
           <h3>
             {project.title}
             <span aria-hidden="true">↗</span>
           </h3>
+        </div>
+        <ProjectVisual kind={project.visual} priority={priority} />
+        <div className="project-tile-copy">
           <p>{project.summary}</p>
           <small>{project.basis}</small>
         </div>

@@ -11,6 +11,7 @@ import "./type-and-layout-fixes.css";
 import "./ai-workflow.css";
 import "./operational-projects.css";
 import "./portfolio.css";
+import "./folio-cover.css";
 
 const grotesk = localFont({
   src: [

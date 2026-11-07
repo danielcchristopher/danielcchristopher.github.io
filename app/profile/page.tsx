@@ -23,7 +23,9 @@ export default function ProfilePage() {
         <section className="shell about-opening" id="about">
           <div>
             <p className="portfolio-eyebrow">About</p>
-            <h1>I’m Daniel.</h1>
+            <h1>
+              I’m <em>Daniel.</em>
+            </h1>
             <p className="about-lead">
               I grew up in Germany and now live in Manchester. My interests
               connect customer research, marketing and making useful digital

@@ -1,6 +1,6 @@
 /* Current portfolio system. Legacy case visualizations keep their own component styles. */
 .portfolio-site {
-  --portfolio-radius: 14px;
+  --portfolio-radius: 2px;
 }
 .portfolio-site .shell {
   width: min(1240px, calc(100% - 80px));
@@ -52,13 +52,26 @@
   justify-content: space-between;
 }
 .portfolio-wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
   font-weight: 700;
   font-size: 16px;
   line-height: 1.3;
   letter-spacing: -0.035em;
   flex: none;
 }
-.portfolio-wordmark > span {
+.portfolio-monogram {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  font-size: 23px;
+  letter-spacing: -0.09em;
+  background: #2348d7;
+  color: #fff;
+}
+.portfolio-wordmark-copy > small {
   display: block;
   margin-top: 2px;
   font-size: 10px;
@@ -79,8 +92,9 @@
   align-items: center;
   min-height: 42px;
   padding: 10px 15px;
-  border-radius: 7px;
-  border: 1px solid transparent;
+  border-radius: 0;
+  border: 0;
+  border-bottom: 1px solid transparent;
   font-size: 13px;
   color: var(--secondary-label);
   transition:
@@ -90,9 +104,8 @@
 }
 .portfolio-desktop-nav a:hover,
 .portfolio-desktop-nav a[aria-current] {
-  background: color-mix(in srgb, var(--accent) 9%, var(--background));
   color: var(--label);
-  border-color: color-mix(in srgb, var(--accent) 25%, transparent);
+  border-color: var(--accent);
 }
 .portfolio-header-actions {
   display: flex;
@@ -214,7 +227,7 @@
   justify-content: center;
   gap: 20px;
   border: 1px solid var(--accent-solid);
-  border-radius: 8px;
+  border-radius: 2px;
   padding: 12px 18px;
   min-height: 46px;
   background: var(--accent-solid);
@@ -246,128 +259,85 @@
   gap: 15px 24px;
   flex-wrap: wrap;
 }
-.portfolio-home-opening > * {
-  min-width: 0;
-}
-.portfolio-home-opening {
-  display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-  gap: clamp(32px, 5vw, 74px);
-  align-items: center;
-  padding-block: 118px 48px;
-}
-.portfolio-introduction h1 {
-  margin: 0 0 24px;
-  font-size: clamp(45px, 5.8vw, 78px);
-  line-height: 1.03;
-  letter-spacing: -0.065em;
-}
-.portfolio-home-lead {
-  max-width: 34ch;
-  font-size: clamp(17px, 1.8vw, 22px);
-  line-height: 1.6;
-  margin: 0 0 24px;
-  color: var(--secondary-label);
-}
-.portfolio-availability {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  font-size: 12px;
-  color: var(--secondary-label);
-  margin-top: 24px;
-}
-.portfolio-availability i {
-  width: 7px;
-  height: 7px;
-  background: #7a9c4c;
-  border-radius: 50%;
-  box-shadow: 0 0 0 4px #7a9c4c15;
-}
-.portfolio-feature .portfolio-eyebrow {
-  margin-bottom: 10px;
-}
-.portfolio-feature .evidence-media {
-  min-height: 0;
-}
-.portfolio-feature .project-tile-copy {
-  padding: 19px 22px;
-}
-.portfolio-feature .project-tile-copy h3 {
-  font-size: 25px;
-}
-.portfolio-feature .project-tile-copy p {
-  margin-bottom: 9px;
-}
-.portfolio-selection {
-  padding-block: 42px 65px;
-  border-top: 1px solid var(--separator);
-}
-.portfolio-section-heading {
-  display: flex;
-  gap: 20px;
-  align-items: end;
-  justify-content: space-between;
-  margin-bottom: 24px;
-}
-.portfolio-section-heading h2,
-.portfolio-about-strip h2,
 .portfolio-supporting > h2 {
-  margin: 0;
+  margin: 0 0 25px;
   font-size: clamp(26px, 3.1vw, 38px);
   line-height: 1.2;
   letter-spacing: -0.04em;
 }
-.portfolio-section-heading .portfolio-eyebrow {
-  margin-bottom: 8px;
-}
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 27px;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 65px 5%;
+  align-items: start;
 }
 .project-tile {
   min-width: 0;
-  border: 1px solid var(--separator);
-  border-radius: var(--portfolio-radius);
-  background: var(--background);
-  overflow: clip;
-  transition:
-    box-shadow 0.18s,
-    border-color 0.18s,
-    transform 0.18s;
+  grid-column: span 7;
+  border: 0;
+  background: transparent;
+}
+.project-tile:nth-child(4n + 2),
+.project-tile:nth-child(4n + 3) {
+  grid-column: span 5;
+}
+.project-tile:nth-child(4n + 2) {
+  margin-top: 90px;
+}
+.project-tile:nth-child(4n + 4) {
+  margin-top: 60px;
 }
 .project-tile:hover,
 .project-tile:focus-within {
-  border-color: var(--accent);
-  box-shadow: 0 8px 24px #00000010;
-  transform: translateY(-2px);
+  transform: none;
+}
+.project-tile-link > .evidence-preview {
+  padding: 22px;
+  background: #d9e3f5;
+}
+.project-tile[data-visual="campaign"] .evidence-preview,
+.project-tile[data-visual="peaky"] .evidence-preview {
+  background: #cfd7ef;
+}
+.project-tile[data-visual="planner"] .evidence-preview,
+.project-tile[data-visual="nature"] .evidence-preview,
+.project-tile[data-visual="research"] .evidence-preview {
+  background: #dce3d2;
+}
+.project-tile-link > .evidence-preview .evidence-media {
+  transition: transform 0.3s;
+}
+.project-tile-link:hover > .evidence-preview .evidence-media {
+  transform: translateY(-3px);
 }
 .project-tile-link {
   display: block;
   height: 100%;
 }
 .project-tile-copy {
-  padding: 22px 24px 25px;
+  padding: 18px 0 0;
+}
+.project-tile-heading {
+  border-top: 1px solid var(--separator);
+  padding-top: 16px;
 }
 .project-kind {
-  font-size: 10px;
+  font-size: 12px;
   line-height: 1.5;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  letter-spacing: 0;
   color: var(--link);
 }
-.project-tile-copy h3 {
+.project-tile-heading h3 {
   display: flex;
   align-items: start;
   justify-content: space-between;
   gap: 16px;
-  margin: 9px 0 12px;
-  font-size: clamp(22px, 2.4vw, 29px);
+  margin: 9px 0 22px;
+  font-size: clamp(26px, 3vw, 39px);
   line-height: 1.2;
   letter-spacing: -0.035em;
 }
-.project-tile-copy h3 > span {
+.project-tile-heading h3 > span {
   color: var(--link);
   font-size: 22px;
   font-weight: 400;
@@ -412,6 +382,28 @@
 }
 .evidence-preview--original .evidence-media {
   background: #fff;
+}
+.campaign-composition {
+  background: #eef2ff;
+  color: #183aa1;
+  aspect-ratio: 64 / 39;
+}
+.campaign-composition > svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.campaign-small {
+  font-size: 13px;
+  fill: #344b86;
+  letter-spacing: 0.06em;
+}
+.campaign-display {
+  font-family: var(--font-editorial), Georgia, serif;
+  font-style: italic;
+  font-size: 60px;
+  fill: #183aa1;
+  letter-spacing: -0.03em;
 }
 .evidence-preview figcaption {
   display: grid;
@@ -580,43 +572,14 @@
 .service-evidence > small {
   margin-top: 15px;
 }
-.portfolio-about-strip {
-  display: grid;
-  grid-template-columns: 145px 1fr 210px;
-  gap: 35px;
-  align-items: center;
-  border-top: 1px solid var(--separator);
-  padding-block: 45px 70px;
-}
-.portfolio-about-strip > img {
-  width: 145px;
-  height: 185px;
-  object-fit: cover;
-  object-position: 50% 22%;
-  border-radius: 12px;
-}
-.portfolio-about-strip p:not(.portfolio-eyebrow) {
-  max-width: 55ch;
-  font-size: 14px;
-  line-height: 1.75;
-  color: var(--secondary-label);
-  margin: 17px 0 3px;
-}
-.portfolio-location-note {
-  display: grid;
-  gap: 8px;
-  font-size: 12px;
-  color: var(--secondary-label);
-}
-.portfolio-location-note strong {
-  font-weight: 500;
-  color: var(--label);
-}
 .portfolio-page-intro {
   padding-block: 112px 28px;
 }
 .portfolio-page-intro h1 {
-  font-size: clamp(37px, 4.8vw, 61px);
+  font-size: clamp(52px, 7vw, 90px);
+  font-family: var(--font-editorial), Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
   line-height: 1.05;
   letter-spacing: -0.05em;
   margin: 0 0 16px;
@@ -650,9 +613,10 @@
   min-height: 43px;
   background: var(--background);
   color: var(--secondary-label);
-  border: 1px solid var(--separator);
-  border-radius: 8px;
-  padding: 10px 13px;
+  border: 0;
+  border-bottom: 1px solid var(--separator);
+  border-radius: 0;
+  padding: 10px 8px;
   font: inherit;
   font-size: 12px;
   cursor: pointer;
@@ -661,7 +625,6 @@
     border-color 0.18s;
 }
 .project-filters button[aria-pressed="true"] {
-  background: color-mix(in srgb, var(--accent) 12%, var(--background));
   color: var(--label);
   border-color: var(--accent);
 }
@@ -711,12 +674,9 @@
 .portfolio-supporting {
   padding-block: 25px 60px;
 }
-.portfolio-supporting > h2 {
-  margin-bottom: 25px;
-}
 .portfolio-disclosure {
   border: 1px solid var(--separator);
-  border-radius: 10px;
+  border-radius: 2px;
   margin: 12px 0;
   scroll-margin-top: 95px;
   overflow: clip;
@@ -798,24 +758,11 @@
   .portfolio-header-actions {
     gap: 12px;
   }
-  .portfolio-home-opening {
-    gap: 30px;
-  }
   .project-controls {
     flex-wrap: wrap;
   }
   .project-search {
     width: 100%;
-  }
-  .portfolio-about-strip {
-    grid-template-columns: 125px 1fr;
-  }
-  .portfolio-about-strip > img {
-    width: 125px;
-    height: 165px;
-  }
-  .portfolio-location-note {
-    grid-column: 2;
   }
 }
 @media (max-width: 760px) {
@@ -839,47 +786,19 @@
   .portfolio-header .theme-switch {
     font-size: 11px;
   }
-  .portfolio-home-opening {
-    grid-template-columns: minmax(0, 1fr);
-    padding-block: 96px 36px;
-    gap: 24px;
-  }
-  .portfolio-introduction h1 {
-    font-size: 46px;
-    margin-bottom: 16px;
-  }
-  .portfolio-introduction h1 br {
-    display: none;
-  }
-  .portfolio-home-lead {
-    font-size: 17px;
-    max-width: 48ch;
-    margin-bottom: 18px;
-  }
-  .portfolio-availability {
-    display: none;
-  }
-  .portfolio-feature .portfolio-eyebrow {
-    font-size: 10px;
-  }
-  .portfolio-selection {
-    padding-block: 30px 40px;
-  }
-  .portfolio-section-heading {
-    align-items: start;
-    gap: 15px;
-  }
-  .portfolio-section-heading h2 {
-    font-size: 28px;
-  }
   .portfolio-page-intro {
     padding-block: 96px 23px;
   }
   .project-grid {
-    gap: 20px;
+    grid-template-columns: 1fr;
+    gap: 38px;
+  }
+  .project-grid .project-tile {
+    grid-column: 1;
+    margin-top: 0;
   }
   .project-tile-copy {
-    padding: 20px;
+    padding: 20px 0 0;
   }
   .evidence-outline {
     padding: 17px;
@@ -896,17 +815,19 @@
   .portfolio-site .page-hero h1 {
     font-size: 37px;
   }
-  .portfolio-about-strip {
-    gap: 25px;
-    padding-block: 35px 45px;
-  }
 }
 @media (max-width: 580px) {
   .portfolio-wordmark {
     font-size: 14px;
+    gap: 8px;
   }
-  .portfolio-wordmark > span {
+  .portfolio-wordmark-copy > small {
     font-size: 9px;
+  }
+  .portfolio-monogram {
+    width: 30px;
+    height: 34px;
+    font-size: 21px;
   }
   .portfolio-header-inner {
     gap: 10px;
@@ -917,11 +838,6 @@
   .portfolio-header .command-trigger,
   .portfolio-menu-trigger {
     font-size: 11px;
-  }
-  .portfolio-section-heading {
-    align-items: start;
-    flex-direction: column;
-    gap: 5px;
   }
   .project-grid {
     grid-template-columns: 1fr;
@@ -943,8 +859,8 @@
   .project-result-count {
     margin-block: 12px 15px;
   }
-  .project-tile-copy h3 {
-    font-size: 25px;
+  .project-tile-heading h3 {
+    font-size: 30px;
   }
   .evidence-outline {
     padding: 20px;
@@ -957,28 +873,6 @@
   }
   .evidence-outline small {
     font-size: 11px;
-  }
-  .portfolio-about-strip {
-    grid-template-columns: 85px 1fr;
-    align-items: start;
-    gap: 20px;
-  }
-  .portfolio-about-strip > img {
-    width: 85px;
-    height: 115px;
-  }
-  .portfolio-about-strip h2 {
-    font-size: 25px;
-  }
-  .portfolio-location-note {
-    grid-column: 1/-1;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 15px;
-  }
-  .portfolio-about-strip p:not(.portfolio-eyebrow) {
-    font-size: 13px;
   }
   .portfolio-writing {
     grid-template-columns: 1fr;
@@ -1031,6 +925,20 @@
     transform: none;
   }
 }
+@media (max-width: 380px) {
+  .portfolio-wordmark-copy {
+    max-width: 88px;
+    font-size: 12px;
+    line-height: 1.2;
+  }
+  .portfolio-wordmark-copy > small {
+    display: none;
+  }
+  .portfolio-monogram {
+    width: 28px;
+    height: 30px;
+  }
+}
 @media print {
   .portfolio-header,
   .project-controls {
@@ -1042,13 +950,16 @@
   .project-tile {
     break-inside: avoid;
   }
+  .project-grid .project-tile {
+    grid-column: auto;
+    margin-top: 0;
+  }
   .portfolio-disclosure {
     overflow: visible;
   }
   .portfolio-disclosure:not([open]) > :not(summary) {
     display: block;
   }
-  .portfolio-home-opening,
   .portfolio-page-intro {
     padding-top: 20px;
   }
@@ -1526,16 +1437,26 @@
 /* About and contact: useful facts and actions precede optional background. */
 .about-opening {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 300px;
-  gap: 70px;
-  align-items: center;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  gap: 0 70px;
+  align-items: start;
   padding-block: 114px 40px;
 }
+.about-opening > div {
+  display: contents;
+}
+.about-opening > div > * {
+  grid-column: 1;
+}
 .about-opening h1 {
-  font-size: clamp(38px, 5vw, 65px);
+  font-size: clamp(48px, 6.5vw, 85px);
   line-height: 1.06;
   letter-spacing: -0.05em;
   margin: 0 0 23px;
+}
+.about-opening h1 em {
+  font-family: var(--font-editorial), Georgia, serif;
+  font-weight: 400;
 }
 .about-opening .about-lead {
   font-size: 20px;
@@ -1552,18 +1473,22 @@
 }
 .about-opening figure {
   margin: 0;
+  grid-column: 2;
+  grid-row: 1 / span 6;
+  padding: 15px;
+  background: #d9e3f5;
 }
 .about-opening img {
   display: block;
   width: 100%;
-  height: 345px;
+  height: 400px;
   object-fit: cover;
   object-position: 50% 20%;
-  border-radius: 13px;
+  border-radius: 0;
 }
 .about-opening figcaption {
   font-size: 11px;
-  color: var(--secondary-label);
+  color: #34425b;
   margin-top: 10px;
 }
 .about-facts {
@@ -1594,8 +1519,8 @@
 }
 .about-education-grid article {
   padding: 26px;
-  border: 1px solid var(--separator);
-  border-radius: 11px;
+  border: 0;
+  border-top: 1px solid var(--separator);
 }
 .about-education-grid h3 {
   font-size: 23px;
@@ -1667,8 +1592,22 @@
 }
 .contact-email-card {
   border: 1px solid var(--separator);
-  border-radius: 12px;
+  border-radius: 2px;
   padding: 30px;
+  background: #2348d7;
+  color: #fff;
+  border-color: #2348d7;
+}
+.contact-email-card > .portfolio-eyebrow {
+  color: #d8e1ff;
+}
+.contact-email-card .portfolio-button {
+  background: #fff;
+  border-color: #fff;
+  color: #2348d7;
+}
+.contact-email-card :is(a, button):focus-visible {
+  outline-color: #fff;
 }
 .contact-email-address {
   display: block;
@@ -1677,11 +1616,12 @@
   letter-spacing: -0.04em;
   overflow-wrap: anywhere;
   margin: 4px 0 24px;
+  color: #fff;
 }
 .contact-email-card > p {
   font-size: 12px;
   line-height: 1.9;
-  color: var(--secondary-label);
+  color: #d8e1ff;
   margin-top: 24px;
 }
 .contact-secondary {
@@ -1693,8 +1633,9 @@
   flex-direction: column;
   justify-content: center;
   padding: 19px 24px;
-  border: 1px solid var(--separator);
-  border-radius: 10px;
+  border: 0;
+  border-bottom: 1px solid var(--separator);
+  border-radius: 0;
   transition:
     background 0.18s,
     border-color 0.18s;
@@ -1734,29 +1675,41 @@
 }
 @media (max-width: 760px) {
   .about-opening {
-    grid-template-columns: 1fr;
-    gap: 25px;
+    grid-template-columns: minmax(0, 1fr) 120px;
+    gap: 0 20px;
     padding-top: 96px;
   }
   .about-opening .about-lead {
     font-size: 18px;
+    margin-top: 25px;
+  }
+  .about-opening > div > * {
+    grid-column: 1 / -1;
+  }
+  .about-opening > div > .portfolio-eyebrow {
+    grid-column: 1;
+    grid-row: 1;
   }
   .about-opening figure {
-    display: grid;
-    grid-template-columns: 130px 1fr;
-    gap: 18px;
-    align-items: end;
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    padding: 8px;
   }
   .about-opening img {
-    width: 130px;
-    height: 160px;
+    width: 100%;
+    height: 150px;
   }
   .about-opening figcaption {
-    max-width: 18ch;
-    line-height: 1.7;
+    display: none;
   }
   .about-opening h1 {
-    font-size: 42px;
+    grid-column: 1;
+    grid-row: 2;
+    font-size: 50px;
+    margin-bottom: 0;
+  }
+  .about-opening h1 em {
+    display: block;
   }
   .about-education-grid {
     grid-template-columns: 1fr;
@@ -1984,17 +1937,17 @@
   gap: 8px;
   min-height: 46px;
   padding: 12px 16px;
-  border: 1px solid var(--separator);
+  border: 1px solid #ffffff6b;
   border-radius: 8px;
-  background: var(--background);
-  color: var(--label);
+  background: transparent;
+  color: #fff;
   font: inherit;
   font-size: 12px;
 }
 .contact-email-card .copy-email:hover {
   transform: none;
-  border-color: var(--accent);
-  background: color-mix(in srgb, var(--accent) 5%, var(--background));
+  border-color: #fff;
+  background: #ffffff14;
 }
 .portfolio-disclosure .model-explorer p {
   color: #b4c5d8;
@@ -2020,6 +1973,7 @@
   font-size: 12px;
   line-height: 1.5;
   margin-top: 8px;
+  color: #fff;
 }
 
 .model-view-modes {
