@@ -1,6 +1,7 @@
-import { NativeLink } from '@/components/native-link';
-import { PageFooter } from '@/components/page-footer';
-import { SiteHeader } from '@/components/site-header';
+import { NativeLink } from "@/components/native-link";
+import { PageFooter } from "@/components/page-footer";
+import { SiteHeader } from "@/components/site-header";
+import { EditorialTitle } from "@/components/editorial-title";
 
 export default function NotFound() {
   return (
@@ -11,24 +12,20 @@ export default function NotFound() {
       <SiteHeader />
 
       <main id="main-content">
-        <section className="page-hero">
-          <div className="shell">
-            <small>404 · Page not found</small>
-            <h1>
-              This page is not part of
-              <br />
-              <span>the published portfolio.</span>
-            </h1>
+        <section className="shell portfolio-page-intro">
+          <div>
+            <p className="portfolio-eyebrow">404 · Page not found</p>
+            <EditorialTitle text="Page not found." />
             <p>
-              The address may have changed. Return to the case index or the portfolio
-              home page.
+              The address may have changed. Return to the projects or the
+              portfolio home page.
             </p>
             <div className="profile-links">
               <NativeLink className="arrow-link" href="/">
                 Portfolio home
               </NativeLink>
               <NativeLink className="arrow-link" href="/work">
-                View work
+                View projects
               </NativeLink>
             </div>
           </div>

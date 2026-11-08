@@ -1,3 +1,4 @@
+import { EditorialTitle } from "@/components/editorial-title";
 import { ModelExplorer } from "@/components/model-explorer";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -106,7 +107,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
           <div className="study-opening">
             <div>
               <p className="portfolio-eyebrow">{project.label}</p>
-              <h1>{project.name}</h1>
+              <EditorialTitle text={project.name} />
               <p className="study-question">{summary.headline}</p>
               <p className="study-result">{summary.result}</p>
               <a className="portfolio-button" href="#evidence">

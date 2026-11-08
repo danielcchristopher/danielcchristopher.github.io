@@ -1,3 +1,4 @@
+import { EditorialTitle } from "@/components/editorial-title";
 import { pageMetadata } from "@/lib/page-metadata";
 import { SiteHeader } from "@/components/site-header";
 import { PageFooter } from "@/components/page-footer";
@@ -25,7 +26,7 @@ export default function SiteBuildPage() {
               <p className="portfolio-eyebrow">
                 Independent digital build · ongoing
               </p>
-              <h1>This portfolio.</h1>
+              <EditorialTitle text="This portfolio." />
               <p className="study-question">
                 A place to explore what I’ve made.
               </p>

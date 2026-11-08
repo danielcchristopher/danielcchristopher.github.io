@@ -4,6 +4,7 @@ import { SiteHeader } from "@/components/site-header";
 import { PageFooter } from "@/components/page-footer";
 import { NativeLink } from "@/components/native-link";
 import { OlistReconstructionDashboard } from "@/components/olist-reconstruction-dashboard";
+import { EditorialTitle } from "@/components/editorial-title";
 
 export const metadata: Metadata = {
   ...pageMetadata(
@@ -21,25 +22,29 @@ export default function OlistReconstructionPage() {
       </a>
       <SiteHeader />
       <main id="main-content">
-        <section className="page-hero">
-          <div className="shell">
-            <small>Interactive analysis · MSc team project data</small>
-            <h1>
-              Olist, revisited.
-              <br />
-              <span>Explore orders and delivery timing.</span>
-            </h1>
-            <p>
+        <section className="shell portfolio-page-intro analysis-intro">
+          <NativeLink href="/work" className="portfolio-text-link">
+            ← All projects
+          </NativeLink>
+          <div>
+            <p className="portfolio-eyebrow">
+              Interactive analysis · MSc team project data
+            </p>
+            <EditorialTitle text="Olist, revisited." />
+            <p className="study-question">
+              Explore orders and delivery timing.
+            </p>
+            <p className="study-result">
               I rebuilt the analysis in Python from our team’s cleaned workbook.
               Explore purchase periods, delivery timing, categories and customer
               geography below.
             </p>
-            <p>
+            <p className="study-scope">
               <strong>My part.</strong> The original Power BI work was a team
               project. This Python rebuild and interactive dashboard are my
               independent follow on work.
             </p>
-            <NativeLink className="arrow-link" href="/powerbi">
+            <NativeLink className="portfolio-text-link" href="/powerbi">
               View the original MSc team project case study ↗
             </NativeLink>
           </div>

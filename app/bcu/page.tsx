@@ -1,3 +1,4 @@
+import { EditorialTitle } from "@/components/editorial-title";
 import { pageMetadata } from "@/lib/page-metadata";
 import { PageFooter } from "@/components/page-footer";
 import { SiteHeader } from "@/components/site-header";
@@ -54,7 +55,7 @@ export default function BcuPage() {
           <p className="portfolio-eyebrow">
             BA (Hons) Digital Marketing · Birmingham City University
           </p>
-          <h1>Marketing projects.</h1>
+          <EditorialTitle text="Marketing projects." />
           <p>
             Audience research and campaign planning from my degree. These are
             coursework proposals, with contributions and limits identified.

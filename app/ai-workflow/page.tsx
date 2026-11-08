@@ -1,3 +1,4 @@
+import { EditorialTitle } from "@/components/editorial-title";
 import { pageMetadata } from "@/lib/page-metadata";
 import { SiteHeader } from "@/components/site-header";
 import { PageFooter } from "@/components/page-footer";
@@ -17,7 +18,7 @@ export default function AiWorkflowPage() {
       <main id="main-content">
         <section className="shell portfolio-page-intro">
           <p className="portfolio-eyebrow">Development approach</p>
-          <h1>How I work with AI.</h1>
+          <EditorialTitle text="How I work with AI." />
           <p>
             I use AI assistance for research, drafting and development. I remain
             responsible for the sources, decisions and claims in the finished

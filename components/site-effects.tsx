@@ -1,7 +1,59 @@
 "use client";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 export function SiteEffects() {
+  const spotlight = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const light = spotlight.current;
+    if (!light) return;
+    const preference = matchMedia(
+      "(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)",
+    );
+    let frame = 0;
+    let x = 0;
+    let y = 0;
+    const hide = () => {
+      if (frame) cancelAnimationFrame(frame);
+      frame = 0;
+      delete light.dataset.active;
+    };
+    const move = (event: PointerEvent) => {
+      if (
+        !preference.matches ||
+        document.hidden ||
+        event.pointerType === "touch"
+      )
+        return;
+      x = event.clientX;
+      y = event.clientY;
+      if (frame) return;
+      frame = requestAnimationFrame(() => {
+        light.style.setProperty("--spotlight-x", `${x}px`);
+        light.style.setProperty("--spotlight-y", `${y}px`);
+        light.dataset.active = "true";
+        frame = 0;
+      });
+    };
+    const leave = (event: PointerEvent) => {
+      if (!event.relatedTarget) hide();
+    };
+    const visibility = () => {
+      if (document.hidden) hide();
+    };
+    document.addEventListener("pointermove", move, { passive: true });
+    document.addEventListener("pointerout", leave);
+    document.addEventListener("visibilitychange", visibility);
+    window.addEventListener("blur", hide);
+    preference.addEventListener("change", hide);
+    return () => {
+      hide();
+      document.removeEventListener("pointermove", move);
+      document.removeEventListener("pointerout", leave);
+      document.removeEventListener("visibilitychange", visibility);
+      window.removeEventListener("blur", hide);
+      preference.removeEventListener("change", hide);
+    };
+  }, []);
   useEffect(() => {
     let frame = 0;
     const revealTarget = (hash: string) => {
@@ -67,8 +119,11 @@ export function SiteEffects() {
     };
   }, []);
   return (
-    <div className="scroll-progress" aria-hidden="true">
-      <span />
-    </div>
+    <>
+      <div className="scroll-progress" aria-hidden="true">
+        <span />
+      </div>
+      <div ref={spotlight} className="cursor-spotlight" aria-hidden="true" />
+    </>
   );
 }

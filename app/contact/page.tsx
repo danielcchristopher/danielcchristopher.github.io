@@ -1,3 +1,4 @@
+import { EditorialTitle } from "@/components/editorial-title";
 import { publicPath } from "@/lib/paths";
 import { pageMetadata } from "@/lib/page-metadata";
 import { CopyEmail } from "@/components/copy-email";
@@ -19,7 +20,7 @@ export default function ContactPage() {
       <main id="main-content" className="portfolio-contact">
         <section className="shell portfolio-page-intro">
           <p className="portfolio-eyebrow">Contact</p>
-          <h1>Get in touch.</h1>
+          <EditorialTitle text="Get in touch." />
           <p>
             I’m open to analyst, digital marketing and related opportunities.
             Have a role, project or idea in mind?

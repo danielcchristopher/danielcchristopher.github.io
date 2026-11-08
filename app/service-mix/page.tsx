@@ -1,3 +1,4 @@
+import { EditorialTitle } from "@/components/editorial-title";
 import { pageMetadata } from "@/lib/page-metadata";
 import { SiteHeader } from "@/components/site-header";
 import { PageFooter } from "@/components/page-footer";
@@ -25,7 +26,7 @@ export default function ServiceMixPage() {
               <p className="portfolio-eyebrow">
                 Independent public data analysis · Python
               </p>
-              <h1>Restaurant service mix.</h1>
+              <EditorialTitle text="Restaurant service mix." />
               <p className="study-question">
                 How do lunch and dinner bills differ?
               </p>

@@ -11,7 +11,7 @@
   min-height: 40px;
   padding: 8px 13px;
   border: 1px solid var(--separator);
-  border-radius: 7px;
+  border-radius: var(--portfolio-radius);
   font-size: 12px;
 }
 .marketing-jump-links a:hover {
@@ -55,11 +55,6 @@
   line-height: 1.7;
   max-width: 48ch;
   margin: 7px 0 0;
-}
-.marketing-project .evidence-preview {
-  border: 1px solid var(--separator);
-  border-radius: 12px;
-  overflow: hidden;
 }
 .marketing-scope {
   font-size: 12px;

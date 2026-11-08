@@ -6,9 +6,6 @@ html { scrollbar-gutter: stable; }
 .snapshot-card, .snapshot-card:hover { transform: none; box-shadow: none; }
 .profile-opening-links a:focus-visible { outline-offset: 6px; }
 .profile-portrait { overflow: hidden; }
-@media (hover: none), (pointer: coarse) {
-  .cursor-spotlight { display: none; }
-}
 @media (prefers-reduced-motion: reduce) {
   .profile-opening-links a, .contact-row, .work-row, .case-pagination-card { transition: none; }
 }

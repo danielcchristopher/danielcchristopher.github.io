@@ -30,6 +30,9 @@ repository name as the base path for a project site.
 The main portfolio layouts and shared interaction states live in `app/portfolio.css`.
 The personal cover and selected project compositions use `app/folio-cover.css`,
 with the selectable project preview in `components/portfolio-cover.tsx`.
+Shared page titles use `components/editorial-title.tsx`. The pointer light and
+anchor behaviour live in `components/site-effects.tsx`. Shared title, preview
+frame and footer styles have one owner in `app/portfolio.css`.
 Marketing narratives use `app/bcu.css`. Original analytical charts retain their
 existing component styles. The former entry page stylesheet has been replaced.
 

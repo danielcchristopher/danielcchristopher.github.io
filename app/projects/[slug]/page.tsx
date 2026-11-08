@@ -1,3 +1,4 @@
+import { EditorialTitle } from "@/components/editorial-title";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { NativeLink } from "@/components/native-link";
@@ -85,7 +86,7 @@ export default async function OperationalProjectPage({ params }: PageProps) {
                   ? "Independent dispatch prototype"
                   : "Independent planning prototype"}
               </p>
-              <h1>{project.name}</h1>
+              <EditorialTitle text={project.name} />
               <p className="visual-project-lead">
                 {isRoute
                   ? "One vehicle fault. Four dispatch plans. A decision you can explore."

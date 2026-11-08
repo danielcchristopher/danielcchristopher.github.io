@@ -2,6 +2,8 @@ import { pageMetadata } from "@/lib/page-metadata";
 import { NativeLink } from "@/components/native-link";
 import { PageFooter } from "@/components/page-footer";
 import { SiteHeader } from "@/components/site-header";
+import { EditorialTitle } from "@/components/editorial-title";
+import { ProjectVisual } from "@/components/project-visual";
 
 export const metadata = pageMetadata(
   "MSc dissertation",
@@ -51,22 +53,28 @@ export default function DissertationPage() {
       <SiteHeader />
 
       <main id="main-content">
-        <section className="page-hero research-hero">
-          <div className="shell">
-            <small>
-              MSc dissertation · individual research · submitted August 2026
-            </small>
-            <h1>
-              Personalisation and loyalty.
-              <br />
-              <span>Where does trust fit?</span>
-            </h1>
-            <p>
-              My individual MSc dissertation examined the relationship using 139
-              eligible survey responses. Trust remained material in the joint
-              loyalty model. The findings show associations, not proof of
-              causation.
-            </p>
+        <section className="shell study-header research-intro">
+          <NativeLink href="/work" className="portfolio-text-link">
+            ← All projects
+          </NativeLink>
+          <div className="study-opening">
+            <div>
+              <p className="portfolio-eyebrow">
+                MSc dissertation · individual research · submitted August 2026
+              </p>
+              <EditorialTitle text="Personalisation and loyalty." />
+              <p className="study-question">Where does trust fit?</p>
+              <p className="study-result">
+                My individual MSc dissertation examined the relationship using
+                139 eligible survey responses. Trust remained material in the
+                joint loyalty model. The findings show associations, not proof
+                of causation.
+              </p>
+              <a href="#research-results" className="portfolio-button">
+                Inspect the results ↓
+              </a>
+            </div>
+            <ProjectVisual kind="trust" priority />
           </div>
         </section>
 
@@ -107,7 +115,7 @@ export default function DissertationPage() {
           </div>
         </section>
 
-        <section className="results-section">
+        <section className="results-section" id="research-results">
           <div className="shell results-grid" data-reveal>
             <div>
               <p className="overline">Selected results</p>

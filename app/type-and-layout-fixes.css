@@ -14,10 +14,6 @@ main :is(p, li, dd, figcaption) { overflow-wrap: break-word; }
   line-height: 1.7;
   text-align: start;
 }
-:is(.page-hero, .case-hero) > .shell {
-  width: min(calc(100% - 2.5rem), var(--content));
-  margin-inline: auto;
-}
 .hero-title { max-width: 100%; line-height: 1.06; }
 .hero-title > span { display: block; min-width: 0; }
 .hero-title .secondary { max-width: min(100%, 34ch); font-size: clamp(1.65rem, 3.5vw, 3rem); line-height: 1.14; text-wrap: pretty; }
@@ -29,8 +25,6 @@ main :is(p, li, dd, figcaption) { overflow-wrap: break-word; }
 .profile-copy { max-width: 64ch; }
 .profile-hero .profile-opening h1 { overflow-wrap: break-word; text-wrap: pretty; line-height: 1.08; }
 .profile-hero .profile-opening h1 span { line-height: 1.14; }
-.page-hero h1 { max-width: 100%; line-height: 1.06; }
-.page-hero h1 span { line-height: 1.14; }
 .case-hero h1 { max-width: 100%; line-height: 1.08; }
 .writing-heading, .visual-methods-heading { align-items: start; }
 .writing-grid > article { min-width: 0; }
@@ -40,8 +34,7 @@ main :is(p, li, dd, figcaption) { overflow-wrap: break-word; }
 /* Independent digital work: real site evidence, not a placeholder client case. */
 .digital-feature { padding: clamp(4.5rem, 8vw, 8rem) 0; border-block: 1px solid var(--separator); }
 .digital-feature-grid { display: grid; grid-template-columns: minmax(0,1.15fr) minmax(0,.85fr); align-items: start; gap: clamp(2.5rem,7vw,7rem); }
-.digital-feature-copy h2, .work-digital-heading h2, .work-index-intro h2,
-.site-build-intro h2, .site-build-close h2 {
+.digital-feature-copy h2, .work-digital-heading h2, .work-index-intro h2, .site-build-intro h2, .site-build-close h2 {
   max-width: 16ch; margin: .9rem 0 1.25rem;
   font-size: clamp(2.15rem,5.1vw,5.1rem); line-height: 1.09;
   letter-spacing: -.045em; text-wrap: pretty;
@@ -92,15 +85,14 @@ main :is(p, li, dd, figcaption) { overflow-wrap: break-word; }
   .hero-title .secondary { max-width: 100%; }
 }
 @media (max-width: 760px) {
-  .shell, .chapter-inner, .footer-inner, .header-inner,
-  :is(.page-hero,.case-hero) > .shell { width: calc(100% - 2.5rem); }
+  .shell, .chapter-inner, .footer-inner, .header-inner { width: calc(100% - 2.5rem); }
   .hero-kicker { flex-wrap: wrap; gap: .75rem 1.3rem; }
   .hero-footer { grid-template-columns: minmax(0,1fr); align-items: start; gap: 1.5rem; }
   .chapter-copy h2 { max-width: 100%; }
   .chapter-copy h2 br { display: none; }
   .chapter-copy h2 span { display: block; margin-top: .15em; }
   .profile-feature h2 { max-width: 100%; }
-  .profile-hero .profile-opening h1, .page-hero h1, .case-hero h1 { text-wrap: pretty; }
+  .profile-hero .profile-opening h1, .case-hero h1 { text-wrap: pretty; }
   .work-digital-grid, .site-build-grid { grid-template-columns: minmax(0,1fr); }
   .work-digital-grid { gap: 2.25rem; }
   .digital-feature-details > div { grid-template-columns: minmax(0,.35fr) minmax(0,1fr); gap: 1rem; }
@@ -109,7 +101,7 @@ main :is(p, li, dd, figcaption) { overflow-wrap: break-word; }
 @media (max-width: 420px) {
   .hero-title { font-size: clamp(2.6rem,11.5vw,3.4rem); }
   .hero-title .secondary { font-size: clamp(1.65rem,7.3vw,2.2rem); letter-spacing: -.025em; line-height: 1.19; }
-  .profile-hero .profile-opening h1, .page-hero h1, .case-hero h1 {
+  .profile-hero .profile-opening h1, .case-hero h1 {
     font-size: clamp(2.15rem,9vw,3.1rem); letter-spacing: -.035em; line-height: 1.12;
   }
   .digital-feature-details > div { grid-template-columns: minmax(0,1fr); gap: .5rem; }

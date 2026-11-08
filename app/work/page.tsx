@@ -1,3 +1,4 @@
+import { EditorialTitle } from "@/components/editorial-title";
 import { pageMetadata } from "@/lib/page-metadata";
 import { PageFooter } from "@/components/page-footer";
 import { SiteHeader } from "@/components/site-header";
@@ -20,7 +21,7 @@ export default function WorkPage() {
       <main id="main-content" className="projects-page">
         <section className="shell portfolio-page-intro">
           <p className="portfolio-eyebrow">The collection</p>
-          <h1>Projects.</h1>
+          <EditorialTitle text="Projects." />
           <p>Digital builds, marketing concepts and research.</p>
         </section>
         <section
