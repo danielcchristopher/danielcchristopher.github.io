@@ -1,5 +1,8 @@
 /* Current portfolio system. Legacy case visualizations keep their own component styles. */
 .portfolio-site {
+  min-height: 100svh;
+  background-image: var(--folio-canvas);
+  background-attachment: fixed;
   --portfolio-radius: 2px;
   --accent-solid: #2348d7;
   --accent-solid-text: #ffffff;
@@ -14,9 +17,9 @@
   max-width: 24ch;
   font-family: var(--font-grotesk), system-ui, sans-serif;
   font-size: var(--folio-title-size);
-  font-weight: 700;
-  line-height: 1.08;
-  letter-spacing: -0.05em;
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
   overflow-wrap: break-word;
 }
 .portfolio-title em {
@@ -56,7 +59,7 @@
 .page-footer {
   padding: 42px 0 20px;
   border-top: 1px solid var(--separator);
-  background: color-mix(in srgb, var(--accent) 3%, var(--background));
+  background: var(--folio-footer-gradient);
   color: var(--label);
 }
 .page-footer-inner {
@@ -193,7 +196,7 @@
   line-height: 1.7;
 }
 .olist-dash__kpis > div:first-child {
-  background: #2348d7;
+  background: var(--folio-feature-gradient);
   color: #fff;
 }
 .olist-dash__kpis strong {
@@ -206,7 +209,7 @@
   color: #e0e7ff;
 }
 .olist-dash__period button[aria-pressed="true"] {
-  background: #2348d7;
+  background: var(--folio-feature-gradient);
   border-color: #2348d7;
   color: #fff;
 }
@@ -303,7 +306,7 @@
   height: 38px;
   font-size: 23px;
   letter-spacing: -0.09em;
-  background: #2348d7;
+  background: var(--folio-feature-gradient);
   color: #fff;
 }
 .portfolio-wordmark-copy > small {
@@ -338,7 +341,9 @@
     color 0.18s;
 }
 .portfolio-desktop-nav a:hover,
-.portfolio-desktop-nav a[aria-current] {
+.portfolio-desktop-nav a[aria-current],
+.portfolio-header .theme-switch:hover,
+.portfolio-header .command-trigger:hover {
   color: var(--label);
   border-color: var(--accent);
 }
@@ -465,7 +470,7 @@
   border-radius: 2px;
   padding: 12px 18px;
   min-height: 46px;
-  background: var(--accent-solid);
+  background: var(--folio-action-gradient);
   color: var(--accent-solid-text);
   font-size: 13px;
   line-height: 1.5;
@@ -1197,10 +1202,12 @@
   margin-top: 35px;
 }
 .visual-project-lead {
-  font-family: var(--font-editorial), Georgia, serif;
-  font-style: italic;
+  font-family: var(--font-grotesk), system-ui, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: -0.025em;
   font-size: clamp(25px, 2.4vw, 31px);
-  line-height: 1.3;
+  line-height: 1.4;
   max-width: 28ch;
   color: var(--secondary-label);
 }
@@ -1424,10 +1431,12 @@
   margin-top: 24px;
 }
 .study-question {
-  font-family: var(--font-editorial), Georgia, serif;
-  font-style: italic;
+  font-family: var(--font-grotesk), system-ui, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: -0.025em;
   font-size: 28px;
-  line-height: 1.25;
+  line-height: 1.35;
   max-width: 35ch;
   margin: 0 0 16px;
 }
@@ -1788,7 +1797,7 @@
   border: 1px solid var(--separator);
   border-radius: 2px;
   padding: 30px;
-  background: #2348d7;
+  background: var(--folio-feature-gradient);
   color: #fff;
   border-color: #2348d7;
 }
@@ -2191,4 +2200,10 @@
 }
 .model-explorer .model-static {
   max-height: 240px;
+}
+
+@media (prefers-contrast: more) {
+  .portfolio-site {
+    background-image: none;
+  }
 }

@@ -13,19 +13,10 @@ import "./operational-projects.css";
 import "./portfolio.css";
 import "./folio-cover.css";
 
-const grotesk = localFont({
-  src: [
-    {
-      path: "../public/fonts/space-grotesk-400.woff2",
-      weight: "400",
-      style: "normal",
-    },
-    {
-      path: "../public/fonts/space-grotesk-700.woff2",
-      weight: "700",
-      style: "normal",
-    },
-  ],
+const manrope = localFont({
+  src: "../public/fonts/manrope-variable.woff2",
+  weight: "200 800",
+  style: "normal",
   variable: "--font-grotesk",
   display: "swap",
 });
@@ -35,7 +26,6 @@ const newsreader = localFont({
   style: "italic",
   variable: "--font-editorial",
   display: "swap",
-  preload: false,
 });
 
 const siteUrl = "https://danielcchristopher.github.io";
@@ -127,7 +117,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${grotesk.variable} ${newsreader.variable}`}
+      className={`${manrope.variable} ${newsreader.variable}`}
       suppressHydrationWarning
     >
       <head>

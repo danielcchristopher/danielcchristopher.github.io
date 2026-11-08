@@ -1,10 +1,14 @@
 :root {
   color-scheme: light dark;
-  --background: #ffffff;
-  --label: #000000;
-  --secondary-label: #51525b;
-  --tertiary-label: #6b6c76;
-  --separator: rgba(60, 60, 67, 0.28);
+  --background: #f1f5fb;
+  --folio-canvas: radial-gradient(ellipse at 88% 12%, #c9dfec99, transparent 55%), linear-gradient(118deg, #edf1fc 0%, #e9effb 36%, #f7f6f0 68%, #dfeee9 100%);
+  --folio-footer-gradient: linear-gradient(112deg, #e3eaf8, #eaf0f7 55%, #d8e9e2);
+  --folio-feature-gradient: linear-gradient(115deg, #2943bb 0%, #2456aa 55%, #155c64 100%);
+  --folio-action-gradient: linear-gradient(115deg, #2943bb, #2456aa 65%, #175e6a);
+  --label: #142339;
+  --secondary-label: #48576e;
+  --tertiary-label: #5c687b;
+  --separator: rgba(37, 65, 106, 0.25);
   --link: #075fc4;
   --accent: #155eef;
   --accent-solid: #155eef;
@@ -243,10 +247,8 @@ html[data-scrolled] .site-header {
 }
 
 .wordmark:hover,
-.menu-trigger:hover,
-.theme-switch:hover,
-.command-trigger:hover {
-  opacity: 0.48;
+.menu-trigger:hover {
+  opacity: 0.7;
 }
 
 .command-overlay {
@@ -4073,24 +4075,30 @@ a.contact-row:hover {
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #000000;
-    --label: #ffffff;
-    --secondary-label: #b8b9c3;
-    --tertiary-label: #9697a1;
-    --separator: rgba(255, 255, 255, 0.24);
-    --link: #2997ff;
-    --accent: #6f9fd8;
-    --material: rgba(0, 0, 0, 0.9);
+    --background: #101f38;
+    --label: #f4f7ff;
+    --secondary-label: #c1cde0;
+    --tertiary-label: #adbed5;
+    --separator: rgba(166, 192, 230, 0.28);
+    --link: #acd0ff;
+    --accent: #83b4ec;
+    --material: rgba(16, 31, 56, 0.94);
+    --folio-canvas: radial-gradient(ellipse at 88% 12%, #3765a34d, transparent 58%), linear-gradient(118deg, #101a32 0%, #19315a 36%, #173c55 70%, #17413f 100%);
+    --folio-footer-gradient: linear-gradient(112deg, #132543, #1c365a 55%, #1a4547);
   }
 }
 
 :root[data-theme="light"] {
   color-scheme: light;
-  --background: #ffffff;
-  --label: #000000;
-  --secondary-label: #51525b;
-  --tertiary-label: #6b6c76;
-  --separator: rgba(60, 60, 67, 0.28);
+  --background: #f1f5fb;
+  --folio-canvas: radial-gradient(ellipse at 88% 12%, #c9dfec99, transparent 55%), linear-gradient(118deg, #edf1fc 0%, #e9effb 36%, #f7f6f0 68%, #dfeee9 100%);
+  --folio-footer-gradient: linear-gradient(112deg, #e3eaf8, #eaf0f7 55%, #d8e9e2);
+  --folio-feature-gradient: linear-gradient(115deg, #2943bb 0%, #2456aa 55%, #155c64 100%);
+  --folio-action-gradient: linear-gradient(115deg, #2943bb, #2456aa 65%, #175e6a);
+  --label: #142339;
+  --secondary-label: #48576e;
+  --tertiary-label: #5c687b;
+  --separator: rgba(37, 65, 106, 0.25);
   --link: #075fc4;
   --accent: #155eef;
   --material: rgba(255, 255, 255, 0.92);
@@ -4098,14 +4106,16 @@ a.contact-row:hover {
 
 :root[data-theme="dark"] {
   color-scheme: dark;
-  --background: #000000;
-  --label: #ffffff;
-  --secondary-label: #b8b9c3;
-  --tertiary-label: #9697a1;
-  --separator: rgba(255, 255, 255, 0.24);
-  --link: #2997ff;
-  --accent: #6f9fd8;
-  --material: rgba(0, 0, 0, 0.9);
+  --background: #101f38;
+  --label: #f4f7ff;
+  --secondary-label: #c1cde0;
+  --tertiary-label: #adbed5;
+  --separator: rgba(166, 192, 230, 0.28);
+  --link: #acd0ff;
+  --accent: #83b4ec;
+  --material: rgba(16, 31, 56, 0.94);
+  --folio-canvas: radial-gradient(ellipse at 88% 12%, #3765a34d, transparent 58%), linear-gradient(118deg, #101a32 0%, #19315a 36%, #173c55 70%, #17413f 100%);
+  --folio-footer-gradient: linear-gradient(112deg, #132543, #1c365a 55%, #1a4547);
 }
 
 @media (max-width: 820px) {
