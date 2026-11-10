@@ -124,7 +124,7 @@ export default async function OperationalProjectPage({ params }: PageProps) {
           <p className="visual-project-scope">
             {isRoute
               ? "Independent demonstration for Kinaxia using simulated orders, costs and timings. No actual business results are claimed."
-              : "Inspired by a Kwik Fit interview assessment. The original appointment records and technician details remain private. This is not an official Kwik Fit product."}
+              : "Inspired by a Kwik Fit interview assessment. The demo uses technician labels and postcode districts, with no customer names or full addresses. This is not an official Kwik Fit product."}
           </p>
         </section>
         <section
@@ -313,7 +313,7 @@ export default async function OperationalProjectPage({ params }: PageProps) {
                 <NativeLink
                   className="portfolio-text-link"
                   href={project.demo}
-                  download="RouteAndMargin.html"
+                  download={project.demo.split("/").pop()}
                 >
                   Download the standalone HTML ↓
                 </NativeLink>

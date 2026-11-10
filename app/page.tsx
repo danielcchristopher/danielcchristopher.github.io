@@ -107,8 +107,7 @@ export default function Home() {
                   comparison changes.
                 </p>
                 <small>
-                  Illustrative comparison · original assessment records kept
-                  private
+                  Interactive prototype · district level locations
                 </small>
               </NativeLink>
             </article>

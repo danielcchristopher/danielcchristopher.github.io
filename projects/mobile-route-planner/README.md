@@ -4,7 +4,9 @@ An independent prototype inspired by a Kwik Fit interview assessment. It is not 
 
 ## Public evidence boundary
 
-This repository contains a method focused case study. The original HTML, appointment records, technician information and assessment files are not included. No customer or employee records have been copied into the public portfolio.
+[Open the interactive HTML demo](https://danielcchristopher.github.io/demos/MobileRoutePlanner.html) or download `public/demos/MobileRoutePlanner.html`.
+
+The demo uses letter labels for technicians and postcode district locations. It contains no customer names, full addresses or contact details. The original assessment files are not included.
 
 ## Comparison design
 
