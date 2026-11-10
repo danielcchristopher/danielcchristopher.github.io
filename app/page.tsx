@@ -17,7 +17,7 @@ export default function Home() {
         <section className="shell folio-cover">
           <div className="folio-imprint">
             <span>
-              Portfolio <span aria-hidden="true">/</span> 2026
+              Portfolio
             </span>
             <span>Manchester, UK</span>
           </div>
