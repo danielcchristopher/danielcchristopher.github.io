@@ -5,7 +5,6 @@ const buildDate = new Date();
 const formattedBuildDate = new Intl.DateTimeFormat("en-GB", {
   day: "numeric",
   month: "long",
-  year: "numeric",
   timeZone: "Europe/London",
 }).format(buildDate);
 const buildDateParts = new Intl.DateTimeFormat("en-GB", {
@@ -47,7 +46,7 @@ export function PageFooter() {
       </div>
       <div className="shell page-footer-meta">
         <span>Daniel Christopher</span>
-        <span>Manchester, UK · 2026</span>
+        <span>Manchester, UK</span>
         <span>
           Last updated <time dateTime={buildDateIso}>{formattedBuildDate}</time>
         </span>
