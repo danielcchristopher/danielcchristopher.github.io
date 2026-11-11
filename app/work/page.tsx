@@ -22,7 +22,7 @@ export default function WorkPage() {
         <section className="shell portfolio-page-intro">
           <p className="portfolio-eyebrow">The collection</p>
           <EditorialTitle text="Projects." />
-          <p>Digital builds, marketing concepts and research.</p>
+          <p>Digital builds, marketing campaigns, research and analysis, all in one place.</p>
         </section>
         <section
           className="shell portfolio-projects"

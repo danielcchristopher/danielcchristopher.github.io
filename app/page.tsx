@@ -10,7 +10,30 @@ import { portfolioProjects } from "@/lib/portfolio-projects";
 const countIn = (category: string) =>
   portfolioProjects.filter((project) => project.category === category).length;
 
-const toolkit = ["SQL", "Python", "Power BI", "Excel", "SPSS", "Google Analytics"];
+const toolkit = [
+  "SQL",
+  "Python",
+  "Power BI",
+  "Excel",
+  "SPSS",
+  "Google Analytics",
+  "Audience research",
+  "Campaign planning",
+];
+
+const proof = [
+  { value: String(portfolioProjects.length), label: "projects across data, marketing and builds" },
+  { value: "98,582", label: "orders explored in the Olist dashboard" },
+  { value: "139", label: "UK shoppers surveyed for my MSc dissertation" },
+  { value: "1,080", label: "scenario checks passed by Route & Margin" },
+];
+
+const method = [
+  { step: "Question", text: "Start with the decision someone actually has to make.", href: "/research-case", example: "Trust & loyalty" },
+  { step: "Evidence", text: "Gather the data, research or audience insight that bears on it.", href: "/bcu#mailchimp", example: "Campaign research" },
+  { step: "Build", text: "Turn it into something people can use: a model, tool or campaign.", href: "/projects/route-and-margin", example: "Route & Margin" },
+  { step: "Decide", text: "Show the trade offs plainly, with limits stated.", href: "/olist-reconstruction", example: "Olist dashboard" },
+];
 
 export default function Home() {
   return (
@@ -22,8 +45,8 @@ export default function Home() {
       <main id="main-content" className="portfolio-home">
         <section className="shell folio-cover">
           <div className="folio-imprint">
-            <span>Data and business analyst</span>
-            <span>Manchester, UK · Hybrid or remote</span>
+            <span>Analytics · Digital marketing · Digital builds</span>
+            <span>Manchester, UK</span>
           </div>
           <h1 className="folio-name">
             <em>Daniel</em> <span>Christopher.</span>
@@ -31,10 +54,11 @@ export default function Home() {
           <div className="folio-introduction">
             <div className="folio-pitch">
               <p>
-                MSc Business Analytics graduate. I turn operations, customer
-                and sales data into working tools and clear decisions.
+                MSc Business Analytics and BA Digital Marketing graduate. I
+                use data, research and creative thinking to build tools,
+                campaigns and insight people can act on.
               </p>
-              <ul className="folio-toolkit" aria-label="Core tools">
+              <ul className="folio-toolkit" aria-label="Skills and tools">
                 {toolkit.map((tool) => (
                   <li key={tool}>{tool}</li>
                 ))}
@@ -56,6 +80,14 @@ export default function Home() {
             </NativeLink>
           </div>
           <PortfolioCover />
+          <dl className="folio-proof">
+            {proof.map((item) => (
+              <div key={item.label}>
+                <dt>{item.value}</dt>
+                <dd>{item.label}</dd>
+              </div>
+            ))}
+          </dl>
         </section>
 
         <section
@@ -133,6 +165,27 @@ export default function Home() {
               </NativeLink>
             </article>
           </div>
+        </section>
+
+        <section className="shell folio-method" aria-labelledby="folio-method-title">
+          <header>
+            <span>How I work</span>
+            <h2 id="folio-method-title">
+              From question to <em>decision.</em>
+            </h2>
+          </header>
+          <ol>
+            {method.map((item, index) => (
+              <li key={item.step}>
+                <span>0{index + 1}</span>
+                <strong>{item.step}</strong>
+                <p>{item.text}</p>
+                <NativeLink href={item.href}>
+                  See it in {item.example} <span aria-hidden="true">↗</span>
+                </NativeLink>
+              </li>
+            ))}
+          </ol>
         </section>
 
         <section

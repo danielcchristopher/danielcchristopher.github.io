@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { NativeLink } from "@/components/native-link";
 import { OperationalFlow } from "@/components/operational-projects";
-import { ProjectVisual } from "@/components/project-visual";
+import { RouteDemoVideo } from "@/components/demo-video";
 import { PlanningComparison } from "@/components/planning-comparison";
 import { PageFooter } from "@/components/page-footer";
 import { SiteHeader } from "@/components/site-header";
@@ -115,7 +115,7 @@ export default async function OperationalProjectPage({ params }: PageProps) {
             </div>
             <div className="visual-project-preview">
               {isRoute ? (
-                <ProjectVisual kind="route" priority />
+                <RouteDemoVideo />
               ) : (
                 <PlanningComparison />
               )}

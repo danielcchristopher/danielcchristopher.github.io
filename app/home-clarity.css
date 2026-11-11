@@ -142,3 +142,224 @@
     gap: 4px;
   }
 }
+
+/* Live recording in the feature. */
+.cover-video {
+  margin: 0;
+  background: #fff;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 18px 40px #0a175066;
+}
+.cover-video video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 8 / 5;
+  object-fit: cover;
+  object-position: top left;
+  background: #eef2ff;
+}
+.cover-video figcaption {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 14px;
+  font-size: 10.5px;
+  color: #4a5268;
+}
+.cover-video figcaption strong {
+  color: #141e36;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+.cover-video figcaption strong::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #e5484d;
+  box-shadow: 0 0 0 3px #e5484d33;
+}
+
+/* Proof strip: real figures from the projects. */
+.folio-proof {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 0;
+  border-bottom: 1px solid var(--separator);
+}
+.folio-proof > div {
+  padding: 26px 22px 24px 0;
+}
+.folio-proof > div + div {
+  padding-left: 22px;
+  border-left: 1px solid var(--separator);
+}
+.folio-proof dt {
+  font-size: clamp(30px, 3.2vw, 44px);
+  letter-spacing: -0.045em;
+  line-height: 1;
+  font-weight: 500;
+}
+.folio-proof dd {
+  margin: 10px 0 0;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--secondary-label);
+  max-width: 24ch;
+}
+
+/* How I work. */
+.folio-method {
+  padding-block: 10px 70px;
+}
+.folio-method > header {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  align-items: baseline;
+  gap: 25px;
+  border-top: 1px solid var(--separator);
+  padding-top: 22px;
+  margin-bottom: 30px;
+}
+.folio-method > header > span {
+  font-size: 12px;
+  color: var(--secondary-label);
+}
+.folio-method h2 {
+  font-size: clamp(30px, 3.4vw, 48px);
+  line-height: 1.05;
+  letter-spacing: -0.05em;
+  font-weight: 400;
+  margin: 0;
+}
+.folio-method em {
+  font-family: var(--font-editorial), Georgia, serif;
+}
+.folio-method ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  counter-reset: none;
+}
+.folio-method li {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 22px 20px 20px;
+  background: color-mix(in srgb, var(--link) 5%, transparent);
+  border: 1px solid var(--separator);
+  border-radius: 8px;
+  position: relative;
+}
+.folio-method li > span {
+  font-size: 11px;
+  color: var(--link);
+}
+.folio-method li > strong {
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+}
+.folio-method li > p {
+  font-size: 13.5px;
+  line-height: 1.6;
+  margin: 0 0 6px;
+  color: var(--secondary-label);
+}
+.folio-method li > a {
+  margin-top: auto;
+  font-size: 12px;
+  color: var(--link);
+}
+.folio-method li > a:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.folio-method li:not(:last-child)::after {
+  content: "→";
+  position: absolute;
+  right: -12px;
+  top: 24px;
+  font-size: 13px;
+  color: var(--link);
+}
+
+@media (max-width: 900px) {
+  .folio-proof,
+  .folio-method ol {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .folio-proof > div:nth-child(3) {
+    padding-left: 0;
+    border-left: 0;
+  }
+  .folio-method li::after {
+    display: none;
+  }
+  .folio-method > header {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}
+@media (max-width: 480px) {
+  .folio-method ol {
+    grid-template-columns: 1fr;
+  }
+  .cover-video figcaption span {
+    display: none;
+  }
+}
+
+/* Work page: an even grid instead of a long zigzag. */
+.project-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 54px 32px;
+}
+.project-grid .project-tile,
+.project-grid .project-tile:nth-child(n) {
+  grid-column: auto;
+  margin-top: 0;
+}
+.project-tile-link {
+  display: flex;
+  flex-direction: column;
+}
+.project-tile-heading h3 {
+  font-size: clamp(21px, 1.8vw, 26px);
+  margin: 7px 0 16px;
+}
+.project-tile-link > .evidence-preview {
+  padding: 16px;
+  border-radius: 6px;
+}
+.project-tile-link > .evidence-preview .evidence-media {
+  aspect-ratio: 16 / 11;
+  min-height: 0;
+  max-height: none;
+  overflow: hidden;
+}
+.project-tile-copy p {
+  font-size: 13.5px;
+  margin-bottom: 10px;
+}
+@media (max-width: 1000px) {
+  .project-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 640px) {
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.folio-proof {
+  margin-top: 8px;
+}
+.visual-project-preview .cover-video {
+  box-shadow: 0 18px 40px #1a294533;
+}

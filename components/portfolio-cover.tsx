@@ -4,6 +4,7 @@ import { useState } from "react";
 import { NativeLink } from "@/components/native-link";
 import { ProjectVisual } from "@/components/project-visual";
 import type { ProjectVisualKind } from "@/lib/portfolio-projects";
+import { RouteDemoVideo } from "@/components/demo-video";
 
 const selections: {
   title: string;
@@ -83,7 +84,11 @@ export function PortfolioCover() {
           aria-label={`Explore ${project.title}`}
         >
           <div className="cover-artifact-inner" key={project.kind}>
-            <ProjectVisual kind={project.kind} priority />
+            {project.kind === "route" ? (
+              <RouteDemoVideo />
+            ) : (
+              <ProjectVisual kind={project.kind} priority />
+            )}
           </div>
         </NativeLink>
         <div
