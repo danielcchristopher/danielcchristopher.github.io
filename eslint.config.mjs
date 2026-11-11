@@ -11,7 +11,7 @@ const eslintConfig = defineConfig([
       '@next/next/no-html-link-for-pages': 'off',
     },
   },
-  globalIgnores(['.next/**', '.next-dev/**', 'out/**', 'node_modules/**', 'next-env.d.ts']),
+  globalIgnores(['.next/**', '.next-dev/**', 'out/**', 'node_modules/**', 'next-env.d.ts', 'public/bakery/**']),
 ]);
 
 export default eslintConfig;

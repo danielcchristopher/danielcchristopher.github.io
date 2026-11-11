@@ -61,6 +61,12 @@ const destinations = [
     type: "Individual case",
   },
   {
+    label: "Cotton & Crumb bakery",
+    detail: "Bakery brand and website with a working preorder system",
+    href: "/cotton-and-crumb",
+    type: "Digital project",
+  },
+  {
     label: "This portfolio website",
     detail: "Independent Next.js and TypeScript digital build",
     href: "/site-build",

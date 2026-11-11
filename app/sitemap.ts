@@ -19,6 +19,7 @@ const routes = [
   "/profile",
   "/contact",
   "/site-build",
+  "/cotton-and-crumb",
   "/ai-workflow",
   "/service-mix",
   "/olist-reconstruction",

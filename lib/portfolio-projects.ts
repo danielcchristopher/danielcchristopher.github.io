@@ -17,7 +17,8 @@ export type ProjectVisualKind =
   | "service"
   | "powerbi"
   | "decision"
-  | "peaky";
+  | "peaky"
+  | "bakery";
 export type PortfolioProject = {
   id: string;
   title: string;
@@ -39,6 +40,17 @@ export const portfolioProjects: PortfolioProject[] = [
     basis: "Independent prototype · simulated data",
     href: "/projects/route-and-margin",
     visual: "route",
+    featured: true,
+  },
+  {
+    id: "bakery",
+    title: "Cotton & Crumb",
+    category: "Digital builds",
+    summary:
+      "A bakery brand and website with a working preorder system and no backend.",
+    basis: "Independent design and build · fictional business",
+    href: "/cotton-and-crumb",
+    visual: "bakery",
     featured: true,
   },
   {

@@ -15,6 +15,13 @@ const originals: Partial<
     note: "Home page · independent digital build",
     screen: true,
   },
+  bakery: {
+    src: "/previews/cotton-and-crumb.jpg",
+    alt: "Cotton & Crumb home page with the headline Slow dough. Hard fire. Good bread., a Now baking ticket machine and an order cutoff countdown",
+    label: "Working website",
+    note: "Brand, design & preorder flow · fictional bakery",
+    screen: true,
+  },
   route: {
     src: "/previews/route-board.png",
     alt: "Route and Margin Routes view showing the reserve vehicle, four delivery stops and the simulated shift contribution",
