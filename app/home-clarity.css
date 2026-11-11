@@ -363,3 +363,48 @@
 .visual-project-preview .cover-video {
   box-shadow: 0 18px 40px #1a294533;
 }
+
+/* CV page. */
+.cv-page .portfolio-page-intro h1 {
+  font-size: clamp(48px, 7vw, 96px);
+  letter-spacing: -0.05em;
+  font-weight: 500;
+  margin: 10px 0 18px;
+}
+.cv-page .portfolio-page-intro h1 em {
+  font-family: var(--font-editorial), Georgia, serif;
+  font-weight: 400;
+}
+.cv-page .portfolio-inline-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 22px;
+  margin-top: 26px;
+}
+.cv-pages {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+  padding-block: 20px 90px;
+}
+.cv-pages a {
+  display: block;
+  background: #fff;
+  box-shadow: 0 18px 40px #1a294526;
+  border: 1px solid var(--separator);
+  transition: transform 0.25s;
+}
+.cv-pages a:hover {
+  transform: translateY(-4px);
+}
+.cv-pages img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+@media (max-width: 760px) {
+  .cv-pages {
+    grid-template-columns: 1fr;
+  }
+}

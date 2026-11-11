@@ -4,6 +4,7 @@ export function pageMetadata(
   title: string,
   description: string,
   path: string,
+  image = { url: "/og-daniel-christopher.png", alt: "Daniel Christopher’s portfolio" },
 ): Metadata {
   return {
     title,
@@ -18,10 +19,10 @@ export function pageMetadata(
       locale: "en_GB",
       images: [
         {
-          url: "/og-daniel-christopher.png",
+          url: image.url,
           width: 1200,
           height: 630,
-          alt: "Daniel Christopher’s portfolio",
+          alt: image.alt,
         },
       ],
     },
@@ -29,7 +30,7 @@ export function pageMetadata(
       card: "summary_large_image",
       title: `${title} | Daniel Christopher`,
       description,
-      images: ["/og-daniel-christopher.png"],
+      images: [image.url],
     },
   };
 }

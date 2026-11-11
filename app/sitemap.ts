@@ -20,6 +20,7 @@ const routes = [
   "/contact",
   "/site-build",
   "/cotton-and-crumb",
+  "/cv",
   "/ai-workflow",
   "/service-mix",
   "/olist-reconstruction",

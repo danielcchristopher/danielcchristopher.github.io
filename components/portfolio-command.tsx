@@ -61,6 +61,12 @@ const destinations = [
     type: "Individual case",
   },
   {
+    label: "CV",
+    detail: "View or download my two page CV",
+    href: "/cv",
+    type: "Page",
+  },
+  {
     label: "Cotton & Crumb bakery",
     detail: "Bakery brand and website with a working preorder system",
     href: "/cotton-and-crumb",
