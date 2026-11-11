@@ -106,7 +106,7 @@ export default function ProfilePage() {
           </div>
         </section>
         <section className="shell about-detail">
-          <details className="portfolio-disclosure" id="background">
+          <details className="portfolio-disclosure" id="background" open>
             <summary>
               <span>
                 <strong>My story and experience</strong>
