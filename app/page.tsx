@@ -32,7 +32,7 @@ const toolGroups = [
   },
   {
     title: "Digital marketing",
-    tools: ["Google Analytics (GA4)", "Google Ads", "HubSpot", "Canva", "Audience research", "Content planning", "Campaign planning", "Market research"],
+    tools: ["Google Analytics (GA4)", "Google Ads", "HubSpot", "Mailchimp", "Shopify", "Canva", "Audience research", "Content planning", "Campaign planning", "Market research"],
   },
   {
     title: "Web and digital builds",
