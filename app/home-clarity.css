@@ -1,0 +1,144 @@
+/* Home page clarity pass: tighter hero, readable feature, visible skills. */
+.folio-cover {
+  padding-top: 92px;
+}
+.folio-imprint > span:first-child {
+  color: var(--link);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.folio-name {
+  justify-content: flex-start;
+  gap: 0.22em;
+  font-size: clamp(52px, 6.4vw, 92px);
+  margin: 14px 0 6px;
+}
+.folio-introduction {
+  align-items: flex-end;
+  margin: 10px 0 28px;
+}
+.folio-pitch > p {
+  font-size: clamp(16px, 1.45vw, 19px);
+  line-height: 1.55;
+  margin: 0 0 14px;
+  max-width: 44ch;
+}
+.folio-toolkit,
+.folio-tags,
+.cover-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.folio-toolkit li,
+.folio-tags li {
+  font-size: 11.5px;
+  line-height: 1;
+  padding: 7px 10px;
+  border: 1px solid var(--separator);
+  border-radius: 999px;
+  color: var(--label, inherit);
+  background: color-mix(in srgb, var(--link) 6%, transparent);
+}
+.folio-tags {
+  margin: 4px 0 12px;
+}
+.cover-tags {
+  margin-top: 16px;
+}
+.cover-tags li {
+  font-size: 10.5px;
+  line-height: 1;
+  padding: 6px 9px;
+  border: 1px solid #ffffff59;
+  border-radius: 999px;
+  color: #fff;
+  background: #ffffff14;
+}
+
+/* Feature: straight and larger so the working tool is legible. */
+.cover-showcase {
+  padding: 34px;
+}
+.cover-project {
+  grid-template-columns: minmax(0, 1.9fr) minmax(0, 1fr);
+  gap: 34px;
+}
+.cover-artifact-inner {
+  transform: none;
+}
+.cover-artifact:hover .cover-artifact-inner,
+.cover-artifact:focus-visible .cover-artifact-inner {
+  transform: translateY(-3px);
+}
+.cover-artifact .evidence-media {
+  max-height: 360px;
+}
+.cover-artifact .evidence-preview {
+  box-shadow: 0 18px 40px #0a175066;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.cover-project-copy > p:first-child {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #fff;
+}
+
+/* Calmer section headings so the work, not the titles, leads. */
+.folio-selection {
+  padding-block: 64px 60px;
+}
+.folio-section-title h2,
+.folio-contents-heading h2 {
+  font-size: clamp(30px, 3.4vw, 48px);
+}
+.folio-study--planning {
+  margin-top: 70px;
+}
+.folio-contents nav > a {
+  min-height: 92px;
+}
+
+@media (max-width: 1000px) {
+  .folio-name {
+    font-size: 7.6vw;
+  }
+  .cover-project {
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  }
+}
+@media (max-width: 760px) {
+  .folio-name {
+    display: block;
+    font-size: clamp(42px, 11vw, 64px);
+  }
+  .folio-name em {
+    font-size: 1.1em;
+  }
+  .folio-introduction {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+  }
+  .cover-project {
+    grid-template-columns: 1fr;
+  }
+  .folio-study--planning {
+    margin-top: 40px;
+  }
+}
+.folio-introduction-rule {
+  display: none;
+}
+@media (max-width: 580px) {
+  .folio-imprint {
+    flex-direction: column;
+    gap: 4px;
+  }
+}

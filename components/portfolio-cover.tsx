@@ -12,15 +12,17 @@ const selections: {
   field: string;
   question: string;
   note: string;
+  tags: string[];
   href: string;
 }[] = [
   {
     title: "Route & Margin",
     short: "Digital tool",
     kind: "route",
-    field: "Independent build",
+    field: "Built unprompted for a Business Analyst interview",
     question: "A vehicle fails. What happens to the deliveries?",
     note: "Explore a working dispatch simulation, from cover decision to customer contribution.",
+    tags: ["Cost modelling", "Scenario analysis", "JavaScript"],
     href: "/projects/route-and-margin",
   },
   {
@@ -30,6 +32,7 @@ const selections: {
     field: "Team marketing coursework",
     question: "Can a familiar game make a content idea easier to grasp?",
     note: "A Jenga inspired proposal. The outline is factual; original campaign assets are not published.",
+    tags: ["Audience research", "Content strategy"],
     href: "/bcu#mailchimp",
   },
   {
@@ -39,6 +42,7 @@ const selections: {
     field: "Individual MSc dissertation",
     question: "Where does trust fit into customer loyalty?",
     note: "An original figure from my survey of 139 UK online shoppers. Associations, not causal effects.",
+    tags: ["SPSS", "Survey design", "Statistics"],
     href: "/research-case",
   },
 ];
@@ -93,6 +97,11 @@ export function PortfolioCover() {
           </h3>
           <strong>{project.question}</strong>
           <p>{project.note}</p>
+          <ul className="cover-tags" aria-label="Skills shown">
+            {project.tags.map((tag) => (
+              <li key={tag}>{tag}</li>
+            ))}
+          </ul>
           <NativeLink href={project.href} className="cover-explore">
             Explore project <span aria-hidden="true">↗</span>
           </NativeLink>

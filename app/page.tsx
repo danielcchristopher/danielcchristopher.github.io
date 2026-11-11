@@ -5,6 +5,12 @@ import { ProjectVisual } from "@/components/project-visual";
 import { SiteHeader } from "@/components/site-header";
 import { PageFooter } from "@/components/page-footer";
 import { publicPath } from "@/lib/paths";
+import { portfolioProjects } from "@/lib/portfolio-projects";
+
+const countIn = (category: string) =>
+  portfolioProjects.filter((project) => project.category === category).length;
+
+const toolkit = ["SQL", "Python", "Power BI", "Excel", "SPSS", "Google Analytics"];
 
 export default function Home() {
   return (
@@ -16,20 +22,24 @@ export default function Home() {
       <main id="main-content" className="portfolio-home">
         <section className="shell folio-cover">
           <div className="folio-imprint">
-            <span>
-              Portfolio
-            </span>
-            <span>Manchester, UK</span>
+            <span>Data and business analyst</span>
+            <span>Manchester, UK · Hybrid or remote</span>
           </div>
           <h1 className="folio-name">
             <em>Daniel</em> <span>Christopher.</span>
           </h1>
           <div className="folio-introduction">
-            <p>
-              Interactive tools. Marketing ideas.
-              <br />
-              Questions worth investigating.
-            </p>
+            <div className="folio-pitch">
+              <p>
+                MSc Business Analytics graduate. I turn operations, customer
+                and sales data into working tools and clear decisions.
+              </p>
+              <ul className="folio-toolkit" aria-label="Core tools">
+                {toolkit.map((tool) => (
+                  <li key={tool}>{tool}</li>
+                ))}
+              </ul>
+            </div>
             <span className="folio-introduction-rule" aria-hidden="true" />
             <NativeLink href="/profile" className="folio-person">
               <Image
@@ -55,7 +65,7 @@ export default function Home() {
         >
           <header className="folio-section-title">
             <span>
-              Keep exploring <span aria-hidden="true">↓</span>
+              Two more builds <span aria-hidden="true">↓</span>
             </span>
             <h2 id="folio-selection-title">
               A closer <em>look.</em>
@@ -84,6 +94,11 @@ export default function Home() {
                   Explore orders, delivery timing and product categories in an
                   interactive dashboard.
                 </p>
+                <ul className="folio-tags" aria-label="Tools used">
+                  <li>Python</li>
+                  <li>Power BI</li>
+                  <li>Dashboard design</li>
+                </ul>
                 <small>Independent rebuild from cleaned team data</small>
               </NativeLink>
             </article>
@@ -96,7 +111,7 @@ export default function Home() {
                   <ProjectVisual kind="planner" />
                 </div>
                 <div className="folio-study-title">
-                  <span>02 / Mobile Route Planner</span>
+                  <span>02 / Built after an analyst interview</span>
                   <h3>
                     A different <em>route.</em>
                   </h3>
@@ -106,8 +121,14 @@ export default function Home() {
                   Same visits. Different sequences and assignments. See what the
                   comparison changes.
                 </p>
+                <ul className="folio-tags" aria-label="Tools used">
+                  <li>Google OR Tools</li>
+                  <li>MapLibre GL</li>
+                  <li>Route optimisation</li>
+                </ul>
                 <small>
-                  Interactive prototype · district level locations
+                  Unprompted follow up to a planning analyst interview ·
+                  district level locations
                 </small>
               </NativeLink>
             </article>
@@ -128,19 +149,25 @@ export default function Home() {
             <NativeLink href="/work?interest=digital#projects">
               <span>01</span>
               <strong>Digital builds</strong>
-              <small>Tools you can try</small>
+              <small>
+                Tools you can try · {countIn("Digital builds")} projects
+              </small>
               <span aria-hidden="true">↗</span>
             </NativeLink>
             <NativeLink href="/work?interest=marketing#projects">
               <span>02</span>
               <strong>Marketing</strong>
-              <small>Audiences, content & campaigns</small>
+              <small>
+                Audiences, content & campaigns · {countIn("Marketing")} projects
+              </small>
               <span aria-hidden="true">↗</span>
             </NativeLink>
             <NativeLink href="/work?interest=research#projects">
               <span>03</span>
               <strong>Research & analysis</strong>
-              <small>Questions, methods & findings</small>
+              <small>
+                Questions, methods & findings · {countIn("Research and analysis")} projects
+              </small>
               <span aria-hidden="true">↗</span>
             </NativeLink>
           </nav>
