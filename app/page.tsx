@@ -11,14 +11,41 @@ const countIn = (category: string) =>
   portfolioProjects.filter((project) => project.category === category).length;
 
 const toolkit = [
-  "SQL",
-  "Python",
-  "Power BI",
   "Excel",
+  "SQL",
+  "Power BI",
+  "Python",
   "SPSS",
   "Google Analytics",
-  "Audience research",
-  "Campaign planning",
+  "HubSpot",
+  "React",
+];
+
+const toolGroups = [
+  {
+    title: "Data and BI",
+    tools: ["Excel", "Power BI", "Power Query", "DAX", "SQL", "KPI reporting", "Relational design (ERD, DFD)"],
+  },
+  {
+    title: "Statistics and research",
+    tools: ["SPSS", "SAS Enterprise Miner", "Qualtrics", "Python (Pandas)", "Regression", "Mediation", "Classification"],
+  },
+  {
+    title: "Digital marketing",
+    tools: ["Google Analytics (GA4)", "HubSpot", "Audience research", "Content planning", "Campaign planning", "Market research"],
+  },
+  {
+    title: "Web and digital builds",
+    tools: ["React", "TypeScript", "Next.js", "Tailwind CSS", "GSAP", "Vite", "Git and GitHub"],
+  },
+];
+
+const certificates = [
+  "Google Data Analytics Professional Certificate",
+  "Google Analytics (GA4)",
+  "DMI Certified Digital Marketing Associate",
+  "HubSpot Content Marketing",
+  "HackerRank SQL (Basic)",
 ];
 
 const proof = [
@@ -62,6 +89,9 @@ export default function Home() {
                 {toolkit.map((tool) => (
                   <li key={tool}>{tool}</li>
                 ))}
+                <li className="folio-toolkit-more">
+                  <a href="#toolkit">Full toolkit ↓</a>
+                </li>
               </ul>
             </div>
             <span className="folio-introduction-rule" aria-hidden="true" />
@@ -88,6 +118,39 @@ export default function Home() {
               </div>
             ))}
           </dl>
+        </section>
+
+        <section
+          className="shell folio-tools"
+          id="toolkit"
+          aria-labelledby="folio-tools-title"
+        >
+          <header>
+            <span>Toolkit</span>
+            <h2 id="folio-tools-title">
+              What I work <em>with.</em>
+            </h2>
+          </header>
+          <div className="folio-tools-grid">
+            {toolGroups.map((group) => (
+              <article key={group.title}>
+                <h3>{group.title}</h3>
+                <ul>
+                  {group.tools.map((tool) => (
+                    <li key={tool}>{tool}</li>
+                  ))}
+                </ul>
+              </article>
+            ))}
+          </div>
+          <div className="folio-certs">
+            <strong>Certifications</strong>
+            <ul>
+              {certificates.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
         </section>
 
         <section
