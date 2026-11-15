@@ -1,0 +1,281 @@
+/* Shared glass materials and theme variants. */
+:root {
+  --glass-bg: rgb(255 255 255 / 72%);
+  --glass-bg-strong: rgb(250 252 255 / 88%);
+  --glass-border: rgb(255 255 255 / 65%);
+  --glass-highlight: rgb(255 255 255 / 65%);
+  --glass-shadow: 0 8px 24px rgb(26 50 89 / 7%), 0 24px 64px rgb(26 50 89 / 5%);
+  --glass-mesh-blue: #a6c9f244;
+  --glass-mesh-teal: #a5d9ce38;
+  --glass-mesh-violet: #c5b9eb38;
+  --glass-mesh-peach: #f1ccba30;
+  --glass-blur: 24px;
+  --radius-lg: 28px;
+  --radius-md: 18px;
+  --radius-pill: 999px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+  --glass-bg: rgb(16 31 56 / 65%);
+  --glass-bg-strong: rgb(16 31 56 / 88%);
+  --glass-border: rgb(255 255 255 / 12%);
+  --glass-highlight: rgb(255 255 255 / 16%);
+  --glass-shadow: 0 8px 24px rgb(0 5 18 / 20%), 0 24px 64px rgb(0 5 18 / 18%);
+  --glass-mesh-blue: #3264a34d;
+  --glass-mesh-teal: #247c7838;
+  --glass-mesh-violet: #6957a838;
+  --glass-mesh-peach: #a66c5820;
+  --glass-blur: 24px;
+  --radius-lg: 28px;
+  --radius-md: 18px;
+  --radius-pill: 999px;
+  }
+}
+:root[data-theme="light"] {
+  --glass-bg: rgb(255 255 255 / 72%);
+  --glass-bg-strong: rgb(250 252 255 / 88%);
+  --glass-border: rgb(255 255 255 / 65%);
+  --glass-highlight: rgb(255 255 255 / 65%);
+  --glass-shadow: 0 8px 24px rgb(26 50 89 / 7%), 0 24px 64px rgb(26 50 89 / 5%);
+  --glass-mesh-blue: #a6c9f244;
+  --glass-mesh-teal: #a5d9ce38;
+  --glass-mesh-violet: #c5b9eb38;
+  --glass-mesh-peach: #f1ccba30;
+  --glass-blur: 24px;
+  --radius-lg: 28px;
+  --radius-md: 18px;
+  --radius-pill: 999px;
+}
+:root[data-theme="dark"] {
+  --glass-bg: rgb(16 31 56 / 65%);
+  --glass-bg-strong: rgb(16 31 56 / 88%);
+  --glass-border: rgb(255 255 255 / 12%);
+  --glass-highlight: rgb(255 255 255 / 16%);
+  --glass-shadow: 0 8px 24px rgb(0 5 18 / 20%), 0 24px 64px rgb(0 5 18 / 18%);
+  --glass-mesh-blue: #3264a34d;
+  --glass-mesh-teal: #247c7838;
+  --glass-mesh-violet: #6957a838;
+  --glass-mesh-peach: #a66c5820;
+  --glass-blur: 24px;
+  --radius-lg: 28px;
+  --radius-md: 18px;
+  --radius-pill: 999px;
+}
+
+/* Isolation keeps the fixed mesh above the canvas and below the content. */
+body.portfolio-site {
+  isolation: isolate;
+  --portfolio-radius: var(--radius-md);
+}
+body.portfolio-site::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 12% 8%, var(--glass-mesh-blue), transparent 58%),
+    radial-gradient(ellipse at 88% 35%, var(--glass-mesh-teal), transparent 60%),
+    radial-gradient(ellipse at 35% 72%, var(--glass-mesh-violet), transparent 58%),
+    radial-gradient(ellipse at 80% 95%, var(--glass-mesh-peach), transparent 55%);
+}
+:is(.portfolio-header, .portfolio-menu, .folio-person, .folio-proof,
+  .folio-tools-grid article, .folio-method li, .folio-study, .project-tile,
+  .project-card, .work-row, .operational-card, .portfolio-disclosure, .case-model-disclosure,
+  .case-index, .quick-index-table, .case-visual, .visual-project-preview,
+  .study-opening > .evidence-preview, .operational-table, .results-table,
+  .project-takeaways article, .project-planning-note, .page-footer) {
+  background: var(--material);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  box-shadow: inset 0 1px 0 var(--glass-highlight), var(--glass-shadow);
+  min-width: 0;
+}
+@supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  :is(.portfolio-header, .portfolio-menu, .folio-person, .folio-proof,
+  .folio-tools-grid article, .folio-method li, .folio-study, .project-tile,
+  .project-card, .work-row, .operational-card, .portfolio-disclosure, .case-model-disclosure,
+  .case-index, .quick-index-table, .case-visual, .visual-project-preview,
+  .study-opening > .evidence-preview, .operational-table, .results-table,
+  .project-takeaways article, .project-planning-note, .page-footer) {
+    background: var(--glass-bg);
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(170%);
+    backdrop-filter: blur(var(--glass-blur)) saturate(170%);
+  }
+  .portfolio-header, .portfolio-menu { background: var(--glass-bg-strong); }
+}
+/* Nested materials use fill alone to avoid repeated blur passes. */
+.portfolio-disclosure :is(.portfolio-disclosure, .case-visual, .visual-project-preview,
+  .operational-table, .results-table, .case-model-disclosure),
+.folio-study .evidence-preview, .project-tile .evidence-preview,
+.visual-project-preview .evidence-preview {
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  box-shadow: inset 0 1px 0 var(--glass-highlight);
+}
+.portfolio-header {
+  position: sticky;
+  inset: 12px auto auto;
+  width: min(1320px, calc(100% - 32px));
+  margin: 12px auto -84px;
+  border-radius: var(--radius-pill);
+}
+.portfolio-site .portfolio-header-inner {
+  width: 100%;
+  padding-inline: 22px;
+  gap: 18px;
+}
+.portfolio-monogram { border-radius: 50%; }
+.portfolio-desktop-nav a,
+.portfolio-header :is(.theme-switch, .command-trigger, .portfolio-menu-trigger) {
+  border-radius: var(--radius-pill);
+  border: 1px solid transparent;
+}
+.portfolio-header :is(.theme-switch, .command-trigger, .portfolio-menu-trigger) {
+  padding-inline: 10px;
+  background: var(--glass-bg);
+  border-color: var(--glass-border);
+}
+.portfolio-desktop-nav a:is(:hover, [aria-current]), .case-index a:is(:hover, .active) {
+  background: var(--glass-bg-strong);
+  border-color: var(--glass-border);
+  box-shadow: inset 0 1px 0 var(--glass-highlight);
+}
+.portfolio-menu nav > a, .case-index a { border-radius: var(--radius-md); }
+.portfolio-menu::backdrop { -webkit-backdrop-filter: none; backdrop-filter: none; }
+.cover-showcase {
+  border: 1px solid rgb(255 255 255 / 30%);
+  border-radius: var(--radius-lg);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 50%), 0 24px 64px rgb(10 23 80 / 22%);
+}
+.folio-person { padding: 12px 16px; }
+.folio-person > img { border-radius: var(--radius-md); }
+.folio-proof { margin-top: 20px; padding-inline: 22px; }
+.folio-study { padding: 18px; }
+.folio-study-visual, .cover-video, .cover-artifact .evidence-preview,
+.project-tile-link > .evidence-preview { border-radius: var(--radius-md); }
+.project-tile { padding: 18px; }
+.project-tile-copy { padding-inline: 4px; }
+.case-index { padding: 18px; top: 104px; }
+.case-model-disclosure { padding: 18px; }
+.project-takeaways article { padding: 22px; }
+.quick-index-table, .operational-table { overflow: auto; }
+.results-table { padding: 18px; border-collapse: separate; border-spacing: 0; }
+.page-footer { margin: 32px 16px 16px; border-radius: var(--radius-lg); }
+.page-footer-email { overflow-wrap: anywhere; }
+:is(.folio-tags, .folio-toolkit, .folio-tools-grid, .folio-certs, .operational-tools) li,
+.operational-basis, .project-filters button, .work-filters button, .project-search input {
+  background: var(--glass-bg-strong);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-pill);
+  box-shadow: inset 0 1px 0 var(--glass-highlight);
+}
+.project-filters button[aria-pressed="true"], .work-filters button.active {
+  background: var(--accent-solid);
+  color: var(--accent-solid-text);
+}
+.cover-tags li {
+  border-radius: var(--radius-pill);
+  background: rgb(10 23 80 / 28%);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 20%);
+}
+.portfolio-inline-actions .portfolio-text-link {
+  padding: 12px 18px;
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-pill);
+  background: var(--material);
+  box-shadow: inset 0 1px 0 var(--glass-highlight);
+}
+.portfolio-button, .operational-primary {
+  border-radius: var(--radius-pill);
+  background: var(--accent-solid);
+  color: var(--accent-solid-text);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 45%), 0 8px 20px rgb(10 23 80 / 15%);
+}
+.olist-dash__findings li {
+  padding: 14px 18px;
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  background: var(--material);
+  box-shadow: inset 0 1px 0 var(--glass-highlight);
+}
+@media (prefers-reduced-motion: no-preference) {
+  :is(.folio-study, .project-tile, .project-card, .work-row, .operational-card, .folio-tools-grid article,
+    .folio-method li, .portfolio-button, .operational-primary) {
+    transition: transform 240ms var(--ease), box-shadow 240ms var(--ease);
+  }
+  @media (hover: hover) {
+    :is(.folio-study, .project-tile, .project-card, .work-row, .operational-card, .folio-tools-grid article,
+      .folio-method li, .portfolio-button, .operational-primary):hover {
+      transform: translateY(-2px);
+      box-shadow: inset 0 1px 0 var(--glass-highlight), var(--glass-shadow), 0 12px 24px rgb(10 23 80 / 12%);
+    }
+  }
+}
+@media (max-width: 760px) {
+  .portfolio-site { --glass-blur: 20px; --radius-lg: 22px; --radius-md: 16px; }
+  .portfolio-header { width: calc(100% - 16px); top: 8px; margin-top: 8px; margin-bottom: -72px; }
+  .portfolio-site .portfolio-header-inner { padding-inline: 12px; gap: 8px; }
+  .portfolio-header-actions { gap: 6px; }
+  .portfolio-header :is(.theme-switch, .command-trigger, .portfolio-menu-trigger) { padding-inline: 7px; }
+  .page-footer { margin-inline: 8px; }
+  .folio-study, .project-tile { padding: 12px; }
+}
+/* The intro column is too narrow on phones for a padded card around the portrait. */
+@media (max-width: 580px) {
+  .portfolio-site .folio-person { padding: 0; background: none; border: 0; box-shadow: none; backdrop-filter: none; -webkit-backdrop-filter: none; }
+}
+/* The floating header sits lower than the old fixed bar, so anchors need more room. */
+html { scroll-padding-top: 96px; }
+@media (max-width: 380px) {
+  .portfolio-header .portfolio-wordmark-copy > small { letter-spacing: 0; }
+  .portfolio-header .portfolio-wordmark { gap: 5px; font-size: 12px; }
+  .portfolio-header .portfolio-monogram { width: 26px; height: 30px; }
+  .portfolio-header-actions { gap: 3px; }
+  .portfolio-header :is(.theme-switch, .command-trigger, .portfolio-menu-trigger) { padding-inline: 5px; }
+}
+@media (prefers-reduced-transparency: reduce), (prefers-contrast: more) {
+  .portfolio-site { --glass-bg: var(--background); --glass-bg-strong: var(--background); --glass-border: var(--separator); }
+  body.portfolio-site::before { display: none; }
+  :is(.portfolio-header, .portfolio-menu, .folio-person, .folio-proof,
+  .folio-tools-grid article, .folio-method li, .folio-study, .project-tile,
+  .project-card, .work-row, .operational-card, .portfolio-disclosure, .case-model-disclosure,
+  .case-index, .quick-index-table, .case-visual, .visual-project-preview,
+  .study-opening > .evidence-preview, .operational-table, .results-table,
+  .project-takeaways article, .project-planning-note, .page-footer) {
+    background: var(--background);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    box-shadow: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-site *, .portfolio-site *::before, .portfolio-site *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  :is(.folio-study, .project-tile, .project-card, .work-row, .operational-card, .folio-tools-grid article,
+    .folio-method li, .portfolio-button, .operational-primary):hover { transform: none; }
+}
+@media print {
+  body.portfolio-site { background: #fff !important; }
+  body.portfolio-site::before { display: none; }
+  .portfolio-site *, .portfolio-site *::before, .portfolio-site *::after {
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+  :is(.portfolio-header, .portfolio-menu, .folio-person, .folio-proof,
+  .folio-tools-grid article, .folio-method li, .folio-study, .project-tile,
+  .project-card, .work-row, .operational-card, .portfolio-disclosure, .case-model-disclosure,
+  .case-index, .quick-index-table, .case-visual, .visual-project-preview,
+  .study-opening > .evidence-preview, .operational-table, .results-table,
+  .project-takeaways article, .project-planning-note, .page-footer) { background: transparent; border-radius: 0; }
+  .cover-showcase, .cover-tags li, .folio-tags li, .folio-toolkit li,
+  .folio-tools-grid li, .folio-certs li, .operational-tools li,
+  .olist-dash__findings li { background: transparent; box-shadow: none; }
+  .page-footer { margin: 0; }
+}

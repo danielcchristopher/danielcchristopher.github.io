@@ -13,6 +13,7 @@ import "./operational-projects.css";
 import "./portfolio.css";
 import "./folio-cover.css";
 import "./home-clarity.css";
+import "./liquid-glass.css";
 
 const manrope = localFont({
   src: "../public/fonts/manrope-variable.woff2",
