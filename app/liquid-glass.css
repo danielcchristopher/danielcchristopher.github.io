@@ -1,10 +1,11 @@
 /* Shared glass materials and theme variants. */
 :root {
-  --glass-bg: rgb(255 255 255 / 72%);
+  --glass-bg: linear-gradient(180deg, rgb(255 255 255 / 86%), rgb(255 255 255 / 74%));
+  --glass-edge: linear-gradient(180deg, rgb(255 255 255 / 90%), rgb(165 185 210 / 22%));
   --glass-bg-strong: rgb(250 252 255 / 88%);
   --glass-border: rgb(255 255 255 / 65%);
   --glass-highlight: rgb(255 255 255 / 65%);
-  --glass-shadow: 0 8px 24px rgb(26 50 89 / 7%), 0 24px 64px rgb(26 50 89 / 5%);
+  --glass-shadow: 0 12px 40px rgb(26 50 89 / 4%), 0 32px 88px rgb(26 50 89 / 3%);
   --glass-mesh-blue: #a6c9f244;
   --glass-mesh-teal: #a5d9ce38;
   --glass-mesh-violet: #c5b9eb38;
@@ -16,11 +17,12 @@
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-  --glass-bg: rgb(16 31 56 / 65%);
+  --glass-bg: linear-gradient(180deg, rgb(16 31 56 / 80%), rgb(16 31 56 / 72%));
+  --glass-edge: linear-gradient(180deg, rgb(255 255 255 / 22%), rgb(255 255 255 / 6%));
   --glass-bg-strong: rgb(16 31 56 / 88%);
   --glass-border: rgb(255 255 255 / 12%);
   --glass-highlight: rgb(255 255 255 / 16%);
-  --glass-shadow: 0 8px 24px rgb(0 5 18 / 20%), 0 24px 64px rgb(0 5 18 / 18%);
+  --glass-shadow: 0 12px 40px rgb(0 5 18 / 14%), 0 32px 88px rgb(0 5 18 / 12%);
   --glass-mesh-blue: #3264a34d;
   --glass-mesh-teal: #247c7838;
   --glass-mesh-violet: #6957a838;
@@ -32,11 +34,12 @@
   }
 }
 :root[data-theme="light"] {
-  --glass-bg: rgb(255 255 255 / 72%);
+  --glass-bg: linear-gradient(180deg, rgb(255 255 255 / 86%), rgb(255 255 255 / 74%));
+  --glass-edge: linear-gradient(180deg, rgb(255 255 255 / 90%), rgb(165 185 210 / 22%));
   --glass-bg-strong: rgb(250 252 255 / 88%);
   --glass-border: rgb(255 255 255 / 65%);
   --glass-highlight: rgb(255 255 255 / 65%);
-  --glass-shadow: 0 8px 24px rgb(26 50 89 / 7%), 0 24px 64px rgb(26 50 89 / 5%);
+  --glass-shadow: 0 12px 40px rgb(26 50 89 / 4%), 0 32px 88px rgb(26 50 89 / 3%);
   --glass-mesh-blue: #a6c9f244;
   --glass-mesh-teal: #a5d9ce38;
   --glass-mesh-violet: #c5b9eb38;
@@ -47,11 +50,12 @@
   --radius-pill: 999px;
 }
 :root[data-theme="dark"] {
-  --glass-bg: rgb(16 31 56 / 65%);
+  --glass-bg: linear-gradient(180deg, rgb(16 31 56 / 80%), rgb(16 31 56 / 72%));
+  --glass-edge: linear-gradient(180deg, rgb(255 255 255 / 22%), rgb(255 255 255 / 6%));
   --glass-bg-strong: rgb(16 31 56 / 88%);
   --glass-border: rgb(255 255 255 / 12%);
   --glass-highlight: rgb(255 255 255 / 16%);
-  --glass-shadow: 0 8px 24px rgb(0 5 18 / 20%), 0 24px 64px rgb(0 5 18 / 18%);
+  --glass-shadow: 0 12px 40px rgb(0 5 18 / 14%), 0 32px 88px rgb(0 5 18 / 12%);
   --glass-mesh-blue: #3264a34d;
   --glass-mesh-teal: #247c7838;
   --glass-mesh-violet: #6957a838;
@@ -100,9 +104,10 @@ body.portfolio-site::before {
   .case-index, .quick-index-table, .case-visual, .visual-project-preview,
   .study-opening > .evidence-preview, .operational-table, .results-table,
   .project-takeaways article, .project-planning-note, .page-footer) {
-    background: var(--glass-bg);
-    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(170%);
-    backdrop-filter: blur(var(--glass-blur)) saturate(170%);
+    border-color: transparent;
+    background: var(--glass-bg) padding-box, var(--glass-edge) border-box;
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(150%);
+    backdrop-filter: blur(var(--glass-blur)) saturate(150%);
   }
   .portfolio-header, .portfolio-menu { background: var(--glass-bg-strong); }
 }
@@ -236,6 +241,166 @@ html { scroll-padding-top: 96px; }
   .portfolio-header-actions { gap: 3px; }
   .portfolio-header :is(.theme-switch, .command-trigger, .portfolio-menu-trigger) { padding-inline: 5px; }
 }
+/* Calm rhythm and a single material edge around each composition. */
+:root {
+  --space-section: clamp(88px, 11vw, 152px);
+  --space-heading: clamp(40px, 4vw, 56px);
+  --space-page-top: 126px;
+  --card-padding: 18px;
+}
+.portfolio-header { margin-bottom: -72px; }
+.portfolio-site .portfolio-header-inner { min-height: 58px; }
+html { scroll-padding-top: 90px; }
+.portfolio-site main > :first-child {
+  padding-top: var(--space-page-top);
+}
+.folio-name { margin-block: 22px 28px; }
+.folio-introduction { margin-block: 0 64px; gap: 36px; }
+.folio-pitch { min-width: 0; }
+.folio-pitch > p { max-width: 46ch; margin-bottom: 22px; }
+:is(.folio-tools, .folio-selection, .folio-method, .folio-contents) {
+  padding-block: 0;
+  margin-top: var(--space-section);
+  border: 0;
+}
+:is(.folio-section-title, .folio-tools > header, .folio-method > header, .folio-contents-heading) {
+  border-top: 0;
+  padding-top: 0;
+  margin-bottom: var(--space-heading);
+}
+.portfolio-site main > section:not(:first-child):not(.folio-tools, .folio-selection, .folio-method, .folio-contents) {
+  margin-top: var(--space-section);
+  padding-block: 0;
+  border-block: 0;
+}
+.portfolio-site :is(.case-section, .study-section, .operational-section) {
+  padding-block: 0;
+  border-block: 0;
+  margin-block: 0 var(--space-section);
+}
+.study-body { --space-section: clamp(56px, 6vw, 88px); }
+.study-body > .portfolio-disclosure { margin-block: 0 16px; }
+.study-body > .portfolio-disclosure + :not(.portfolio-disclosure) { margin-top: var(--space-section); }
+.study-body > .study-section:has(+ .portfolio-disclosure) { margin-bottom: 16px; }
+:is(.case-section, .study-section, .operational-section, .visual-project-overview, .visual-project-evidence) > h2 {
+  margin-bottom: var(--space-heading);
+}
+.portfolio-site .folio-proof {
+  background: none; border: 0; box-shadow: none;
+  backdrop-filter: none; -webkit-backdrop-filter: none;
+  margin-top: 28px; padding: 12px 0;
+}
+.folio-proof > div { padding-block: 28px; }
+.folio-proof dt { font-variant-numeric: tabular-nums; }
+:is(.folio-tags, .folio-toolkit, .folio-tools-grid, .folio-certs, .operational-tools) li,
+.operational-basis {
+  border: 0; box-shadow: none;
+  background: color-mix(in srgb, var(--label) 6%, transparent);
+  color: var(--label);
+  font-size: 11px; line-height: 1.4; padding: 5px 9px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --quiet-tag: rgb(255 255 255 / 8%);
+  }
+}
+:root[data-theme="dark"] { --quiet-tag: rgb(255 255 255 / 8%); }
+:root[data-theme="light"] { --quiet-tag: color-mix(in srgb, var(--label) 6%, transparent); }
+:is(.folio-tags, .folio-toolkit, .folio-tools-grid, .folio-certs, .operational-tools) li,
+.operational-basis { background: var(--quiet-tag, color-mix(in srgb, var(--label) 6%, transparent)); }
+.folio-toolkit li.folio-toolkit-more { background: none; }
+.project-grid { align-items: stretch; }
+.folio-duet { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; align-items: stretch; }
+.folio-study--planning { margin-top: 0; }
+.folio-study, .project-tile { padding: var(--card-padding); }
+.folio-study > a, .project-tile-link, .project-card, .project-copy {
+  display: flex; flex-direction: column; height: 100%; min-width: 0;
+}
+.project-copy { flex: 1; height: auto; }
+.folio-study small, .project-bottom { margin-top: auto; }
+.folio-study-title { min-height: 132px; align-content: start; }
+.project-tile-link { flex: 1; }
+.project-tile-copy { display: flex; flex: 1; flex-direction: column; }
+.project-tile-copy > small { margin-top: auto; }
+.portfolio-site :is(.folio-study, .project-tile, .project-card, .visual-project-preview, .case-visual) :is(.evidence-preview, .folio-study-visual, .cover-video, .project-preview) {
+  padding: 0; background: none; border: 0; box-shadow: none;
+  backdrop-filter: none; -webkit-backdrop-filter: none;
+  border-radius: calc(var(--radius-lg) - var(--card-padding));
+}
+:is(.visual-project-preview, .case-visual, .study-opening > .evidence-preview) { padding: var(--card-padding); }
+:is(.folio-study, .project-tile, .project-card, .visual-project-preview, .case-visual, .study-opening) :is(.evidence-preview, .cover-video) figcaption {
+  padding: 12px 0 0; min-height: 0; background: none; border: 0;
+  color: var(--secondary-label); font-size: 11px; line-height: 1.6;
+}
+:is(.folio-study, .project-tile, .project-card, .visual-project-preview, .case-visual, .study-opening) figcaption > :is(strong, span) { color: var(--secondary-label); }
+:is(.folio-study, .project-tile, .project-card, .visual-project-preview, .case-visual, .study-opening) .evidence-media {
+  border-radius: calc(var(--radius-lg) - var(--card-padding));
+}
+.portfolio-site :is(.folio-study, .project-tile) .evidence-media,
+.project-tile-link > .evidence-preview .evidence-media {
+  aspect-ratio: 16 / 11; min-height: 0; max-height: none;
+}
+:is(.folio-study, .project-tile) .evidence-media > img { object-fit: contain; }
+.folio-study > a:is(:hover, :focus-visible) .evidence-preview,
+.cover-artifact:is(:hover, :focus-visible) .cover-artifact-inner { transform: none; }
+.portfolio-site :is(h1, h2, h3, h4) { text-wrap: balance; }
+.portfolio-site p { text-wrap: pretty; max-width: 62ch; }
+.portfolio-site .folio-pitch > p { max-width: 46ch; }
+.portfolio-site :is(a, button, input, textarea, select, summary, [tabindex]):focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+/* The feature uses a local accent so its focus edge remains legible. */
+.cover-showcase { --accent: #fff; }
+::selection { background: color-mix(in srgb, var(--accent) 22%, var(--background)); color: var(--label); }
+.portfolio-disclosure > summary { padding: 24px clamp(20px, 3vw, 30px); }
+.portfolio-disclosure > :not(summary) { padding: clamp(20px, 3vw, 30px); }
+.portfolio-disclosure[open] > summary > span:last-child { transform: rotate(45deg); }
+.portfolio-site .case-index { padding: 24px; top: 90px; }
+.case-index > p { margin: 0 0 18px; }
+.contact-email-card { border-radius: var(--radius-lg); }
+.page-footer { margin-top: var(--space-section); padding-block: 56px 30px; }
+.cover-artifact-inner { animation: none; }
+.project-tile-link:hover > .evidence-preview .evidence-media { transform: none; }
+@media (max-width: 760px) {
+  :root { --space-page-top: 94px; --card-padding: 12px; }
+  .portfolio-header { margin-bottom: -62px; }
+  .portfolio-site .portfolio-header-inner { min-height: 52px; }
+  html { scroll-padding-top: 80px; }
+  .folio-introduction { margin-bottom: 48px; gap: 24px; }
+  .project-grid { align-items: stretch; }
+.folio-duet { grid-template-columns: 1fr; }
+  .folio-study-title { min-height: 0; }
+  .portfolio-site .case-index { top: 80px; padding: 20px; margin-inline: 0; }
+  .page-footer { padding-block: 40px 24px; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes calm-enter {
+    from { opacity: 0; translate: 0 16px; }
+    to { opacity: 1; translate: 0 0; }
+  }
+  .folio-name { animation: calm-enter 420ms var(--ease) both; }
+  .folio-pitch > p { animation: calm-enter 420ms 60ms var(--ease) both; }
+  .folio-toolkit { animation: calm-enter 420ms 120ms var(--ease) both; }
+  .cover-showcase { animation: calm-enter 420ms 180ms var(--ease) both; }
+  @supports (animation-timeline: view()) {
+    :is(.folio-tools, .folio-selection, .folio-method, .folio-contents,
+      .portfolio-supporting, .visual-project-evidence, .about-education,
+      .about-detail, .folio-selection .folio-study, .folio-tools-grid article,
+      .folio-method li, .case-section ~ .case-section, .study-section ~ .study-section) {
+      animation: calm-enter linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 40%;
+    }
+  }
+  :is(.folio-study-title > span:last-child, .project-bottom > span:last-child,
+    .cover-explore > span, .cover-index > a > span, .folio-person > span > span) {
+    display: inline-block; transition: transform 200ms var(--ease);
+  }
+  @media (hover: hover) {
+    .folio-study > a:hover .folio-study-title > span:last-child,
+    .project-card:hover .project-bottom > span:last-child,
+    .cover-explore:hover > span, .cover-index > a:hover > span,
+    .folio-person:hover > span > span { transform: translate(2px, -2px); }
+  }
+}
 @media (prefers-reduced-transparency: reduce), (prefers-contrast: more) {
   .portfolio-site { --glass-bg: var(--background); --glass-bg-strong: var(--background); --glass-border: var(--separator); }
   body.portfolio-site::before { display: none; }
@@ -246,6 +411,7 @@ html { scroll-padding-top: 96px; }
   .study-opening > .evidence-preview, .operational-table, .results-table,
   .project-takeaways article, .project-planning-note, .page-footer) {
     background: var(--background);
+    border-color: var(--separator);
     -webkit-backdrop-filter: none;
     backdrop-filter: none;
     box-shadow: none;
@@ -267,15 +433,17 @@ html { scroll-padding-top: 96px; }
     backdrop-filter: none !important;
     box-shadow: none !important;
     text-shadow: none !important;
+    animation: none !important;
   }
   :is(.portfolio-header, .portfolio-menu, .folio-person, .folio-proof,
   .folio-tools-grid article, .folio-method li, .folio-study, .project-tile,
   .project-card, .work-row, .operational-card, .portfolio-disclosure, .case-model-disclosure,
   .case-index, .quick-index-table, .case-visual, .visual-project-preview,
   .study-opening > .evidence-preview, .operational-table, .results-table,
-  .project-takeaways article, .project-planning-note, .page-footer) { background: transparent; border-radius: 0; }
+  .project-takeaways article, .project-planning-note, .page-footer) { background: #fff !important; border-radius: 0; }
   .cover-showcase, .cover-tags li, .folio-tags li, .folio-toolkit li,
   .folio-tools-grid li, .folio-certs li, .operational-tools li,
   .olist-dash__findings li { background: transparent; box-shadow: none; }
+  .portfolio-site main > :first-child { padding-top: 20px; }
   .page-footer { margin: 0; }
 }
