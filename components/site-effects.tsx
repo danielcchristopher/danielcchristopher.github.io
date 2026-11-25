@@ -6,6 +6,11 @@ export function SiteEffects() {
   useEffect(() => {
     const light = spotlight.current;
     if (!light) return;
+    const root = document.documentElement;
+    const supportsRefraction =
+      /(?:Chrome|Chromium)\//.test(navigator.userAgent) &&
+      CSS.supports("backdrop-filter", "url(#liquid-refract) blur(24px)");
+    root.classList.toggle("has-liquid-refraction", supportsRefraction);
     const preference = matchMedia(
       "(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)",
     );
@@ -16,6 +21,11 @@ export function SiteEffects() {
       if (frame) cancelAnimationFrame(frame);
       frame = 0;
       delete light.dataset.active;
+    };
+    const resetLight = () => {
+      hide();
+      root.style.removeProperty("--light-x");
+      root.style.removeProperty("--light-y");
     };
     const move = (event: PointerEvent) => {
       if (
@@ -30,6 +40,8 @@ export function SiteEffects() {
       frame = requestAnimationFrame(() => {
         light.style.setProperty("--spotlight-x", `${x}px`);
         light.style.setProperty("--spotlight-y", `${y}px`);
+        root.style.setProperty("--light-x", `${(x / innerWidth) * 100}%`);
+        root.style.setProperty("--light-y", `${(y / innerHeight) * 100}%`);
         light.dataset.active = "true";
         frame = 0;
       });
@@ -44,14 +56,15 @@ export function SiteEffects() {
     document.addEventListener("pointerout", leave);
     document.addEventListener("visibilitychange", visibility);
     window.addEventListener("blur", hide);
-    preference.addEventListener("change", hide);
+    preference.addEventListener("change", resetLight);
     return () => {
-      hide();
+      resetLight();
+      root.classList.remove("has-liquid-refraction");
       document.removeEventListener("pointermove", move);
       document.removeEventListener("pointerout", leave);
       document.removeEventListener("visibilitychange", visibility);
       window.removeEventListener("blur", hide);
-      preference.removeEventListener("change", hide);
+      preference.removeEventListener("change", resetLight);
     };
   }, []);
   useEffect(() => {
@@ -120,6 +133,12 @@ export function SiteEffects() {
   }, []);
   return (
     <>
+      <svg width="0" height="0" aria-hidden="true" style={{ position: "absolute" }}>
+        <filter id="liquid-refract">
+          <feTurbulence type="fractalNoise" baseFrequency="0.012 0.05" numOctaves="2" seed="4" result="ripples" />
+          <feDisplacementMap in="SourceGraphic" in2="ripples" scale="7" xChannelSelector="R" yChannelSelector="G" />
+        </filter>
+      </svg>
       <div className="scroll-progress" aria-hidden="true">
         <span />
       </div>
