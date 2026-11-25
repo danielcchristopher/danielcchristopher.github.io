@@ -7,7 +7,7 @@ import { NativeLink } from "@/components/native-link";
 
 export const metadata = pageMetadata(
   "CV",
-  "Two page CV for Daniel Christopher: MSc Business Analytics (Predicted Distinction) and BA (Hons) Digital Marketing, 2:1, with analytics, digital marketing and digital build projects.",
+  "Two page CV for Daniel Christopher: MSc Business Analytics (Merit) and BA (Hons) Digital Marketing, 2:1, with analytics, digital marketing and digital build projects.",
   "/cv/",
   { url: "/og-cv.jpg", alt: "Daniel Christopher’s CV" },
 );
@@ -28,7 +28,7 @@ export default function CvPage() {
             My <em>CV.</em>
           </h1>
           <p>
-            MSc Business Analytics (Predicted Distinction) and BA (Hons)
+            MSc Business Analytics (Merit) and BA (Hons)
             Digital Marketing, 2:1. Two pages covering my education, skills,
             projects and experience.
           </p>

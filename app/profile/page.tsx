@@ -91,9 +91,9 @@ export default function ProfilePage() {
                 Manchester Metropolitan University · 2025 to 2026
               </p>
               <h3>MSc Business Analytics</h3>
-              <strong>Completed</strong>
+              <strong>Merit</strong>
               <p>
-                Predicted Distinction, final award pending. Research,
+                Research,
                 statistics, data management and decision modelling.
               </p>
               <NativeLink

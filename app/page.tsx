@@ -81,7 +81,7 @@ export default function Home() {
           <div className="folio-introduction">
             <div className="folio-pitch">
               <p>
-                MSc Business Analytics and BA Digital Marketing graduate. I
+                MSc Business Analytics (Merit) and BA Digital Marketing graduate. I
                 use data, research and creative thinking to build tools,
                 campaigns and insight people can act on.
               </p>
