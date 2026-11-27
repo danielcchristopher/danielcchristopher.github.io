@@ -51,6 +51,7 @@ const toolkit = [
   "Python (Pandas)",
   "Qualtrics",
   "Google Analytics (GA4)",
+  "HubSpot CRM",
   "Google Ads (basic)",
   "Mailchimp",
   "Shopify",
