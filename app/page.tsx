@@ -27,11 +27,11 @@ const selectedWork = [
     ownership: "Four person MSc team project",
   },
   {
-    title: "Personalisation, trust and loyalty",
-    href: "/dissertation",
-    summary: "My own survey of 139 UK online shoppers on whether personalisation builds loyalty through trust.",
-    tools: ["Qualtrics", "SPSS"],
-    ownership: "Individual MSc dissertation",
+    title: "Loan affordability",
+    href: "/credit-risk",
+    summary: "Checked 44,986 loan records for a Nationwide case study, then built a regression model to see what drives affordability.",
+    tools: ["SPSS", "Regression"],
+    ownership: "Four person MSc team project",
   },
   {
     title: "Cotton & Crumb",
@@ -107,6 +107,11 @@ export default function Home() {
 
         <section className="shell plain-section" aria-labelledby="selected-work-title">
           <h2 id="selected-work-title">Selected work</h2>
+          <p className="plain-lede">
+            Mostly from my MSc, where my modules covered business statistics and
+            data modelling, decision making and data visualisation, and AI and
+            machine learning.
+          </p>
           <ul className="plain-cards">
             {selectedWork.map((project) => (
               <li key={project.href}>

@@ -90,3 +90,4 @@
 .plain-tags { justify-content: center; }
 .plain-cards .plain-tags { justify-content: flex-start; }
 .plain-more { margin: 0; }
+.plain-lede { max-width: 62ch; margin: -.5rem auto 1.5rem; line-height: 1.6; color: var(--secondary-label); }
