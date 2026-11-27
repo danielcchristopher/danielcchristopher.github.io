@@ -46,6 +46,7 @@ const toolkit = [
   "SQL",
   "Power BI and DAX",
   "Excel",
+  "Microsoft Office (Word, PowerPoint, Outlook, Teams)",
   "SPSS",
   "SAS Enterprise Miner",
   "Python (Pandas)",
