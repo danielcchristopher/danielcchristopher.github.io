@@ -2,7 +2,6 @@
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { NativeLink } from "@/components/native-link";
-import { PortfolioCommand } from "@/components/portfolio-command";
 import { ThemeSwitch } from "@/components/theme-switch";
 
 const navigation = [
@@ -52,7 +51,6 @@ export function SiteHeader() {
           </nav>
           <div className="portfolio-header-actions">
             <ThemeSwitch />
-            <PortfolioCommand onOpen={() => setOpen(false)} />
             <button
               type="button"
               className="portfolio-menu-trigger"

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import { SiteEffects } from "@/components/site-effects";
 import { publicPath } from "@/lib/paths";
 import "./globals.css";
 import "./bcu.css";
@@ -8,12 +7,11 @@ import "./visual-polish.css";
 import "./layout-refinement.css";
 import "./editorial-type.css";
 import "./type-and-layout-fixes.css";
-import "./ai-workflow.css";
 import "./operational-projects.css";
 import "./portfolio.css";
 import "./folio-cover.css";
 import "./home-clarity.css";
-import "./liquid-glass.css";
+import "./plain-home.css";
 
 const manrope = localFont({
   src: "../public/fonts/manrope-variable.woff2",
@@ -39,7 +37,7 @@ export const metadata: Metadata = {
     template: "%s | Daniel Christopher",
   },
   description:
-    "Digital builds, marketing ideas, research and analysis by Daniel Christopher. Projects, experiments and practical work.",
+    "Data, insight and marketing projects by Daniel Christopher, an MSc Business Analytics (Merit) and BA Digital Marketing graduate in Manchester.",
   alternates: {
     canonical: "/",
   },
@@ -53,7 +51,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Daniel Christopher | Portfolio",
     description:
-      "Digital builds, marketing ideas, research and analysis by Daniel Christopher. Projects, experiments and practical work.",
+      "Data, insight and marketing projects by Daniel Christopher, an MSc Business Analytics (Merit) and BA Digital Marketing graduate in Manchester.",
     type: "website",
     url: siteUrl,
     siteName: "Daniel Christopher",
@@ -71,7 +69,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Daniel Christopher | Portfolio",
     description:
-      "Digital builds, marketing ideas, research and analysis by Daniel Christopher. Projects, experiments and practical work.",
+      "Data, insight and marketing projects by Daniel Christopher, an MSc Business Analytics (Merit) and BA Digital Marketing graduate in Manchester.",
     images: [`${siteUrl}/og-daniel-christopher.png`],
   },
 };
@@ -107,7 +105,6 @@ const personSchema = {
     "Customer analytics",
     "Digital marketing",
     "Content strategy",
-    "Web development",
   ],
 };
 
@@ -134,7 +131,6 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
         />
-        <SiteEffects />
         {children}
       </body>
     </html>

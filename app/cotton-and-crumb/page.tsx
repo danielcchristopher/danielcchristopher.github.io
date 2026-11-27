@@ -3,7 +3,6 @@ import { publicPath } from "@/lib/paths";
 import { SiteHeader } from "@/components/site-header";
 import { PageFooter } from "@/components/page-footer";
 import { NativeLink } from "@/components/native-link";
-import { HeroField } from "@/components/hero-field";
 
 const liveUrl = "/bakery/";
 
@@ -22,7 +21,6 @@ export default function CottonAndCrumbPage() {
       <SiteHeader />
       <main id="main-content">
         <section className="page-hero site-build-hero">
-          <HeroField motif="corner" />
           <div className="shell">
             <small>
               Independent brand, design and build · fictional business

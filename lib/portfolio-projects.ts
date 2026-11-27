@@ -76,16 +76,6 @@ export const portfolioProjects: PortfolioProject[] = [
     featured: true,
   },
   {
-    id: "portfolio",
-    title: "This portfolio",
-    category: "Digital builds",
-    summary: "The website you’re exploring, built with Next.js and TypeScript.",
-    basis: "Independent website",
-    href: "/site-build",
-    visual: "web",
-    featured: true,
-  },
-  {
     id: "trust",
     title: "Personalisation, trust & loyalty",
     category: "Research and analysis",

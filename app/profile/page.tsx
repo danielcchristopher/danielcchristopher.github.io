@@ -221,27 +221,6 @@ export default function ProfilePage() {
               </section>
             </div>
           </details>
-          <details className="portfolio-disclosure">
-            <summary>
-              <span>
-                <strong>How I work with AI</strong>
-                <small>
-                  Development assistance, evidence and responsibility
-                </small>
-              </span>
-              <span aria-hidden="true">+</span>
-            </summary>
-            <div>
-              <p>
-                I use AI assistance to develop and refine digital projects. I
-                remain responsible for the questions, source evidence, decisions
-                and claims presented here.
-              </p>
-              <NativeLink href="/ai-workflow" className="portfolio-text-link">
-                Read about the development workflow ↗
-              </NativeLink>
-            </div>
-          </details>
           <div className="about-closing" id="profile-contact">
             <h2>Have a project or opportunity in mind?</h2>
             <NativeLink href="/contact" className="portfolio-button">

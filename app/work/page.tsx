@@ -2,7 +2,6 @@ import { EditorialTitle } from "@/components/editorial-title";
 import { pageMetadata } from "@/lib/page-metadata";
 import { PageFooter } from "@/components/page-footer";
 import { SiteHeader } from "@/components/site-header";
-import { NativeLink } from "@/components/native-link";
 import { ProjectGallery } from "@/components/project-gallery";
 import { InteractiveEvidenceLab } from "@/components/interactive-evidence-lab";
 import { CaseQuickIndex } from "@/components/case-quick-index";
@@ -81,9 +80,6 @@ export default function WorkPage() {
                   capability, cybersecurity and sustainability.
                 </p>
               </article>
-              <NativeLink href="/ai-workflow" className="portfolio-text-link">
-                How I work with AI ↗
-              </NativeLink>
             </div>
           </details>
         </section>
