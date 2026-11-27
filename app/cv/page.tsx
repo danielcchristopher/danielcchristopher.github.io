@@ -54,7 +54,7 @@ export default function CvPage() {
           </div>
         </section>
         <section className="shell cv-pages" aria-label="CV pages">
-          {[1, 2].map((page) => (
+          {[1].map((page) => (
             <a
               key={page}
               href={publicPath(cvFile)}
