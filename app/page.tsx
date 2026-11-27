@@ -86,8 +86,8 @@ export default function Home() {
             <h1 id="plain-intro-title">Daniel Christopher</h1>
             <p>
               MSc Business Analytics (Merit) and BA Digital Marketing graduate in
-              Manchester, looking for junior data, insight and marketing roles.
-              Native German speaker.
+              Manchester, looking for my first full time role in business,
+              data, marketing or operations. Native German speaker.
             </p>
             <ul className="plain-actions">
               <li>
