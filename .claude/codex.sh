@@ -5,7 +5,11 @@ set -euo pipefail
 
 repo_root="$(cd "$(dirname "$0")/.." && pwd)"
 
-if command -v codex >/dev/null 2>&1; then
+# The npm codex (0.162) rejects the configured model; prefer the newer CLI bundled with the ChatGPT app.
+bundled="/Applications/ChatGPT.app/Contents/Resources/codex-cli/CodexCLI.app/Contents/MacOS/codex"
+if [ -x "$bundled" ]; then
+  codex_cmd=("$bundled")
+elif command -v codex >/dev/null 2>&1; then
   codex_cmd=(codex)
 else
   codex_cmd=(npx -y @openai/codex)
