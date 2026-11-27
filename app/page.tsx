@@ -122,9 +122,11 @@ export default function Home() {
               </li>
             ))}
           </ul>
-          <NativeLink href="/work" className="portfolio-text-link">
-            More projects
-          </NativeLink>
+          <p className="plain-more">
+            <NativeLink href="/work" className="portfolio-text-link">
+              More projects
+            </NativeLink>
+          </p>
         </section>
 
         <section className="shell plain-section" aria-labelledby="toolkit-title">
@@ -135,7 +137,7 @@ export default function Home() {
             ))}
           </ul>
           <h3>Certificates</h3>
-          <ul className="plain-list">
+          <ul className="plain-tags plain-certs">
             {certificates.map((item) => (
               <li key={item}>{item}</li>
             ))}

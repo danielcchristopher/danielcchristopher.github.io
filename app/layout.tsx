@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { SiteEffects } from "@/components/site-effects";
 import { publicPath } from "@/lib/paths";
 import "./globals.css";
 import "./bcu.css";
@@ -131,6 +132,7 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
         />
+        <SiteEffects />
         {children}
       </body>
     </html>

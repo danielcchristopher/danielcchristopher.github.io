@@ -75,8 +75,18 @@
 }
 .plain-toolkit li { font-size: .95rem; padding: .3rem .75rem; }
 
-.plain-list { margin: 0; padding-left: 1.1rem; line-height: 1.8; }
-
-@media (max-width: 560px) {
-  .plain-intro { flex-direction: column; }
+/* Symmetrical layout: centred intro, headings and rows */
+.plain-intro { flex-direction: column; align-items: center; text-align: center; }
+.plain-intro p { margin-inline: auto; }
+.plain-actions { justify-content: center; }
+.plain-section { text-align: center; }
+.plain-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: left;
 }
+.plain-cards > li { flex: 0 1 320px; }
+.plain-tags { justify-content: center; }
+.plain-cards .plain-tags { justify-content: flex-start; }
+.plain-more { margin: 0; }
